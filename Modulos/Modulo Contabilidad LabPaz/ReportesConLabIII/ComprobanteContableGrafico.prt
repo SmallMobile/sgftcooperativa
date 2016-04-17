@@ -1,0 +1,2124 @@
+object TprReport
+  FromPage = 1
+  ToPage = 1
+  Values = <
+    item
+      Name = 'TotalDebito'
+      AggFunction = prafSum
+      Formula = 'IBAuxiliar.DEBITO'
+      ResetOn = rvtReport
+      CalcOn = cvtDataSetNext
+      DataSetName = 'IBAuxiliar'
+      Accumulate = True
+    end
+    item
+      Name = 'TotalCredito'
+      AggFunction = prafSum
+      Formula = 'IBAuxiliar.CREDITO'
+      ResetOn = rvtReport
+      CalcOn = cvtDataSetNext
+      DataSetName = 'IBAuxiliar'
+    end>
+  Variables = <
+    item
+      Name = 'EMPRESA'
+      ValueType = 'prvvtString'
+      Value = 'FUNDACION CREDISERVIR'
+    end
+    item
+      Name = 'NIT'
+      ValueType = 'prvvtString'
+      Value = '807.000.667-1'
+    end
+    item
+      Name = 'FechaHoy'
+      ValueType = 'prvvtDateTime'
+      Value = 38455d
+    end>
+  PrinterName = 'Virtual printer'
+  PreviewParams.Options = []
+  PreviewParams.ShowToolbars = [prptPreviewCommon]
+  Left = 88
+  Top = 318
+  SystemInfo = (
+    'OS: WIN32_NT 5.1.2600 Service Pack 2'
+    ''
+    'PageSize: 4096'
+    'ActiveProcessorMask: $1000'
+    'NumberOfProcessors: 1'
+    'ProcessorType: 586'
+    ''
+    'Compiler version: Delphi6'
+    'PReport version: 1.9.4')
+  LOGPIXELSX = 96
+  LOGPIXELSY = 96
+  object prPage1: TprPage
+    Width = 2159
+    Height = 2794
+    PaperSize = 1
+    Orientation = poPortrait
+    lMargin = 10
+    rMargin = 10
+    tMargin = 10
+    bMargin = 10
+    PageScaleInfo.PaperSize = -1
+    PageScaleInfo.PageWidth = 2159
+    PageScaleInfo.PageHeight = 1397
+    object prHDetailHeaderBand1: TprHDetailHeaderBand
+      Height = 192
+      UseVerticalBands = False
+      DetailBand = prHDetailBand1
+      ColCount = 0
+      ColDirection = prcdTopBottomLeftRight
+      ReprintOnEachPage = False
+      LinkToDetail = False
+      object prMemoObj1: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[EMPRESA]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 2
+        dRec.Top = 90
+        dRec.Right = 139
+        dRec.Bottom = 105
+        Visible = False
+      end
+      object prMemoObj2: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'NIT:')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 142
+        dRec.Top = 90
+        dRec.Right = 171
+        dRec.Bottom = 105
+        Visible = False
+      end
+      object prMemoObj3: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[NIT]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 174
+        dRec.Top = 90
+        dRec.Right = 283
+        dRec.Bottom = 105
+        Visible = False
+      end
+      object prMemoObj4: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Comprobante No.:')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 286
+        dRec.Top = 90
+        dRec.Right = 379
+        dRec.Bottom = 105
+        Visible = False
+      end
+      object prMemoObj5: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<000000>IBAuxiliar.ID_COMPROBANTE]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 384
+        dRec.Top = 90
+        dRec.Right = 451
+        dRec.Bottom = 105
+        Visible = False
+      end
+      object prMemoObj6: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Tipo de Comprobante:')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 456
+        dRec.Top = 88
+        dRec.Right = 567
+        dRec.Bottom = 103
+        Visible = False
+      end
+      object prMemoObj7: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[IBAuxiliar.TIPO]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 568
+        dRec.Top = 88
+        dRec.Right = 723
+        dRec.Bottom = 103
+        Visible = False
+      end
+      object prMemoObj8: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'FECHA:')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 2
+        dRec.Top = 107
+        dRec.Right = 55
+        dRec.Bottom = 122
+        Visible = False
+      end
+      object prMemoObj9: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<yyyy/MM/dd>IBAuxiliar.FECHADIA]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 56
+        dRec.Top = 107
+        dRec.Right = 157
+        dRec.Bottom = 122
+        Visible = False
+      end
+      object prMemoObj10: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = False
+            Memo.Strings = (
+              'AGENCIA:[IBAuxiliar.DESCRIPCION_AGENCIA]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 160
+        dRec.Top = 108
+        dRec.Right = 723
+        dRec.Bottom = 121
+        Visible = False
+      end
+      object prMemoObj11: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Descripci'#243'n:[IBAuxiliar.DESCRIPCION]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 2
+        dRec.Top = 123
+        dRec.Right = 723
+        dRec.Bottom = 162
+        Visible = False
+      end
+      object prMemoObj12: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'CODIGO')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 5
+        dRec.Top = 166
+        dRec.Right = 100
+        dRec.Bottom = 185
+        Visible = False
+      end
+      object prMemoObj13: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'CUENTA CONTABLE')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 108
+        dRec.Top = 166
+        dRec.Right = 441
+        dRec.Bottom = 185
+        Visible = False
+      end
+      object prMemoObj14: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = False
+            Memo.Strings = (
+              'No. Cta/Cr'#233'dito')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 362
+        dRec.Top = 166
+        dRec.Right = 441
+        dRec.Bottom = 185
+        Visible = False
+      end
+      object prMemoObj15: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Ident.')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 444
+        dRec.Top = 166
+        dRec.Right = 519
+        dRec.Bottom = 185
+        Visible = False
+      end
+      object prMemoObj16: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'DEBITO')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 528
+        dRec.Top = 166
+        dRec.Right = 629
+        dRec.Bottom = 185
+        Visible = False
+      end
+      object prMemoObj17: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'CREDITO')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 630
+        dRec.Top = 166
+        dRec.Right = 731
+        dRec.Bottom = 185
+        Visible = False
+      end
+      object prImageObj1: TprImageObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            ImageSource = isPicture
+            Picture.Data = {
+              0A544A504547496D616765E33B0000FFD8FFE000104A46494600010101006000
+              600000FFDB004300080606070605080707070909080A0C140D0C0B0B0C191213
+              0F141D1A1F1E1D1A1C1C20242E2720222C231C1C2837292C30313434341F2739
+              3D38323C2E333432FFDB0043010909090C0B0C180D0D1832211C213232323232
+              3232323232323232323232323232323232323232323232323232323232323232
+              32323232323232323232323232FFC0001108005A022503012200021101031101
+              FFC4001F0000010501010101010100000000000000000102030405060708090A
+              0BFFC400B5100002010303020403050504040000017D01020300041105122131
+              410613516107227114328191A1082342B1C11552D1F02433627282090A161718
+              191A25262728292A3435363738393A434445464748494A535455565758595A63
+              6465666768696A737475767778797A838485868788898A92939495969798999A
+              A2A3A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6
+              D7D8D9DAE1E2E3E4E5E6E7E8E9EAF1F2F3F4F5F6F7F8F9FAFFC4001F01000301
+              01010101010101010000000000000102030405060708090A0BFFC400B5110002
+              0102040403040705040400010277000102031104052131061241510761711322
+              328108144291A1B1C109233352F0156272D10A162434E125F11718191A262728
+              292A35363738393A434445464748494A535455565758595A636465666768696A
+              737475767778797A82838485868788898A92939495969798999AA2A3A4A5A6A7
+              A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6D7D8D9DAE2E3
+              E4E5E6E7E8E9EAF2F3F4F5F6F7F8F9FAFFDA000C03010002110311003F00F49F
+              8B9FF24BF58FFB63FF00A3A3AF976BEA2F8B9FF24BF58FFB63FF00A3A3AF976B
+              E9327FE03F5FD11E7E2BE35E81451457AA730515359889AF2259A19268D98294
+              8A411B1CF1C31040FC45749E321E1C2F6B2682D24E3CB581E613A95062509CAE
+              C0492003BB383D40AE3AB8C8D3C4430EE2DB9DF55B2B77EDFD5AE6D1A2E54DCE
+              FB1CDC76B34B693DD226618191656CFDD2D9DBF9ED350D755A5F8E6F34DF0EC9
+              A3FEFA412AB817058168781B020239008CF3EBC63159DE1A874EBCD7625D5DE7
+              16F932C932BA80A17E66DFBBB10319CE79EF9AC638CAF08D6A988A7CB186D677
+              6D77B5BFAEDD5DBA30938C69CAEDFE063515B3E29834CB6D7264D28CAF6CE7CD
+              591994A307F986CDA3EE8071CF3C76C56357661EBC6BD28D58AB292BEA63520E
+              12717D028A28AD883BDF837FF252AC7FEB94DFFA01AFA6EBE64F837FF252AC7F
+              EB94DFFA01AFA6EBE6B37FE3AF4FF33D0C2FC0145145796748564F89AEB50B1F
+              0F5EDEE9935AC7716B13CFFE93034AAC15492B8574209C75CF1E86B5AAB6A165
+              1EA5A6DD58CCCEB15CC4F0B9438601810719EFCD4CAFCAEDB8E36BABEC79FBF8
+              C7C471A786925B9D3C49AC59C976F241A2DCDCF9602C6550471CA5BF8CE5C9C7
+              4E0525D78F35B87C6F71A2C62C9D62BFB6B48E13632833078D5E43E7993CB460
+              3710A41271819AE926F06407FB1DACF56D46C66D26D5AD20960F2599A32141DC
+              248D813F20E401DE92EBC0BA6DE36A2F2DCDE09AFAEADEF1A55640D1CB08508C
+              9F2E07DDE720F53D2B4D39AFD3FE0FF97F5D4957E5B3DEDF8DBFCCC77F16788A
+              6F0E6B5E25B54D3134DB3FB5ADBDB4B14865610EE5123387039743F26D1C1FBD
+              91CD5BFF001AEB963A06917BF68B679350BF4B6676D06EE3F290C6CC7109937C
+              872060A9C119ADE93C0764F6FA95947A9EA7069BA879CD258452462246954876
+              4CA161C92DB7715C9CE2AC2F842374D316F757D46F4E9B74B756ED3085482A85
+              029D91AE570C7DF3DEA17F97FC1FEBF229F979FF00C0FEBFE1CA16BE2BD465F8
+              5D77E27922B53751DACF71095522295577796DB7712A18004A96C8C91D69DE2A
+              F13EABA6687A7368D6D6D71ABDF299238660C50AA44647E0107B051CF5615A11
+              78434F87C35A9680935C8B1BF69CB0DCBBA213125953E5C000B1C641EBDEAA2F
+              8034CB8BBB7B8D6AE27D745B40D0410EA70DBBC71A92A490AB128DDF28193938
+              CD37ADEDE5FAFF00C00D17E3FA5BF5399F10FC4AD4AD673368E96B2598D2ADF5
+              14592C6698C9E633021A547090A8033B9C63AD6AEA1E2FD6A55F115F68E9A77D
+              834103CD8EE23777BB22312B847570231B4800957C9E7A5491FC2FD36DE192DE
+              DB58D5E0B596D4D94B023C3B5E0DEEFE5E4C65801E632FCA41C639EF576EFC03
+              A75CCB7821BDD42CECEFD634BDB2B774115C0450A012C85D72A029D8CB903D79
+              A1F979DBEFEBF212DD5FE7F77F9FF5DB9A1F11F56B8F151B0B58ED3C86BBB486
+              0B792CA50F2A4B12C8E4CFBC468EAA58852B938C015B29E30D467F1C4BA5471D
+              A269523CB636D74C8CCFF6C8E3590861B802B82C303072879ABF75E04D2AE8EA
+              07CDBA89AF6EADEEF746CA0C124014218FE5E38519CE7A9A861F86DE1E816DA5
+              8E165D420BCFB6FF0069048C5D48FBCB90F26CE54EE208F4FA5356D3FAEDF96A
+              2D6DE7FF000FFF0000C587C69E21B6D3358BBBD6D32E64B5D53FB22D6282D648
+              43CCCE8AB23B195F0BF3E4A819E3AD2788BC6FE20F0C0D52C6E974EB9BE821B6
+              B9B7B986D251198E59844CAD1798CC581C9187E7D38AE965F04E973695AAE9F2
+              497263D4AF0DF3BEF01E2989521A32071B4AA919CFBE471505C780AC6FA0BC1A
+              86A3A8DEDD5DB4064BB95A3120585C3A22844540BBB24E172771C9E984BA5FCA
+              FF0072FD6FF21BEB6F97DFFE460DA7C40D50AD8497096735B4FAC4B626E12DA4
+              80BC490B3B1113B968DC3A95C37619C0CD5BD3FC61AE491787356BC86C4E97AF
+              4E218ADE189C4D6DBD59A32CE58ABF0BF3615719F6E75DFC0BA5C9AD9D4CCD76
+              18DF8D40C0197CAF37CA311E36E70CA7279EA3F0A4D33C0D63A64F6045FEA171
+              69A6B3358594EE862B62C08CAED40ED8562A37B3601F5C1A23E7E5F92BFDFD01
+              F979FEB6FB8ABAB6B7E227F185E68BA349A5C496DA625E8FB5DB492195CBBAEC
+              DCB22ED1F28E70DD7A1ACAF05F8FF51F196B3279622B5B15319107F664F2B10D
+              12BB06B90E2342189032BC8038E6BA3D57C1D16A7AD4DAAC7ABEA7633DC5A0B3
+              996D1A201E2058E32D1B329F98F2A41F4C53746F055A787B51927D2350BEB4B4
+              90A17D3D044D09D9188D465A3320E14747EB447CFF00AD7FCAC12F2FEB45FADC
+              E7FC53E3CD5344F193E9369FD9D224715AC91D9C91B1B9BB32CA51D6321C0055
+              46EFBADEF5A3178C2FE6F1D49A508AD57487925B2B7B9DAC5FED71C6B210DF36
+              0AE0B0C7072879AE8A1D0EDA1F125D6BAB24C6EAE6DA3B674246C0A8CC410319
+              CE58F7F4AC03F0CBC3E2DA2F296587518AE8DD8D5634885DB485CB1DD26CE47C
+              C4608C631E9496895FCFF3FD103DDDBCBF2FF324F0C6B7AE6A5A86BAB7B369F7
+              361A7C9F6786E6DAD5E032CCA3320C348F955242E41EA0FA573F63E39F11DE78
+              13FB7236B07BD99ADA3860934AB9B7891A59427FAC793128E7AA6315D7F873C2
+              CBE1AD3869D0EADA85D59A47B2386E44384C924905235624E4E4B13552CBC0B6
+              F67A1C3A33EB3AA5CD840F0BC114DE40F2BCA70EA015894904A807713C7A75A7
+              D7EEFF008203744F183EAB7F721E148EDA0D321BC75C1F31242D2AC88DCE3E53
+              1E31EA0D53B3F15EB50F8325F17EAB0D89D3DEC5AF62B2B74759A30798D5A42C
+              55F2A79215707B1EDBB61E16B0D3F5DD575589A677D4D55668242A6250324ED1
+              8C8DC5989C93924D55B1F04D9596973E9125F6A177A44903DB2585C48A638637
+              EAAA55439C0E016662074C50F54EDBFF00C3FF00C0B0D5AFE5FF000DFF0004C0
+              D5BC61E23F0E41FF001324D32E24BAD2AE2F6D8DBC1222C32C2818A3E5DB7A90
+              C3E61B7A74E78D9BEF10EA52EA9A368DA67D921BDBFB47BC96E2E6269638A350
+              A0808AEA589671FC43001EB4D3E00B29EDA786FF0055D52FCBD83E9F14970F10
+              6B785C61B66C8D416385CB3063F28F7CCADE0B0DF6198EBFAB7DBEC77A5BDE81
+              6E2448994068C8F2B632FCA0F2A4E475A7A5FCBFE1FF00E07DDF7AD6CBBFFC37
+              FC13936F89BAC41A8E9905C59D8A451DC4F6FAAB857E3CA9E384C911DDC2E650
+              C41DD8008CF19A6DEFC4CD6566D75EDADAC96D2D9A0FB0BB4124ACE8D7260676
+              55605F9462A1707A75AEA1BE1CE8925AADBC8F76EBF64B9B5919A405A5F3D834
+              9231C7DF2CB904600CF4C60089BE1A68DF605B482E6FADD12D2DAD51A378F2A2
+              090C88DCA11B8B1E72083E8292E97F9FF5F77DE37BBB7CBFAFBFEE32F4CF1EEA
+              D7177A7DA5C45685E5D6DF4E95BECD240E62109915FC9762F13123A367239C72
+              2B4FC2FE31BDD6BC4977677705B47633C724FA54B183BA58E395A27DD9241390
+              AC318E1854CFF0FB4F9655B99F52D4A5BFFB51BB7BC678C48EFE518972020501
+              54F0028E4739E6A4D37E1EF87B46BAD26EB4DB416973A6A18C4D04688F72A536
+              9F3885CBE7AE78E79A6BCFFAD17EA4BF2FEB57FA1D5514514861451450014514
+              5001451450014514500145145001547566BB5B06FB1DC2412920798F099768EE
+              400473E84F1EB57AA1BB84CF692C4A70CCA403E87B56755C9539382BBB3B7A8E
+              36BAB9E35793359DDC5AAE93AFEA179A8BBB43732DCB7996E5083964000F9865
+              4EC3C763D315BDE1929A45C8B1D1F5FD42E4C48867B6D457CDDE09C12A1402BC
+              1E08273DC1C73CC1D3EF3475BCB7974B9145BCBB7ED0D26D531EEDC83041CF3F
+              29CE339E335D1F82F48BA7F14DE5EBE9CF6112158D633CE003B98E7D0B630383
+              C74EB5CD2A9EEA941DDB6BD7757BAF25AFF5635BEAD3FF0081FE47A8D14515DA
+              62145145001451450014514500713F173FE497EB1FF6C7FF0047475F2ED7D45F
+              173FE497EB1FF6C7FF0047475F2ED7D264FF00C07EBFA23CFC57C6BD029F1322
+              CAAD246D2A03F322B6D2C3D01C1C1FC0D32B67C37E1BBBF12EA51DADB98D63DC
+              3CE732A031AF76DA4E48FA0AEFC456A54694AA55972C56EF631A7094E49455D9
+              ABE2BFF846BFB32C23D183CB3DBA7D9663F690C23392FC8083CC24BB8DC081F2
+              D72381E9562FB4FB9D32EDAD6F2348EE107CC8B22B95F63B49C1F6AAF5CF9761
+              D51C3A8AA8EA5F5E66EF7BEBFD5BFE0975E7CF3BF2F2F9050403D68A2BB8C4DE
+              F07C7A41D7629358F312DADC8B96903A88C0439C38232431C2F1CE4E31CD53D7
+              ADAC2CB579ADB4D3335B467E4965915FCC046432ED18DA4118EBFD2A843035CC
+              E90A18C3B1C2F9922A2E7DD98803F135B9AFF846FF00C3B05ACB73E4849A1572
+              3CF8CB073F794286CB638E40239EB5E5CBD9D2C7A94EB5B9D5942FD5755F89D2
+              AF2A1650DBA981451457A8731DEFC1BFF929563FF5CA6FFD00D7D375F327C1BF
+              F929563FF5CA6FFD00D7D375F379BFF1D7A7F99E8617E00A28A2BCA3A428A28A
+              0028A28A0028A28A0028A28A0029090A092700724D2D4771047756D2DBCC098A
+              5428E0315241183C8E47D45277B680BCCF36F0778F66D6FC517D6F26B169756D
+              7904B71616F118F7DA88A464D8FB79CB26C7F9BDF1D2A797C617907C29D1352B
+              9D5A1B4D4F54F22017D3AA2A46EE7E6908236F0A18F4C715D88F0DE90A9A5A2D
+              A051A5214B2C48C3CA529B08EBC8DBC739FCEA9E9BE08D07499ECE5B4B7BA06C
+              8936A92DFCF2A43952A7623B951C311C0EF4ECAD6F4FD7F40BF539687C5377E2
+              3F04F87ED6DEFF00FE26BA9DEAD95C5CDA49823CA626791597A02B19C11FDF18
+              A6F893C4DAEE85AA6B92596A62FAD6CB4D79674960458ACEE19D442A081B89DA
+              492ACC78E78C815D4DAF83ACACFC60FAFC0DB374727FA380C479D215F325C962
+              012A883000E84F7A587C0FA0406F765BDD18EF4CAD7303DFCEF0CA64FBE5A367
+              29939EB8E3B51BEBEBF7EDF7755D8168FEEFCEFF00F00E4078835F5F16FF00C2
+              2075B9496BC551A9F930F9E23FB3194A01B3CBCEE03F84FCA7D79A8F4EF15F88
+              24B5D1B5CD62E35187469A1B78E49AC23B53134E6668D8CA1C190237EEFEE0E3
+              2718AED3FE108D03EC42DBEC93E04DF68F3BED9379FE66DD9BBCEDFE67DDF97E
+              F74E3A548FE0ED0DCDA06B597C9B40820B517528B75D9CA9F277796483CE4A93
+              919A69D9DFD3F2D7FAF98ADA5BC8E635BF116A16B3F8C35CB49DBECFA3DAA595
+              B46EC7C937070EEECB9C1C6F8D73EC6A9EADAEF8974DD0BC610C3AD9927D1445
+              3457B2DB44D2BABC41CA61555010DDF69F94E3AE18767A4785EDAC7C373E8F7C
+              CB7EB76D34978EF1ED13B4AC59C91938FBD8EBD00A8A5F0368136913E9725B5C
+              B5ADC3F9938FB74FBE63B76E24937EF7180061891C0E38A4B4FBBF1EA569CD7F
+              3FF86337C5B71AB41A96870E95AEDDDBDDEA3771C42D4450345E528DF339DD19
+              7FBA08FBC3922A2F1578BCB8D2ECBC337EB7735E5F9B69E4D364B7965882233B
+              2AF98DE5873B40F9FA0CF04E2BA6B7F0FE9B6D7D697AB14AF75696ED6D0CB35C
+              492B2C6C41619763924A8E4E4F18CE29FAB68961AE411457F148C21904B13C53
+              3C2F1B804655D08607048E0F7A1EDA77FEBFAF32579F6FEBFAF23CE17E20CB75
+              A95B4D1DE6B2BA15A59DB4B737115BDAF9AD24B2942670C321415C110AE7258E
+              718AB3E17F16EB1A8FC42974DBCBD9CDA16BD081EDD16D6711C8A13ECD2040CC
+              CA33BF731E738F6EB9BC0FE1C67B46FECD0A2D638E28E349A458D911B720740D
+              B6401B91BC1E79A934FF0008687A56A42FECECD92753218C34F23A42643B9FCB
+              4662B1EE3D76814D5AF7F5FC7607B7DDFF0004DCA28A290C28A28A0028A28A00
+              28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A002A092632
+              2C91DACB134F190194B7DDFAE3A719A8B51BE6B08A2905B4B387942308949283
+              0496C0EC315C75C58E937925C5CC09AA25C5DCACCF246483F75942E338C02E78
+              1839C139E0D006EEA1637BA959ADAEAB1E9B2C38F35D37BAE590120E78E376CC
+              FB64739AD0853548E70AFF006336C0FF000EE0C064F418C74DBF977EB5C5CFA1
+              D9DCD95CC6F79AE32347E4B23AEF2448154939E59BF77D0F43B405C8C1965D26
+              08E2797ED9AD3EFD92A804BB30C33ED29DD5B700C07DE28DC0C13405CEF9595C
+              65581192320F71C1A5AE3B4B68B4BD4A6BB0DABCE971BF02645283326E38DBD7
+              059883E849076F23ADB7996E6DA29D55956440E038C1008CF23B1A00928A28A0
+              028A28A0028A28A00E27E2E7FC92FD63FED8FF00E8E8EBE5DAFA8BE2E7FC92FD
+              63FED8FF00E8E8EBE5DAFA4C9FF80FD7F4479F8AF8D7A0559B1D46EF4C95E6B2
+              97C99D90C62651F3A0246769EC4E319F4CD56A54768DD5D71B94E46E50C33EE0
+              F07E86BD2AB4E3560E13574FA3D998424E2EE9D8B17AD733CDF6EB98C2B5DEE9
+              B7AAED121DC43301EEC1B3EF55ABACD7BC576DABE876BA6DB585BC32DB613CD5
+              B3897CD5232E5303317CF9381D41EA3915CEDCE9F736B05A4D2C6425D44668CE
+              0FDD0EC9CFE2A7F023D6B8B018894E925561ECDDEC937D16DF87F5D0D6BD34A4
+              F95F377655A28A9ACED26BFBD86D2D937CF336D441DCD7A12928A7293B246293
+              6EC84B681EEEEE0B68A3124B348B1A21E8CC4E00FC49AB3A8EADA8EA4C13519C
+              CEF148C577A8063271B9463A2F03E5E831C639AB3E1BF104DE1ED485F43BA401
+              0E21C8DB2363E5DD9E9827391CF18EF4CF106B52EBDAB497CFBD55F05616C622
+              381B80C632339E7A9EF5E74BDA4F1C94E92E58ABA9DF54DEE92B75FBADD7A1BA
+              B468BB4B56F5465D14515E91CE77BF06FF00E4A558FF00D729BFF4035F4DD7CC
+              9F06FF00E4A558FF00D729BFF4035F4DD7CD66FF00C75E9FE67A185F8028AC7B
+              8F1468F6A970CF76CC2DC91208A179083BC478015492779DB819C90C3F84E2FD
+              8DF45A8DA2DCC097091B6401716F240FC1C72922861F88AF28E92CD151CD3C56
+              F1F993CA912642EE760A324E00C9F5240FC6A4A0046FBA7E95E61E1BBCD7ACBC
+              3969A9C4B78AB790D9439D5AF1AE84B34922AB4C8048C5576BE76E57271F28C6
+              6BD26CEF2DF50B55B9B67F32172406C119C120F07DC1A8E482C6DED6DAD4DA27
+              D9D5D1218A3B7DC9195E578008503030780303A50B7BFA074B1CEEB1AE6B3673
+              5EC76F71A647FD976097974D7103FF00A493BF213120F297F767E63BF96E9C73
+              97378EF541612793610B5F5B622BA871FEAE592758A1C0675182A4BE0B0CFCA3
+              72E735D9DEE8DA5EA5736F737DA6D9DD4F6C77412CF02BB44720E549195E40E9
+              E955EDF49D37ED7AC8681A76BF756BC1710E63907961028CAED65DABD39E49CD
+              1EBFD7F5F8587FD7F5FD7539ED375AF17DEEA71E95796D65A65CEC7B8F3EEAD8
+              379F1A941848A3B96DA416392643FC3F2FCDC259EB3E2310ADBCD7FA7497577A
+              ACF676F3BD932A40B1F984EE5127CE484C0195F525B1CEF8F08F8696D92D97C3
+              BA4882390CC910B28F6ABE00DC06DC06C01CF5E0548DA3681A8C5781B4DD36EA
+              3B997FD2C1823712C8871F3F1F332918E7918A3FAFC57FC37FC38BFAFC1FFC3F
+              FC31CF6ADA9EADA8780EFA486EEDEDAF63BA36725CC08FB1C2CDE5B3261C3213
+              ECC4A9C8CE79A49B51D574DD5A3D1AC24B733C935BDAF9F76669940FB3CAE5B6
+              B48493FBA1C6EC9CF249E6BAF5B0B34B14B14B4816D230AA9008C08D40E802E3
+              000C0C7D2A084699797F72D1C3049776932ACAE62F9924F2C11F311C9D92751D
+              988F51407FC1386BEF1C6BD6F6B2CF6F0DBDC9D3D64FED048ECC051B26923DC1
+              DEE17607F2DB002CA571CE7201B17BE33D6F4EB37D5264D39EC9EF2EECA18163
+              75753179BB64790B91B7F747202F00E73DAB7B5EB5F0B58ADADC6ADA3DACEED3
+              3476FB74C3732798FB9DB6AA23364E198903D49AD386D34DBDB185D6C22F21CB
+              4C91CD6BB0867077128C015621DB3900FCC73D4D1D06ED7FEBFADCC1D5752D47
+              458ECA5D4EFAD2497CBB991AE2DEDA648D1562DC09844A77E08EE79EDB4F3595
+              65E2CF12CFA88D0EE6DED2CF539658C473DCDB00888D1CAE731477126E3FBA38
+              FDE2FDECE38F9BB2B4D0B47B0B75B7B3D2AC6DA152C56386DD1141618620018E
+              4707D6A05F0A78712C64B14D034A5B49082F00B38C46C412412B8C1C127F3A3A
+              93D0E2F49F13EBADA5EA6E97DA616D33ED37570F72AF20B81F689C058CEF1E5A
+              0116031DF8C818F979E9F54D5F533AA693A7E9F258D9C97D6B35C3497B1349B0
+              C7E5FCA103A64E1CE7918C67B60DD4D0F41BF8ED2E1B45B26FB3B17B6F3AC42B
+              42DBB24A865050E467B7AD2EABE1BD2B5BBDB7B8D52CE1BC5822922582E22592
+              23BCA124AB03C8F2C60FB9A3FAFCFF00E015D6FEA72DA7F8CF58D474DFED851A
+              7456904D6F6F2D9947696669047F3249BC0507CD054146DC0751BB8E9BC3B7FA
+              86A76F737578D6C22FB4CD0C31C31B06511C8E99662C724ED078031CF5A9A5D2
+              B461AC5ADE3E936ADA82A1482E8598678D5474F302FC8304E0647538ABF0C115
+              BC7B2189224DC5B6A28519249278EE4924FB9A623CD748F17EB71C96AA00BDD3
+              85FAD94F2C96E0346EF2636F9AD71B9880CA7E5848C606782475E97AD1F8D751
+              B79AE19611A6413471BBE14624983B01D3FB993FEEE7B55CFF0084774317897B
+              FD8DA77DAA30364FF654DEB839186C6473CFD69B259685E29B0B2BDB9B0B3D4A
+              D9904D6CF736CAF80C010C038CAE463D0D4DBDDB7F5FD7FC379877F97E671D67
+              E23D7EDFC3B04914B6AC9A7E816DA95CB5E4724B35C165937283BD769223FBC7
+              7727A1AB72DFDEEAF7D71A1DBB59C01EE2799A5BD596746488C44284F357BB82
+              4060A00C6D3BABAE9D34E92F5AD2782079EF2DD95D5E207CD85080558E305419
+              3A1FEF1F7AAB2693A36B76D2457DA15B4B0A5C3308EF2D118338F94C81483D79
+              018E091EC45537795FD7F3FD06FF00AFBBFE1CE5F4CF196B7A8DB9D4CC7A745A
+              7C577696CF008DDE493CE587E65937000033647CA72076EB5734EB7BFBAF1EEB
+              372C2592D2D6E923463AB5C208FF00D1A36DA2D80F2986589C920E49E3815D59
+              D3EC8ABA9B4B7C4922CAE3CB1F33AEDDAC78E48DAB83DB68F41559B40D19F561
+              AB3E9160DA90208BC36C866040C0F9F1BBA71D7A52FEBF2FF83F78BA1C9DC78D
+              353165E1CFB3A580BCD56CD26956456223769608F2006CED1E6BF07BA8E7AD5C
+              B9F106B36F3DD4DE6E9AD6DA7DDC1653C060712DC3B88F2C8DE6623CF9A36A95
+              7CEDFBDCF1BF0F87744B69E49E0D1B4F8A6924F31E48ED51599F706DC481C9C8
+              073EA01A924D1B4B9B548F54974DB37D4225DB1DDB40A6541CF01F190393DFB9
+              A775FD7F5F2067197FE36D5F4EB1B9D59974EB8B38AF2EED05946ACB3130F9A4
+              3190B10388C657670096CF6A5FF848FC651DB88EE34D48AEAE2445B33F6189BC
+              F3B5D9D022DE9030ABBB7B48A3A8DA4E2B6B4EB0F0C697E2796C2186DCEBD347
+              2DEB4B25B8F38C524AC58798147CBB8901739C0FC69BA4E93E0AD4EDF52B4D33
+              45D21E08AE7ECF7B12E9E8A8D2A738605406C6EE0F239E0D25FD7F5EBFE4396E
+              EDFD76FC3FCCB7E15D52FF005BD261D42EC431860F13C291E18489232336E0EC
+              B83B47CA338E7E66ADDAA16D65A669D751C569A7C36F2BC4555A0B5DAA115B3B
+              4B28C0E5C9009192588EF57E9B105145148028AAF6F7B6F753DD430C9BA4B590
+              4530DA46D62AAE073D7E5653C7AD2FDB20FB78B1F33FD24C5E76CC1FB99C673D
+              3AD004F45145001451450014D0E85CA0652C3AAE7914E270327A57CDDE10F133
+              BFC645D7D8916BABDE4D6C1CF746C6C5FC3F73FA5007D234550975BD260D523D
+              2E5D4ECA3D424194B579D44ADF44CE4F43DBB563EBFE31B3B1D1F559746BAD33
+              51D4F4F5064B46BF8A3F2FE70AC5C93F2E327AE32463A9A00E9E8AC497C4B676
+              1E1EB4D4B56B8B1D3E5B9816458A6BD8C2190A8628B21215B9E370E3BF4A96DB
+              5CB78F47B0BDD5AE74FB27BCDAA805E2BC6CEDCAAA4842EF247A0E79C5006B51
+              54B4ED634CD6227974CD46D2FA346DAEF6D3ACA14FA12A4E0D7997C76D4751B5
+              D1B4AB2B799E0B0BC99D2EE55C8048036A363A820B9C77D9401EB2AEAE32AC18
+              671C1CD2D79EF833E16E91E15D5ADF5AD2B57BCB857B72AC0B218E60D82186D0
+              3E5EE073D4735D8D86BFA36AB752DAE9FAB585DDC44332456F7092320CE3900E
+              473C50068D1581ABF8A6C6CEDB5286C2F74EBBD5ECADDE6360F7B1C6C368C9DD
+              93F2803924E00F6A34FF00145A8F0B69FAC6BB73A7E97F6A45277DEC6D16E392
+              02C99DAD9033C13FA5006FD15E7BF13FC411B7C35D5AEF42D6479D6F3C5134F6
+              175F344FE626E52C872A70791EF5DEDB333DAC2EC72CC8093EF8A00968A28A00
+              E27E2E7FC92FD63FED8FFE8E8EBE5DAFAA3E2959DD5FFC38D5ADACEDA6B9B87F
+              276450465DDB13213851C9E013F857CE1FF088F89FFE85BD67FF0005F2FF00F1
+              35F4594CE31A0D37D7F4470E2A2DCD597431A8AD9FF8447C4FFF0042DEB3FF00
+              82F97FF89A3FE111F13FFD0B7ACFFE0BE5FF00E26BD4F6B0EE8E6E497631D5DE
+              37578DD91D4E5594E0A9EC41EC6BA3D7BC69A8F8834E8AC2E1A6486071B313B1
+              3228503F7B9E19B201CFB9E2A9FF00C225E2639C786F59E3AFFA04BFFC4D2FFC
+              223E27FF00A16F59FF00C17CBFFC4D72D6C3E16BD5856A967286CEFB1AC27561
+              1718ECF735FC39A6787AEFC3D7F25FCD7115EC8A62823CC64C8C9B643E5038CB
+              1002E0FF007B1939ACDF0DF8A6E3C317B3DCD9895D1D488EDDE41B371230CC71
+              D40CF4033F4A84F83FC4C4E4F86B59CFFD83E5FF00E2697FE111F137FD0B7ACF
+              FE0BE5FF00E26B95E069D5F6B0C454E784DECFA7A7E069EDA51E5708D9AEBDCA
+              9ACEA526AFAB5C5EBBCA448C4A24847EED7A8418E303A718CF5EF546B67FE111
+              F13FFD0B7ACFFE0BE5FF00E268FF008447C4FF00F42DEB3FF82F97FF0089AF42
+              97B1A34E34E0D24959184D4E52726B5663515B3FF088F89FFE85BD67FF0005F2
+              FF00F1347FC223E27FFA16F59FFC17CBFF00C4D69ED61DD13C92EC749F06FF00
+              E4A558FF00D729BFF4035F4DD7CEDF09FC3DAE69FF0010ACAE2F745D4AD6058A
+              50659ED248D012871924015F44D7CE66D252AE9A7D3FCCEFC326A1A9CF7887C3
+              F0DE68B716F61651A4F712C3E6341885D95660EC778C10465DBAE72491C9AC1D
+              77C2CFF6A9A18F439F598DECC4361717376256B09B739672F33F98B92C877A6E
+              6F9318F956BB8BDBCB7D3AC67BDBB90456F02192473FC2A0649ACA8FC5365159
+              B5D6B3149A0C619554EAB24512BEE048DAC1D973C1F973B8639038AF2CE9BB39
+              CD4BC162F2C35A96F347B7D4AF64BC82485A548D9E689161DC14B9C2E4A38C12
+              01279EB9AAB7FE18BF9FC5B6BA95AE86D6A62B8B568A5B786CA358E05081D247
+              E66DE06F5C21D9B428E79CF609E2EF0E49786D135CD3CCE2DC5D6D170B8F2B04
+              EFCE7046013EC39E86A27F1B785922825FF848B4B68A79BC88E44BA46532633B
+              720E0718EBEA3D45527AA7E9FE44F4B7F5DCE02DBC0BAA8D4DA5BDB6D545C35C
+              07B4BBB3FB032DA2E7805A51E7280D962232410C7B9615D1695A14B168F61043
+              E193A5DDC3776D25E485A03F69299DF26F472CFCE4E5F0C73D3AD762FA9E9F14
+              3E7497D6C916F78F7B4AA17726EDEB9CF51B5B23B6D3E86AA43E26D02E668A18
+              35CD36596595A18D12EE36679171B940079619191D46454A5A72FA7E0396BBFF
+              005D0E1A4F87883462B1E8907DB3FB08C79DCB937C07C8E4E7991724090F404E
+              08069DE2AF096A5AA7899EF66B2BBBCD30C48A60B616723349B461CA5D02840C
+              30CF0C3771905ABB5D3FC4FA3EA375259C57D025EA49321B492541362376466D
+              99CEDCA920FA55AD3758D2F5989E5D2F52B3BE8E36DAEF6B3ACA14FA12A4E0D3
+              7AFF005EA36F5BFF005D3FCBF3387B1F05CB6F0CB7634F95F508EFAC5AD2E2F1
+              E26B98E04581651B94ED538594305C6EC7718A3FE115FB1DBCF02785239ED175
+              592E2E6D625B755BF85BCCF2F00B00DB0B29DB26D1C719C0AEC93C49A14925CC
+              69AD69CD25A9C5C2ADD21309CEDC38CFCBCF1CF7E2A7B5D5F4DBED3DB50B4D42
+              D2E2C943137314CAF180BD7E6071C77A2F7FEBD3FC85E5FD6CFF00CCE59B42BE
+              1E076B11A77C8D78263A509138B6F3831B7073B3EE646DCECE76E76F35CCDD78
+              22F269E590787EE6DF4892EA4963D2AD058C8C85A28155CC73EE8460C720F94E
+              57771904D7A30F13680D14B28D734D31C327952B8BB8F08FFDD639E0F0783E95
+              3C7ACE952EA8FA5C7A9D9BEA31AEE7B459D4CAA300E4A6720608EDDE8FEBF2FF
+              0020B9CC6B1A1DCB7877C376F0D96B1789633A3CD147791C37613C8913991644
+              5C82CA0ED6C6338C8A8B43D135287C567559B4C9EDB4E911D62B4B9B84924B69
+              362033B10EC0B4814A9C33118C93977C747AA789B48D22E62B4B9BE83EDB2BC4
+              8968B2A79C4492040C109076E4E49F406A49BC43A3C3797165FDA568F7F6F1B4
+              B259A4E8660A1771F9339E9CFE34A4F46FD7FE085AF6479769BE19BFD5BC2BA6
+              CBA768B269EE74E8FED97492C05F5352D136C192DBB28ADFEB80033B7EE92474
+              1E17F06A5A6B36B712E957B159C2933AC3A8AD98114C4C3B5A38EDBE45FBAC73
+              8CE413DF9EA2F3C4A205D37ECBA55FDFCB7F0B4F1456E61565401492C649147F
+              18E84D2C3E2ED09ECED2E2E353B6B2374CD1C70DECAB0C9E62B6D64DAC41DCAD
+              C1033CD5ED206F991C26A3E0AD46E5AD4DFD86A5730A5B948A3B0FB0BB5BBF9B
+              2316CDC8F9090C9868CE7E5E7A2D5ABCF04DFAE95E75858AAEB125F5E99EE8CA
+              AB3496EE27D8A6407203662E07427381835DB4DE29F0F5BCF7304DAEE971CD6A
+              33711BDDC61A119032E09F9796039EE47AD491F88B439A1B79A2D674F78AE5B6
+              40EB7485656CE30A73F31CF1C77A95B5877FEBE47313E8934BA6DAAE8FE17B7D
+              29635BA06CAE63804659E2DA0B2C4ECAC18F079CFAE2B9B83C19770DBDD44DE1
+              FD55EC9A486686D1A1D2F69955640C65854A42C877274F9F81861818F4897C4F
+              A04167F6C9B5CD323B5F33C9F39EEE309BF19DBB89C6EC738EB8A6DE788ACACB
+              52B4B1759647BA086378C029866DA0E73EA7F2A377EB62765E873B7FA25D5CDB
+              E85FDA3E19B7D42DE0B2689F4FB6F2922B69CECDAEAAEC1405018654B32E7E5C
+              E49AE7B4AF036A36D7BA63EA967AA4934096822B8B2362EB6A238E35642F28F3
+              940657244648218E39622BD32CF59D2F51BAB8B5B2D4ACEE6E2D8ED9E1827577
+              88E718600E5790473E953C77B69318845750B9994B45B64077818C95F5032338
+              F5A69EB71F4B1CEEBD65AB6A9A8DDC7656D35A88B4CB8821BC7951564924F2C8
+              09B58BAE361058818ED9AE71BC39A9C1336ADE1CF0D2E892C0891C5A799214F3
+              9983AC92111B14C00E8724EE6F2C023819ECA5F166876865FED0D4ED34FD93BD
+              B8FB6CE91798CA016DB93C8F98545A978AEDF4DD53EC6D637B346914534F7708
+              8CC50A48EC8A5B2E18F2A73B55B039A495D2FEBCFF0051B7BFF5E5F99C83F81A
+              5B7F12C4EF6DAACF0C2F6E2CEEED05891046888BB59A61E727CCAC488C90431E
+              E48A8E5F025FC1E1FD320D3EC05B5CBE9823D54C0D17997122C9031462F95909
+              559946ECA73838535DE5DF8A7C3DA7DE49677BAEE976D7518DCF04D771A3A8C6
+              EC9527238E7E95049E2ED2F75A7D8E43A8C575C47358B24B1E7CC58F058375CB
+              13C678473DA8417B1C137836486C6316BE1BD5AE24492478AD352B7D2E4B4566
+              0832D0C6E8147CBD63C36776720E0F4DAA595C4BE36D3ECD113ECDA8449737CA
+              A78436CC0A9E9CEE678D7E895DA567EADABC7A4C50936F3DD5C5C49E5416D6FB
+              7CC95B04903732A8C28249240C0FA517D50AC737E22D1B5A7D7EEB5AD1EDE37B
+              D82DAD96D0C920559183CE2453E8364A0F4EB8F4A893C337F63A2EAD6B040D3B
+              0BFB3BA806F50D72B0A5B96EA400CCD138F988E79E9CD7487C47A6410D9B6A57
+              516973DD92B15B5FCA914ACC0E0A805B0C738FBA4839182411525CF88345B2BC
+              FB1DD6AF6105D609F265B9457E06E3F2939E073F4E684EC3BDDDCE01AD754D47
+              C59ABC6911D3751BEB0BC92089AE10CB0AB4769123398CB04CB46F8233F74E33
+              8A345F032AEA16665D17508ACD6E03DD5BDFA69E9038114A0304B6C063B99412
+              C33F77D38EE2C7C57E1FD46D6DAE6D35AB0962B96D90913A82EDC7CA0139DDC8
+              E3AF22A093C71E148AD25BA3E23D29A089D12478EED1C2331C283B49C6707F22
+              7A034D3B5BCB406EEAC7172F832E5B5AD42E2F2C75E9EE2596E585DD8369CA24
+              8DC3ED4F31F6CFC2B05DAC4A82A07DD02B4AD340BF4F06DDE9E9E1F86DE0FB64
+              4FF62486DEDE5BB814A19164113988BB00C3395561C10A2BB13AF68E2F6DAC8E
+              AD602EEE9049041F694DF2A9E432AE72C0E0F23D2A1D77C4BA47872D5E6D4AFA
+              08A4113CB1DBB4A8B2CC106488D588DC7FC4525A69FD681F13BFF5A9C35C7842
+              F66D22F22B7D166B1B097565BA3A5DB9B567687ECEA9B7649BA0E241BB693818
+              C83902B7FC29A0CFA55DDB38B6BD86D52CE48C25E9B71246C65DC136C1F205C7
+              202F00607B574316B9A4CDA99D323D4ECDB5155DCD682743328C67253391C107
+              A55FA6B4D7FADAC4BD55BFADEE1451452185145473CF1DBC7E64ADB5738CE294
+              A4A2AEF6039CF889AB1D13C01ACDE2B1594DB986220F21E421148FA16CFE15F3
+              A5C5FD9C1E06D122B586ED355B2BE92E9A56871161F18DAF9E4FEEE2EDEBE95F
+              40F8D747D33C6BA2C5A64DAACB691A4EB31685412D8040073DBE6CFD40A354D0
+              B41D53C0E9E157BB922B48E18A28E54C6F5F2F6953C8C67E5E78E413D3358FD6
+              A87F3AFBCAE57D8E1FC0F2D8EB7ABF8D35974825D5DE733589940322A9526229
+              9E7380A063D0550D1ED3475FD9F2FEEEDA3B53A8BDAC826900065FF5A3209EB8
+              FBBFA7B5775A17833C27A32E9F34BE5DE6A361C457CEBB2420676E71C1C03807
+              D00ABC9E18F04453DF4D1E99688D7C863B90A0859149C918E83900F147D6A87F
+              3AFBC395F6387D32DECAF7E227862DF588E196CD7C308F6F1DC0063326E3BB83
+              C6700E7D80AE6E254B9F877A2DA91E6E9BFF00097AC56CADCAB4243F1CF50727
+              F335EC7A9E8BE11D674EB5B0D42C6DAE2DED06DB75707318C01853D40E0719E7
+              03D2A47D33C2B269B67A7B5A5B7D92CA559EDE20B811C8B9C30C77E4FE747D6A
+              87F3AFBC395F6399F06DA5BE9FF183C6D69670476F6C915A158A25DAA3318278
+              1EE49FC4D77BABE91A7EBBA6CBA76A76C9736B30C346FF00A1047208EC4722A8
+              20D0EC6FB51D6EDED89BD9A2537525BC4F24922A0017E5507240C0E066B92F18
+              5DF86FC65636D05CBF886D65B597CE827B6D32E1591B18EF1FBFB1F7ADE9FEF2
+              3CD0D510DDB46709AA4DABFC3BD535AF06D9DFCB79A55EE9B3CB6AACD97B7051
+              CE463EE91B1F38C0390D806B4ECA0D32CA7F859368C9025FCC4F9ED0603BA155
+              126FC75E770E7FDAF7AD3F0BE9BE14F0E6ACFAB4D2F88B54D45C11F68BBD32E1
+              88C8C1FE0E4E38C9CD6CE973780B44D4DF50D37C3F7B6D74F9F9E3D1EE46DCFA
+              0D985FC2AFD9CFB0B9977394F065AE9D2FC2DF155F5CA5BBEBA63BFF003E47C1
+              9958C6D9F7E727F5A86C20B7BABAF8576DA9244F60F673E12603633E07073C1F
+              E1FD2BBF6D3FC16E65F12FF624BE65F7996F3B2D8CC1DF7821F7C6172370CE49
+              1CE7DEA1BC6F03EA1A2DB69175A2DD4B616BFEA226D3A7FDDFD0EDC8ACDC9276
+              66D0A3526AF18B68F31B94B58FE19FC428EC4462CD75E558047F7446265DBB7D
+              B18C57D0D69FF1E507FD735FE55C222F8123D2EEF4C4D0EE56C6EDC493C034D9
+              F6BB0C1071B78E83A7A56F278CB488D15162D482A8C01FD9D3F4FF00BE6973C7
+              B95F56ADFCAFEE3A3A29B1C8B2C49221255D430246383EC68AA311D5CBFC45B8
+              D4ED3C07A9DD690F3A5F42237468065D5448BBCE3D366ECFB5751450070DABCF
+              AA5E9DFE1FD6163B9935206C59DFCC82E234B50E63233CA33AB02CBC82720F18
+              AC0B8F127884AC72D8C7791EA52691A95CC7A6CEC59D664B80B1AEDFE32AA5C0
+              18F9B6D7AC51401E5B35E6A525EDCD868BACCABA44F6966FFDA8BB0BC57D25C8
+              571D002590EE64238E301770ADBD3F53D6E4F09F89EE35789ECF54B332C64C6E
+              4C5B92DD0892127F81892C33C8CE0F4AEDE8A00F22B1D775597C1BA16A035691
+              E737DA6BEA5E5DD79A228240A24690E079618E4B29C6C238E3932F8C75CD6ED2
+              F34D1A44F7939B987559962B79BE693CBDBE4B28390C17960BD180E8D9C1F58A
+              2803CBAFBC43AACD67A8CE9AD48C1343867D0EE2D6308BA8DD157DEC1083B9B7
+              845F2B9C07E992089B40BCF146ADE33D4D27BD8ED60B19AD1AF6DDA62CA88F69
+              BA48A318FF009EA73BF70236F191C1F4BA2803CC3C01E26BBB8F06ADEDF6A82E
+              B57B98A28E280DD2CA4B9242B943B76316620A6402B1647F15757E06D6E7D6FC
+              330B5F90355B366B3D41320959E33B58F1C7CD80C31C61857494500145145005
+              0D6B4E3AB68B7960B2F94F3C655242BB82376247700E38AC3D46CBC53AAE9A89
+              3A58DBC892A97B6B3D4E7884E815B39B858C3C7F31538553F770588638EAE8A0
+              0E1748F0AEBDA4DBCB1C1736B1CB3D9CB09B8171248F04865964461BD4993FD6
+              004B1078CFCD9A86C7C23AE5A6A1FDA223B5F3966B7912DE6D5EE6EB2116656C
+              CD2A161C4A080171C11C6735E81453BFF5F3B83D7FAF2B1C0EA7E11D6EFA0934
+              D4FECD1A7ADD5E5CC72BCCE6490CF1CC36B26CC280D31E773640E83A56A5F785
+              649EEEFA7816D10DC4FA7BA9C6085B7915981C0F4071F5ED5D5514974FEB606E
+              EEFF00D773CFAF7C15ABEA36573A4CA74D82C64BDBBBD5BA8DDDA62D2F99B559
+              3681D24C336EE402B8E735D0E93A6EA6DAA5CEA5AAC3656B33DAC76890D8CCD2
+              AED52CDB8B322776C05C7183C9CF1D0514ADA5BFAEDF96836EEEFF00D6F7FCCF
+              36B4F87B791DADAD9CF6D6EEB686058EEA4D62EA70E89344EC3ECF22948F72C7
+              D14900E074E46F6B5A45DC7E1DF1A6C5F39B518A592DE2881663FE8C91EDC63A
+              9643C0CE722BABA6B9658D8A2EF60090B9C64FA669B7A3BFF5B7F90E2ED2B9C6
+              5AF86755BAF12699ACEA106996DF620912C36B233828B1CA03728B83994617A2
+              807E639A9ED3C3DAA477D6D6D32D80D3AD35096FE3B94958CF2B399085642802
+              9FDE105B79C85E83770DD17C5970D6324DACCB6E6E4496F1BD9416CF04F6AF2B
+              88C2BA48C4B2866189060300481EB35F78BE583C4E349B3D2EEAF8C6B32CD1C0
+              A81CBAAC0E0AB3BAA85DB39CEE20E4607BBEBFD7A909696FEB6B7E5FD5CAFA87
+              86F56B9BFBB8E24D35ACAE753B6D44DC4B23F9C8623165026C20F119C36EFE2C
+              63BD548BC137716A3721E08E781E7B8B886E5F59BA5D8F2EF23FD17698B20B95
+              241E465B1938ADD87C63A65C402544B8F985BB223200CC2662AA4027B156073D
+              369AC6B7F8AFE1EBB775B713CC70A615865825798348A8308921743975E24087
+              AF190454DAEB97FAE9FE48ABBDFF00AFEB734AE34AD66D1F429F4E82C2E65B0B
+              47B69A3B8BA7854EE118CAB2C6F9E50F503AD604FE02D47ED73DE48B0EA125FC
+              445E44357BAD3D158C92390BE486F313126DC3007E5CFF001103A18BC6293DCF
+              D8A1D13547D451D967B21E46F80008773B79BB3044884618939E9C1C4579E249
+              D8CF61650DDDD6A02E5D152CE0883A45194DEDFBD9027F1850490496C853834D
+              BBBBBEBF975F90968ADFD7919A3C33E23856EADF4E7834CB07DCC2D63D566944
+              CC640C70ED107B7DCBB8128CC06EC85CFCD52F877C1FA869BABCD7F766DC798B
+              70153ED935D3A1904000F3651B9BFD53649F5181E97AD7C77617B32FD9EC3507
+              B4F3A1824BC31A2C513CA10A2B0660F92645070A704F38EB4EBDF11DE5978D93
+              4C78613A51B684BCD83E64734AF22A64E71B0F97B7A67730A1ED77E9FD7E9F80
+              6CBD35208740D5B49B6D064D3A1D3AE6E74FD3CD8C90DC4CF147C88F2E8CB1B1
+              EB1E3054641EA31CD7FF00842AEE36D1523BA87CBB08228A4619424ABEE25060
+              E07A0CF1C558B3F1B6ED12C6EE6D36EEEA66D3E2BEBE36489B2D91D73921DC13
+              F75C855DCD85E9C8CF4F24924B62D259189A478F74264CEC248E09C738A725AD
+              DF47FE7FF043CBB9CD683A06A96973A58D423D3E28349B47B5B77B49199A70DB
+              06E60514463080ED05F24F5E395F0E691736BE24D667991859C32B45A786523E
+              59089A5233D46F6DA0F4F92B3AFF00C59ABE97A5DC497971A7A791A97D8DB514
+              B19648997CBDD9581642E583E6338638209EC409B4BF146B173AAE8D15E7D856
+              1BF8959E34B6954731170C970CDE5B9247FAA5058024E4ED3427777FEB5D7FAF
+              F207A2B7F5A7F5FD30D4FC31AD4D24FF00669D1E09AEA699A05D467B3FBE102B
+              978977315DAC3670A77673902A5D2FC10B1DDD94DA9B09D6D74CB4B558E3B894
+              234B09724BA0215D72CA57703820F03BDBFED0D5EEEDF54BCB2BEB1B6B68AE5A
+              38A5BC84C91A4712E246C2B2124B86192D80066B37FE12AD764B44BE16D676B1
+              5A5B5ACD7D6D346ED23997EFAA30601368E990D93C1DB8CD28E8ACBCBF2D01F5
+              BF9FE7A90F8ABC31E27D4EFE6B8D32E6D99D67867B47BAD46E238E1D854EC36E
+              8A637E558EF6C9F9B18E05757E1FB39F4FD160B5B8B582DA48F39482E1A70C49
+              C962E5109662493F2F526B9B6F14EB71C4D7C62B092D6E61BB6B481519648DA1
+              C95F31CB6D60C1589C05C1C0C9EB5A5E0CD7EE3C436175732DC5ADD451CFE5C5
+              716F6D25B6F1B149CC523332904F73C8C10307923B597AFE9FD7F983DEFF00D7
+              F5FD6C6FDD5B25DDAC96F2B4AA922ED6314AD1381ECCA4303EE08AC8D4F48BB8
+              E3D326D1CC72DC69CE76477D712113232956569487607907710DD31DF23768A0
+              0E3B51D13C417725EC8B0E90EDAA58AD9DD7993498B600C9F73E43E68C49D0F9
+              792B9E37604AFE14B858F5258A4837DCEA3657292313BBCB844008638FBDFBA7
+              C0E9F30E464E3ACA285A7F5E770394D0BC3DA8D8CFA63DE0B35FECFB29ACD1E2
+              91A42C19A32AFCA0C6421C8E71C726B117C15E2079DAE6E26B796E120081E6D5
+              2E26171209A29371564DB006F2CE55010323A802BD1A8A36FEBD7FCC0E3EE3C3
+              FAC5C5CDE4062D38596A17505E5C4E6773342C823CA2AECC38CC436B165C67EE
+              F1C9E26F0E6ABA9CDABA58C7A74B0EABA7AD9BBDDC8CAD6E57CCC15508C1C1F3
+              338CAE08CF35D85140D3B6A711A4F83EE74FD79659EDD2E2D92EE6BA8EE0EB37
+              40A33966FF008F5C18B23795CEE19196C64E2BB7A28A3A58560A28A2800A8AE2
+              DD2E630921700306F958A9C8E474F7E6A5A28029269888B837376E7B969DB9FC
+              3A7E94BFD9B0F07CCB8DE142EFF39B710093C9CF3D6AE5140148697103FEBAEB
+              A01FF1F0FCF5F7F7A77F67A7CC44F72095C67CE271EE3DEADD14015069D10041
+              96E5810C0869D88208C7AD21D3A3CAB79D721D576EEF39B247279E79EB5728A0
+              0A834E88060649C838E1A56206083C0278E948BA744AEAC66B96DA4361A6620E
+              3A679FC6AE5140153FB3E2C0CC93B7EECC673293B81CF5F53C9A69D36327FE3E
+              2E9467A2CEC07D303A0FA55DA28029FF006747861E7DD7CC31FEBD8FF5A7369F
+              13205325C606707CF7CF38EF9CF6AB5450053FECD8F681E7DDF0319FB43E4FEB
+              48DA644CA54CD7583DBCF6C63D3AD5DA2800A28A2800A28A2800A28A2800A28A
+              2800A28A2800A28A2800A28A2800A28A2800A28A2800A28A2800A28A2800A28A
+              2800A6BA091190920302095241FC08E94EA28039CFF844239619D6F357D4AF67
+              911123B99CC224802387529B630A4860AD960D9C0CE4540BE068A3BA37D16BDA
+              C47A8B348CF781E12EDBD6356CA98CA6310A6005E3B7B755450060A78474B8EF
+              349B94F381D32168624DF959011805F232C4658839EACDEB5143E1148ADA3B36
+              D6753974F85E2682D24F27643E5C8AE80308C3903605F998F04F7E6BA3A28BD8
+              0E7E6F09C2DAD4DAB5A6A7A858DE4EFBA57B73110EBB235D843A30C7EE94FA82
+              4E0E0E28B8F09C325D35DDA6A7A8585DB4B2399ED8C4588936EE4C3A32EDCA29
+              1C6411C1E4D7414500605BF83F4CB4B096CA06B84824B9B7B9237824343E56D1
+              923241F25739C9393CF3C59BEF0F58EA336A125CF9AC2FAD52D6550D801519D9
+              4A91C86CC84E73D863A56B5143D5598D3B1CB8F03DA47676F696FA9EA76F0476
+              51D8CEB13C7FE950A0214484A120E0B0DC9B0FCC79E0636A6D35A5B1BBB44BFB
+              A85274291B43B15AD86D0BFBB3B78F505B71C9F4C017A8A1EB7B896873107837
+              ECF656B6F1EBFAAAC966E5ADAE025B0788152ACA008763039C92CA4E79CD1078
+              3C584717D9B54BFB85B5CCB6B69752218567DA46F25537F24B12325416385181
+              8E9E8A1EA0B439DBAF094777E1EB0D206A77B6B1DA947692DFCB266603F8C488
+              CAC0B1DC411D7144FE118AE6E526B8D5B52937246B7484C4AB79E5B16532058C
+              63AE0ECDB91C1C8AE8A8A3ADC3A58E61BC0F612FDA126BED425B77594416ED22
+              04B53236E631E141CE7A6E2D81C0C02456A693A30D2DEE6692FEEEFAE6E594CB
+              7175E586214614011AAA8039E833CF35A7450014514500145145001451450014
+              5145001451450014514500145145001451450014514500145145001451450014
+              5145001451450014514500145145007FFFD9}
+            DrawMode = prdmCenter
+            FillColor = clNone
+          end>
+        dRec.Left = 1
+        dRec.Top = 2
+        dRec.Right = 740
+        dRec.Bottom = 83
+        Visible = False
+      end
+    end
+    object prHDetailFooterBand1: TprHDetailFooterBand
+      Height = 95
+      UseVerticalBands = False
+      DetailBand = prHDetailBand1
+      ColCount = 0
+      ColDirection = prcdTopBottomLeftRight
+      LinkToDetail = True
+      object prMemoObj25: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              
+                'ELABORO:[IBAuxiliar.PRIMER_APELLIDO+" "+IBAuxiliar.SEGUNDO_APELL' +
+                'IDO+" "+IBAuxiliar.NOMBRE]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 4
+        dRec.Top = 26
+        dRec.Right = 509
+        dRec.Bottom = 43
+        Visible = False
+      end
+      object prMemoObj26: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Fecha de Impresi'#243'n :')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 4
+        dRec.Top = 10
+        dRec.Right = 105
+        dRec.Bottom = 27
+        Visible = False
+      end
+      object prShapeObj1: TprShapeObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+          end>
+        dRec.Left = 4
+        dRec.Top = -4
+        dRec.Right = 731
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prMemoObj28: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<#,##0.00>TotalDebito]')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhRight
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 532
+        dRec.Top = 8
+        dRec.Right = 629
+        dRec.Bottom = 23
+        Visible = False
+      end
+      object prMemoObj29: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<#,##0.00>TotalCredito]')
+            lBorder.Show = True
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhRight
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 633
+        dRec.Top = 8
+        dRec.Right = 730
+        dRec.Bottom = 23
+        Visible = False
+      end
+      object prMemoObj30: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'SUMAS IGUALES:')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 427
+        dRec.Top = 9
+        dRec.Right = 528
+        dRec.Bottom = 26
+        Visible = False
+      end
+      object prMemoObj27: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<yyyy/MM/dd>FechaHoy]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 109
+        dRec.Top = 11
+        dRec.Right = 224
+        dRec.Bottom = 26
+        Visible = False
+      end
+      object prMemoObj31: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Revis'#243)
+            lBorder.Show = True
+            lBorder.Style = psDot
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psDot
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psDot
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psDot
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvBottom
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 10
+          end>
+        dRec.Left = 7
+        dRec.Top = 42
+        dRec.Right = 366
+        dRec.Bottom = 92
+        Visible = False
+      end
+      object prMemoObj32: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'Aprob'#243)
+            lBorder.Show = True
+            lBorder.Style = psDot
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = True
+            rBorder.Style = psDot
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = True
+            tBorder.Style = psDot
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = True
+            bBorder.Style = psDot
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhCenter
+            vAlign = prvBottom
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 10
+          end>
+        dRec.Left = 371
+        dRec.Top = 42
+        dRec.Right = 730
+        dRec.Bottom = 92
+        Visible = False
+      end
+    end
+    object prHDetailBand1: TprHDetailBand
+      Height = 16
+      UseVerticalBands = False
+      DataSetName = 'IBAuxiliar'
+      ColCount = 1
+      ColDirection = prcdTopBottomLeftRight
+      Bands = (
+        'prHDetailHeaderBand1'
+        'prHDetailBand2'
+        'prHDetailFooterBand1')
+      object prMemoObj18: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[IBAuxiliar.CODIGO]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 4
+        dRec.Top = 2
+        dRec.Right = 97
+        dRec.Bottom = 17
+        Visible = False
+      end
+      object prMemoObj19: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[IBAuxiliar.CUENTA]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 106
+        dRec.Top = 2
+        dRec.Right = 440
+        dRec.Bottom = 17
+        Visible = False
+      end
+      object prMemoObj20: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              
+                '[iif(IBAuxiliar.IsNullField("ID_CUENTA"),IBAuxiliar.ID_COLOCACIO' +
+                'N,IBAuxiliar.ID_CUENTA)]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 362
+        dRec.Top = 2
+        dRec.Right = 441
+        dRec.Bottom = 17
+        Visible = False
+      end
+      object prMemoObj21: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[IBAuxiliar.ID_PERSONA]'
+              '')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 447
+        dRec.Top = 1
+        dRec.Right = 522
+        dRec.Bottom = 16
+        Visible = False
+      end
+      object prMemoObj22: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<#,#0.00>IBAuxiliar.DEBITO]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhRight
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 528
+        dRec.Top = 0
+        dRec.Right = 625
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prMemoObj23: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<#,#0.00>IBAuxiliar.CREDITO]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhRight
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 632
+        dRec.Top = 0
+        dRec.Right = 729
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prShapeObj2: TprShapeObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Style = prssCenterVertLine
+          end>
+        dRec.Left = 98
+        dRec.Top = 2
+        dRec.Right = 105
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prShapeObj3: TprShapeObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Style = prssCenterVertLine
+          end>
+        dRec.Left = 355
+        dRec.Top = 2
+        dRec.Right = 362
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prShapeObj4: TprShapeObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Style = prssCenterVertLine
+          end>
+        dRec.Left = 440
+        dRec.Top = 2
+        dRec.Right = 447
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prShapeObj5: TprShapeObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Style = prssCenterVertLine
+          end>
+        dRec.Left = 521
+        dRec.Top = 2
+        dRec.Right = 528
+        dRec.Bottom = 15
+        Visible = False
+      end
+      object prShapeObj6: TprShapeObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Style = prssCenterVertLine
+          end>
+        dRec.Left = 626
+        dRec.Top = 2
+        dRec.Right = 633
+        dRec.Bottom = 15
+        Visible = False
+      end
+    end
+    object prHDetailBand2: TprHDetailBand
+      Height = 16
+      UseVerticalBands = False
+      DataSetName = 'IBAuxiliar1'
+      ColCount = 1
+      ColDirection = prcdTopBottomLeftRight
+      ParentDetail = prHDetailBand1
+      object prMemoObj24: TprMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              
+                '[Trim(IBAuxiliar1.PRIMER_APELLIDO+" "+IBAuxiliar1.SEGUNDO_APELLI' +
+                'DO+" "+IBAuxiliar1.NOMBRE)]')
+            lBorder.Show = False
+            lBorder.Style = psSolid
+            lBorder.Color = clBlack
+            lBorder.Width = 1
+            rBorder.Show = False
+            rBorder.Style = psSolid
+            rBorder.Color = clBlack
+            rBorder.Width = 1
+            tBorder.Show = False
+            tBorder.Style = psSolid
+            tBorder.Color = clBlack
+            tBorder.Width = 1
+            bBorder.Show = False
+            bBorder.Style = psSolid
+            bBorder.Color = clBlack
+            bBorder.Width = 1
+            FillColor = clWhite
+            hAlign = prhLeft
+            vAlign = prvTop
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            Rotate90 = False
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            WordWrap = False
+            FontSize = 8
+          end>
+        dRec.Left = 108
+        dRec.Top = 4
+        dRec.Right = 523
+        dRec.Bottom = 19
+        Visible = False
+      end
+    end
+  end
+end

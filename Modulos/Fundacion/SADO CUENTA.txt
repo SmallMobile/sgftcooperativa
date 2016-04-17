@@ -1,0 +1,28 @@
+       SQL.Clear;
+       SQL.Add('select SALDOINICIAL from "con$puc"');
+       SQL.Add('where');
+       SQL.Add('ID_AGENCIA = :"ID_AGENCIA" and');
+       SQL.Add('CODIGO = :"CODIGO"');
+       ParamByName('ID_AGENCIA').AsInteger := Agencia; //AGENCIA DE OCAÑA
+       ParamByName('CODIGO').AsString := CodigoInteres; // 
+       ExecQuery;
+       SaldoInicialInteres := FieldByName('SALDOINICIAL').AsCurrency;
+       Close;
+
+       SQL.Clear;
+       sql.Add('Select ');
+       sql.Add('sum("con$saldoscuenta"."DEBITO") as DEBITO,');
+       sql.Add('sum("con$saldoscuenta"."CREDITO") as CREDITO');
+       sql.Add('from "con$saldoscuenta" ');
+       sql.Add('where ');
+       sql.Add('"con$saldoscuenta".ID_AGENCIA =:"ID_AGENCIA" and');
+       sql.Add('"con$saldoscuenta".CODIGO =:"CODIGO" and');
+       sql.Add('"con$saldoscuenta".MES <=:"MES"');
+       ParamByName('ID_AGENCIA').AsInteger := agencia; // AGENCIA OCAÑA
+       ParamByName('CODIGO').AsString := CodigoInteres;// CODIGO PUC
+       ParamByName('MES').AsString := MesCorte;      // MES CORTE
+       ExecQuery;
+       MovimientoInteres := FieldByName('DEBITO').AsCurrency - FieldByName('CREDITO').AsCurrency;
+       Close;
+
+       TotalInteres := SaldoInicialInteres + MovimientoInteres;

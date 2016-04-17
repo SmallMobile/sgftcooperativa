@@ -1,0 +1,25 @@
+16/06/2005 10:44:31 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:44:31 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:44:31 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:44:31 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:45:00 a.m. Error al intentar conectar con la base de datos de control: I/O error for file "c:\fbreplicacion\replicate.fdb"
+Error while trying to open file
+El sistema no puede hallar la ruta especificada.
+
+16/06/2005 10:52:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 10:53:27 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 11:06:04 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 11:06:04 a.m. Error se puede realizar nueva insersion sin llave pk 
+16/06/2005 11:06:04 a.m. Error se puede realizar nueva insersion sin llave pk 

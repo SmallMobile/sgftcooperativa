@@ -1,0 +1,448 @@
+object TprTxReport
+  FromPage = 1
+  ToPage = 1
+  Values = <>
+  Variables = <>
+  PrinterName = '\\SISTEMAS01\EPSON FX-1180+ ESC/P'
+  ESCModelName = 'Epson printers'
+  LinesOnPage = 80
+  Left = 328
+  Top = 96
+  SystemInfo = (
+    'OS: WIN32_NT 5.1.2600 Service Pack 1'
+    ''
+    'PageSize: 4096'
+    'ActiveProcessorMask: $1000'
+    'NumberOfProcessors: 1'
+    'ProcessorType: 586'
+    ''
+    'Compiler version: Delphi6'
+    'PReport version: 1.9.4')
+  object prTxPage1: TprTxPage
+    PageType = tptPage
+    LineNum = 60
+    ColNum = 80
+    object prTxHTitleBand1: TprTxHTitleBand
+      Height = 57
+      UseVerticalBands = False
+      object prTxMemoObj1: TprTxMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              ''
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.'
+              
+                'Un Sistema de Informaci'#243'n, es aqu'#233'l que permite recopilar, admin' +
+                'istrar y manipular un conjunto de datos que conforman la informa' +
+                'ci'#243'n necesaria para que los estamentos ejecutivos de una organiz' +
+                'aci'#243'n puedan realizar una toma de decisiones informadamente. Por' +
+                ' otra parte, los Sistemas de Informaci'#243'n en las grandes empresas' +
+                ' est'#225'n orientados hacia el uso de las bases de datos como compon' +
+                'entes estructurales clave en su dise'#241'o, pues se define como la p' +
+                'rincipal fuerza de integraci'#243'n del Sistema de Informaci'#243
+              
+                'Por esta raz'#243'n, las organizaciones privadas y/o p'#250'blicas le dan ' +
+                'gran importancia a la automatizaci'#243'n de sus operaciones, con el ' +
+                'objetivo de ingresar o mantenerse en un mercado cada vez m'#225's com' +
+                'petitivo.'
+              
+                'La Cooperativa de Ahorro y Cr'#233'dito CREDISERVIR encaminada a brin' +
+                'dar los mejores servicios a la comunidad conformada por los Asoc' +
+                'iados de la Cooperativa y de la comunidad en general, decide Imp' +
+                'lementar el Sistema para la realizaci'#243'n del formulario de cr'#233'dit' +
+                'os desde el sistema, el cual permite de una manera '#243'ptima maneja' +
+                'r la informaci'#243'n, logrando as'#237', un mejor aprovechamiento del rec' +
+                'urso humano y f'#237'sico de la Entidad.')
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            hAlign = prhLeft
+            vAlign = prvTop
+            DefaultFont = False
+            WordWrap = False
+          end>
+        dRec.Left = 0
+        dRec.Top = 0
+        dRec.Right = 80
+        dRec.Bottom = 56
+        Visible = False
+      end
+    end
+  end
+end

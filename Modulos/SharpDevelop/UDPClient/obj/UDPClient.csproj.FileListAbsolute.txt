@@ -1,0 +1,7 @@
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\bin\Debug\UDPClient.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\bin\Debug\UDPClient.pdb
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\obj\Debug\ResolveAssemblyReference.cache
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\obj\Debug\UDPClient.MainForm.resources
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\obj\Debug\UDPClient.csproj.GenerateResource.Cache
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\obj\Debug\UDPClient.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\UDPClient\obj\Debug\UDPClient.pdb

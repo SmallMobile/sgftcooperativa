@@ -1,0 +1,3 @@
+MemoVer
+Solicitud Numero: 2006020002 si fue marcado el cod_conyugue
+Solicitud Numero: 2006020003 no fue marcado el cod_conyugue. UsuarioWURIBE fecha y hora: 2006/02/16  11:24

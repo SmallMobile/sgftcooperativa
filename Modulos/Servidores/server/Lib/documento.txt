@@ -1,0 +1,26 @@
+
+IniFiles, ZlibEx;
+
+
+
+        ems1: tzcompressionstream;
+        ems3 :TZDecompressionStream;
+        ems2,ems4: TMemoryStream;
+        entrada :string;
+        salida :string;
+
+
+
+        ems4 := TMemoryStream.Create;
+        XmlRes.SaveToStream(ems4);
+        ems4.Seek(0,soFromBeginning);
+        SetString(entrada,PChar(ems4.memory),ems4.size);
+        //Astream.Free;
+        {ems1 := TECLMemoryStream.Create('password', zlibFastest);
+        XmlRes.SaveToStream(ems1);
+        ems1.CompressedDataStream.SaveToStream(Astream);
+        ems1.Free;}
+        ems2 := TMemoryStream.Create;
+        ems1 := TZCompressionStream.Create(ems2,zcMax);
+        ems1.Write(Pointer(entrada)^,Length(entrada));
+        ems1.Free;

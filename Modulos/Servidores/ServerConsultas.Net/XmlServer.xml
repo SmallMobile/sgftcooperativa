@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<Retorno>
+  <consulta000 campos="41" campotipo1="String" camponombre1="NO_BANCOLDEX" campotamano1="15" campotipo2="String" camponombre2="ID_COLOCACION" campotamano2="11" campotipo3="SmallInt" camponombre3="ID_IDENTIFICACION" campotamano3="0" campotipo4="String" camponombre4="ID_PERSONA" campotamano4="15" campotipo5="String" camponombre5="NOMBRE" campotamano5="255" campotipo6="String" camponombre6="PRIMER_APELLIDO" campotamano6="30" campotipo7="String" camponombre7="SEGUNDO_APELLIDO" campotamano7="30" campotipo8="Integer" camponombre8="ID_CIIU" campotamano8="0" campotipo9="String" camponombre9="SEXO" campotamano9="1" campotipo10="SmallInt" camponombre10="TIPO_SOCIEDAD" campotamano10="0" campotipo11="String" camponombre11="EMPLEOS_ACT" campotamano11="3" campotipo12="String" camponombre12="EMPLEOS_GENERAR" campotamano12="3" campotipo13="FMTBcd" camponombre13="TOTAL_ACTIVOS" campotamano13="0" campotipo14="String" camponombre14="FECHA_CORTE_ACTIVOS" campotamano14="4" campotipo15="SmallInt" camponombre15="DESTINO1" campotamano15="0" campotipo16="FMTBcd" camponombre16="MONTO1" campotamano16="0" campotipo17="SmallInt" camponombre17="DESTINO2" campotamano17="0" campotipo18="FMTBcd" camponombre18="MONTO2" campotamano18="0" campotipo19="SmallInt" camponombre19="DESTINO3" campotamano19="0" campotipo20="FMTBcd" camponombre20="MONTO3" campotamano20="0" campotipo21="SmallInt" camponombre21="CLASE_CREDITO" campotamano21="0" campotipo22="Integer" camponombre22="AMORTIZACION" campotamano22="0" campotipo23="Float" camponombre23="MARGEN_INT" campotamano23="0" campotipo24="Float" camponombre24="TASA_EA" campotamano24="0" campotipo25="SmallInt" camponombre25="GARANTIA1" campotamano25="0" campotipo26="FMTBcd" camponombre26="VALORGAR1" campotamano26="0" campotipo27="SmallInt" camponombre27="GARANTIA2" campotamano27="0" campotipo28="FMTBcd" camponombre28="VALORGAR2" campotamano28="0" campotipo29="SmallInt" camponombre29="GARANTIA3" campotamano29="0" campotipo30="FMTBcd" camponombre30="VALORGAR3" campotamano30="0" campotipo31="String" camponombre31="LINEA_BANCOLDEX" campotamano31="4" campotipo32="String" camponombre32="TELEFONO1" campotamano32="30" campotipo33="String" camponombre33="DIRECCION" campotamano33="100" campotipo34="Integer" camponombre34="COD_MUNICIPIO" campotamano34="0" campotipo35="FMTBcd" camponombre35="DEUDA" campotamano35="3" campotipo36="FMTBcd" camponombre36="VALOR" campotamano36="3" campotipo37="Date" camponombre37="FECHA_DESEMBOLSO" campotamano37="0" campotipo38="Date" camponombre38="FECHA_VENCIMIENTO" campotamano38="0" campotipo39="Integer" camponombre39="AMORTIZA_CAPITAL" campotamano39="0" campotipo40="String" camponombre40="ID_ARRASTRE" campotamano40="1" campotipo41="SmallInt" camponombre41="ID_TIPO_CUOTA" campotamano41="0">
+    <Registro>
+      <campo>200612000      </campo>
+      <campo>20060002371</campo>
+      <campo>3</campo>
+      <campo>37331145</campo>
+      <campo>LICETH</campo>
+      <campo>DUARTE</campo>
+      <campo>ORTEGA</campo>
+      <campo>7220</campo>
+      <campo>F</campo>
+      <campo>0</campo>
+      <campo>0  </campo>
+      <campo>0  </campo>
+      <campo>2500000</campo>
+      <campo>2005</campo>
+      <campo>1</campo>
+      <campo>2500000</campo>
+      <campo>2</campo>
+      <campo>1000000</campo>
+      <campo>3</campo>
+      <campo>1500000</campo>
+      <campo>1</campo>
+      <campo>30</campo>
+      <campo>11</campo>
+      <campo>8.5</campo>
+      <campo>2</campo>
+      <campo>2500000</campo>
+      <campo>3</campo>
+      <campo>1800000</campo>
+      <campo>6</campo>
+      <campo>700000</campo>
+      <campo>1020</campo>
+      <campo>5622223</campo>
+      <campo>CARRERA 12 27 37</campo>
+      <campo>54498</campo>
+      <campo>5000000</campo>
+      <campo>5000000</campo>
+      <campo>2006/07/21</campo>
+      <campo>2009/07/21</campo>
+      <campo>30</campo>
+      <campo>A</campo>
+      <campo>1</campo>
+    </Registro>
+  </consulta000>
+</Retorno>

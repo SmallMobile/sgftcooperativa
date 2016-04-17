@@ -1,0 +1,5 @@
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\servertarjetadebito\bin\Debug\servertarjetadebito.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\servertarjetadebito\bin\Debug\servertarjetadebito.pdb
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\servertarjetadebito\obj\Debug\ResolveAssemblyReference.cache
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\servertarjetadebito\obj\Debug\servertarjetadebito.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\servertarjetadebito\obj\Debug\servertarjetadebito.pdb

@@ -1,0 +1,7 @@
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\bin\Debug\pruebasDES.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\bin\Debug\pruebasDES.pdb
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\obj\Debug\ResolveAssemblyReference.cache
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\obj\Debug\pruebasDES.MainForm.resources
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\obj\Debug\pruebasDES.csproj.GenerateResource.Cache
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\obj\Debug\pruebasDES.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\pruebasDES\obj\Debug\pruebasDES.pdb

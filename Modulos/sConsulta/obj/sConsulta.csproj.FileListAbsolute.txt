@@ -1,0 +1,5 @@
+H:\crediservir\Modulos\sConsulta\bin\Debug\sConsulta.exe
+H:\crediservir\Modulos\sConsulta\bin\Debug\sConsulta.pdb
+H:\crediservir\Modulos\sConsulta\obj\Debug\ResolveAssemblyReference.cache
+H:\crediservir\Modulos\sConsulta\obj\Debug\sConsulta.exe
+H:\crediservir\Modulos\sConsulta\obj\Debug\sConsulta.pdb

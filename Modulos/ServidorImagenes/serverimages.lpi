@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <PathDelim Value="\"/>
+    <Version Value="5"/>
+    <General>
+      <MainUnit Value="0"/>
+      <IconPath Value="./"/>
+      <TargetFileExt Value=".exe"/>
+      <ActiveEditorIndexAtStart Value="0"/>
+    </General>
+    <VersionInfo>
+      <ProjectVersion Value=""/>
+      <Language Value=""/>
+      <CharSet Value=""/>
+    </VersionInfo>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="2">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="indylaz"/>
+        <MinVersion Major="10" Minor="2" Build="1" Valid="True"/>
+      </Item2>
+    </RequiredPackages>
+    <Units Count="16">
+      <Unit0>
+        <Filename Value="serverimages.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="serverimages"/>
+        <CursorPos X="17" Y="16"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="200"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="unitmain.pas"/>
+        <ComponentName Value="frmMain"/>
+        <IsPartOfProject Value="True"/>
+        <ResourceFilename Value="unitmain.lrs"/>
+        <UnitName Value="UnitMain"/>
+        <CursorPos X="22" Y="64"/>
+        <TopLine Value="49"/>
+        <EditorIndex Value="0"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="C:\lazarus\components\zarchive\zlibar\zlibar.pas"/>
+        <UnitName Value="zlibar"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="175"/>
+        <UsageCount Value="3"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="C:\lazarus\fpc\2.0.4\source\rtl\objpas\classes\classesh.inc"/>
+        <CursorPos X="5" Y="706"/>
+        <TopLine Value="693"/>
+        <UsageCount Value="6"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="C:\lazarus\fpc\2.0.4\source\fcl\xml\dom.pp"/>
+        <UnitName Value="DOM"/>
+        <CursorPos X="15" Y="70"/>
+        <TopLine Value="57"/>
+        <UsageCount Value="28"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="C:\lazarus\fpc\2.0.4\source\fcl\xml\xmlwrite.pp"/>
+        <UnitName Value="XMLWrite"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="70"/>
+        <UsageCount Value="74"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdTCPConnection.pas"/>
+        <UnitName Value="IdTCPConnection"/>
+        <CursorPos X="31" Y="442"/>
+        <TopLine Value="429"/>
+        <UsageCount Value="74"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdIOHandler.pas"/>
+        <UnitName Value="IdIOHandler"/>
+        <CursorPos X="21" Y="542"/>
+        <TopLine Value="529"/>
+        <UsageCount Value="74"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="C:\lazarus\fpc\2.0.4\source\fcl\inc\base64.pp"/>
+        <UnitName Value="base64"/>
+        <CursorPos X="14" Y="26"/>
+        <TopLine Value="24"/>
+        <UsageCount Value="2"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="C:\DOCUME~1\acruz\CONFIG~1\Temp\testcompileroptions.pas"/>
+        <UnitName Value="testcompileroptions"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="2"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdStackBSDBase.pas"/>
+        <UnitName Value="IdStackBSDBase"/>
+        <CursorPos X="1" Y="489"/>
+        <TopLine Value="410"/>
+        <UsageCount Value="10"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="C:\lazarus\lcl\include\application.inc"/>
+        <CursorPos X="1" Y="1522"/>
+        <TopLine Value="1509"/>
+        <UsageCount Value="2"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdSSLOpenSSL.pas"/>
+        <UnitName Value="IdSSLOpenSSL"/>
+        <CursorPos X="1" Y="1473"/>
+        <TopLine Value="1460"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="51"/>
+        <Loaded Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <UnitName Value="IdCustomTCPServer"/>
+        <CursorPos X="51" Y="259"/>
+        <TopLine Value="244"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="51"/>
+        <Loaded Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdServerIOHandler.pas"/>
+        <UnitName Value="IdServerIOHandler"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="49"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="50"/>
+        <Loaded Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdSysVCL.pas"/>
+        <UnitName Value="IdSysVCL"/>
+        <CursorPos X="1" Y="176"/>
+        <TopLine Value="181"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit15>
+    </Units>
+    <JumpHistory Count="7" HistoryIndex="6">
+      <Position1>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <Caret Line="541" Column="1" TopLine="528"/>
+      </Position1>
+      <Position2>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <Caret Line="543" Column="1" TopLine="530"/>
+      </Position2>
+      <Position3>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <Caret Line="544" Column="1" TopLine="531"/>
+      </Position3>
+      <Position4>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <Caret Line="545" Column="1" TopLine="532"/>
+      </Position4>
+      <Position5>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <Caret Line="546" Column="1" TopLine="533"/>
+      </Position5>
+      <Position6>
+        <Filename Value="C:\lazarus\components\indy-10.2.0.1\fpc\IdCustomTCPServer.pas"/>
+        <Caret Line="259" Column="51" TopLine="244"/>
+      </Position6>
+      <Position7>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="64" Column="1" TopLine="56"/>
+      </Position7>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="5"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <OtherUnitFiles Value="C:\lazarus\components\zarchive\zlibar\"/>
+      <SrcPath Value="$(LazarusDir)\lcl\;$(LazarusDir)\lcl\interfaces\$(LCLWidgetType)\"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <Generate Value="Faster"/>
+    </CodeGeneration>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="2">
+      <Item1>
+        <Name Value="ECodetoolError"/>
+      </Item1>
+      <Item2>
+        <Name Value="EFOpenError"/>
+      </Item2>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

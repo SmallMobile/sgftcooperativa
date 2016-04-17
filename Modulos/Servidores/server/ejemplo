@@ -1,0 +1,57 @@
+            if XmlDoc.Root.ReadInteger('peticion') = 2 then
+            begin
+              with IBprocedimiento do
+              begin
+                StoredProcName := 'BUSCARPERSONA01';// saldo actual
+                Params[0].AsString := XmlDoc.Root.ReadString('papellido');
+                Params[1].AsString := XmlDoc.Root.ReadString('sapellido');
+                Params[2].AsString := XmlDoc.Root.ReadString('nombre');
+                Prepared := True;
+                ExecProc;
+                XmlRes.Root.WriteInteger('id_identificacion',params[3].asinteger);
+                XmlRes.Root.WriteString('id_persona',params[4].AsString);
+                XmlRes.Root.WriteString('papellido',params[5].AsString);
+                XmlRes.Root.WriteString('sapellido',params[6].AsString);
+                XmlRes.Root.WriteString('nombre',params[7].Asstring);
+                XmlRes.Root.WriteInteger('cuenta',params[8].asinteger);
+              end;
+            end
+            else
+            begin
+              Close;
+              SQL.Clear;
+              SQL.Add('select NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO from "gen$persona"');
+              SQL.Add('where ID_PERSONA = :ID_PERSONA and ID_IDENTIFICACION = :ID_IDENTIFICACION');
+              ParamByName('ID_IDENTIFICACION').AsInteger := XmlDoc.Root.ReadInteger('id_identificacion');
+              ParamByName('ID_PERSONA').AsString := XmlDoc.Root.ReadString('id_persona');
+              Open;
+              XmlRes.Root.WriteString('nombre',FieldByName('NOMBRE').AsString);
+              XmlRes.Root.WriteString('papellido',FieldByName('PRIMER_APELLIDO').AsString);
+              XmlRes.Root.WriteString('sapellido',FieldByName('SEGUNDO_APELLIDO').AsString);
+              close;
+              SQL.Clear;
+              SQL.Add('select "cap$maestro".ID_AGENCIA, "cap$maestro".ID_TIPO_CAPTACION,');
+              SQL.Add('"cap$maestro".NUMERO_CUENTA, "cap$maestro".DIGITO_CUENTA,');
+              SQL.Add('"cap$tipocaptacion".DESCRIPCION from "cap$maestro"');
+              SQL.Add('inner join "cap$tipocaptacion" ON ("cap$maestro".ID_TIPO_CAPTACION = "cap$tipocaptacion".ID_TIPO_CAPTACION)');
+              SQL.Add('inner join "cap$tiposestado" ON ("cap$maestro".ID_ESTADO = "cap$tiposestado".ID_ESTADO)');
+              SQL.Add('inner join "cap$maestrotitular" ON ("cap$maestro".ID_AGENCIA = "cap$maestrotitular".ID_AGENCIA and "cap$maestro".ID_TIPO_CAPTACION = "cap$maestrotitular".ID_TIPO_CAPTACION');
+              SQL.Add('and "cap$maestro".NUMERO_CUENTA = "cap$maestrotitular".NUMERO_CUENTA and "cap$maestro".DIGITO_CUENTA = "cap$maestrotitular".DIGITO_CUENTA)');
+              SQL.Add('where');
+              SQL.Add('"cap$maestrotitular".ID_IDENTIFICACION = :ID_IDENTIFICACION and "cap$maestrotitular".ID_PERSONA = :ID_PERSONA');
+              SQL.Add('Order by "cap$maestro".ID_TIPO_CAPTACION,"cap$maestro".FECHA_APERTURA ASC');
+              ParamByName('ID_IDENTIFICACION').AsInteger := XmlDoc.Root.ReadInteger('id_identificacion');
+              ParamByName('ID_PERSONA').AsString := XmlDoc.Root.ReadString('id_persona');
+              open;
+              nodo1 := XmlRes.Root.NodeNew('inf_cuentas');
+              while not eof do
+              begin
+                nodo := nodo1.NodeNew('cuentas');
+                nodo.WriteInteger('numero',FieldByName('NUMERO_CUENTA').AsInteger);
+                nodo.WriteString('descripcion',FieldByName('DESCRIPCION').AsString);
+                nodo.writeInteger('tp',FieldByName('ID_TIPO_CAPTACION').AsInteger);
+                next;
+              end;
+
+            end;
+          end   //fin del tipo de consulta //**C**//

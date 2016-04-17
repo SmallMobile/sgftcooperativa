@@ -1,0 +1,5 @@
+bin\Debug\sTarjetaD.exe
+bin\Debug\sTarjetaD.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\sTarjetaD.exe
+obj\Debug\sTarjetaD.pdb

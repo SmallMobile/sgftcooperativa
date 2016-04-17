@@ -1,0 +1,22 @@
+{ Este es un archivo de recurso de Lazarus generado automáticamente }
+
+LazarusResources.Add('TfrmMain','FORMDATA',[
+  'TPF0'#8'TfrmMain'#7'frmMain'#4'Left'#3'F'#1#6'Height'#3#5#1#3'Top'#3#197#0#5
+  +'Width'#3'_'#1#18'HorzScrollBar.Page'#3'^'#1#18'VertScrollBar.Page'#3#4#1#13
+  +'ActiveControl'#7#13'edRecuperadas'#7'Caption'#6#27'Servidor de Imagenes - v'
+  +'.01'#8'OnCreate'#7#10'FormCreate'#0#6'TLabel'#6'Label1'#4'Left'#2#8#6'Heigh'
+  +'t'#2#14#3'Top'#2#30#5'Width'#2'@'#7'Caption'#6#11'Recuperadas'#5'Color'#7#6
+  +'clNone'#11'ParentColor'#8#0#0#6'TLabel'#6'Label2'#4'Left'#2#8#6'Height'#2#14
+  +#3'Top'#3#150#0#5'Width'#2'@'#7'Caption'#6#11'Almacenadas'#5'Color'#7#6'clNo'
+  +'ne'#11'ParentColor'#8#0#0#6'TLabel'#6'Label3'#4'Left'#2#8#6'Height'#2#14#3
+  +'Top'#2#8#5'Width'#2'{'#7'Caption'#6#24'Escuchando en el Puerto:'#5'Color'#7
+  +#6'clNone'#11'ParentColor'#8#0#0#5'TMemo'#13'edRecuperadas'#4'Left'#2#8#6'He'
+  +'ight'#2'Z'#3'Top'#2'6'#5'Width'#3'P'#1#8'TabOrder'#2#0#0#0#5'TMemo'#13'edAl'
+  +'macenadas'#4'Left'#2#8#6'Height'#2'Z'#3'Top'#3#166#0#5'Width'#3'P'#1#8'TabO'
+  +'rder'#2#1#0#0#11'TStaticText'#8'edPuerto'#4'Left'#3#152#0#6'Height'#2#17#3
+  +'Top'#2#10#5'Width'#2'A'#0#0#7'TBitBtn'#9'btnCerrar'#4'Left'#3#13#1#6'Height'
+  +#2#24#3'Top'#2#8#5'Width'#2'K'#7'Caption'#6#7'&Cerrar'#9'NumGlyphs'#2#0#7'On'
+  +'Click'#7#14'btnCerrarClick'#8'TabOrder'#2#2#0#0#12'TIdTCPServer'#12'IdTCPSe'
+  +'rver1'#8'Bindings'#14#0#11'DefaultPort'#3#8#12#11'ReuseSocket'#7#7'rsFalse'
+  +#9'OnExecute'#7#19'IdTCPServer1Execute'#4'left'#2#8#3'top'#3#232#0#0#0#0
+]);

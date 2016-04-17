@@ -1,0 +1,7 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\UDPClient.MainForm.resources
+obj\Debug\UDPClient.csproj.GenerateResource.Cache
+bin\Debug\UDPClient.exe
+bin\Debug\UDPClient.pdb
+obj\Debug\UDPClient.exe
+obj\Debug\UDPClient.pdb

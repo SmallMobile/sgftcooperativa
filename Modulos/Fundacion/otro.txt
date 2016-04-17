@@ -1,0 +1,20 @@
+var    c,cadena :string;
+       b,i,s :Integer;
+begin
+      s := 0;
+      while s < 3 do
+      begin
+      cadena := '000123456';
+      b := StrLen(PChar(cadena)) + 1;
+      for i := 1 to b do
+      begin
+         c := midstr(cadena,i,1);
+         if c <> '0' then
+         begin
+           ShowMessage(RightStr(cadena,(b-i)));
+           Break;
+          end;
+      end;
+      s := s +1;
+      Next;
+      end;

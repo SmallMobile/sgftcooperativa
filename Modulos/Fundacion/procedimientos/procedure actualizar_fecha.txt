@@ -1,0 +1,50 @@
+        DataQuerys := TDataQuerys.Create(self);
+        comit := '0';
+        with DataQuerys.IBdatos do
+        begin
+          Close;
+          SQL.Clear;
+          SQL.Add('SELECT');
+          SQL.Add('"fun$afiliacion"."fecha",');
+          SQL.Add('"fun$afiliacion"."id_afiliacion"');
+          SQL.Add('FROM');
+          SQL.Add('"fun$afiliacion"');
+          //SQL.Add('where "fun$afiliacion"."id_afiliacion" >= 35049');
+          Open;
+          Last;
+          First;
+          frmProgresos := TfrmProgresos.Create(self);
+          frmProgresos.Titulo := 'Actualizando Fechas de Vencimiento';
+          frmProgresos.Max := RecordCount;
+          frmProgresos.Min := 0;
+          frmProgresos.Ejecutar;
+          while not Eof do
+          begin
+            if Frac(RecNo/500) = 0 then
+            begin
+               verificatransaccion(DataQuerys.IBselecion);
+               comit := CurrToStr(RecNo/500);
+            end;
+            frmProgresos.Position := RecNo;
+            frmProgresos.InfoLabel := 'Actualizacion No : '+IntToStr(RecNo)+#13+'Commit No : '+comit;
+            Application.ProcessMessages;
+            ano := IntToStr(YearOfDate(FieldByName('fecha').AsDateTime)+1);
+            fecha := StrToDate(FormatDateTime(ano+'/mm/dd',FieldByName('fecha').AsDateTime));
+            with DataQuerys.IBselecion do
+            begin
+              Close;
+              SQL.Clear;
+              SQL.Add('update "fun$afiliacion" set');
+              SQL.Add('"fun$afiliacion"."fecha_vencimiento" = :fecha');
+              SQL.Add(',"fun$afiliacion"."es_fechaparcial" = 1');
+              SQL.Add('where "fun$afiliacion"."id_afiliacion" = :afiliacion');
+              ParamByName('afiliacion').AsInteger := DataQuerys.IBdatos.FieldByName('id_afiliacion').AsInteger;
+              ParamByName('fecha').AsDate := fecha;
+              Open;
+              Close;
+            end;
+            Next;
+          end;
+          frmProgresos.Cerrar;
+          verificatransaccion(DataQuerys.IBselecion);
+        end;

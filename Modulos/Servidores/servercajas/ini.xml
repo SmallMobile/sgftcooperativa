@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<resultado>
+  <ejecutado>True</ejecutado>
+  <cuenta>37550</cuenta>
+  <id_estado>1</id_estado>
+  <descripcion_estado>ACTIVO</descripcion_estado>
+  <valorcuotacon>0</valorcuotacon>
+  <firmas>0</firmas>
+  <sellos>0</sellos>
+  <parasaldar>0</parasaldar>
+  <protectografos>0</protectografos>
+  <permite_movimiento>1</permite_movimiento>
+  <permite_movimiento_entrada>1</permite_movimiento_entrada>
+  <numero_inicial>00157051</numero_inicial>
+  <numero_final>00157080</numero_final>
+  <asociado_titular>URIBE MOLINA WILFREDO()</asociado_titular>
+  <titulares>
+    <titular>
+      <nombre>3-5035698   URIBE MOLINA WILFREDO()</nombre>
+    </titular>
+  </titulares>
+  <canje>15013</canje>
+  <saldodisponible>525857</saldodisponible>
+  <saldoactual>628870</saldoactual>
+  <id_persona_titular>5035698</id_persona_titular>
+  <id_identificacion_titular>3</id_identificacion_titular>
+</resultado>

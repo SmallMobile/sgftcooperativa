@@ -1,0 +1,47 @@
+CREATE PROCEDURE BUSCA_PERSONA_N1 (
+    NIT VARCHAR (15))
+RETURNS (
+    DIRECCION VARCHAR (100),
+    ID_PERSONA VARCHAR (15),
+    NOMBRES VARCHAR (90),
+    APELLIDO1 VARCHAR (50),
+    APELLIDO2 VARCHAR (50),
+    NUMERO_CUENTA INTEGER,
+    FECHA_NACIMIENTO DATE,
+    BARRIO VARCHAR (50),
+    MUNICIPIO VARCHAR (50),
+    TELEFONO VARCHAR (20),
+    ID_IDENTIFICACION INTEGER,
+    LUGAR_EXPEDICION VARCHAR (50),
+    SEXO CHAR (1),
+    TIPO_NIT INTEGER )
+AS
+BEGIN
+  /* Procedure body */
+FOR
+SELECT DISTINCT
+  "gen$direccion".DIRECCION,
+  "gen$direccion".BARRIO,
+  "gen$direccion".MUNICIPIO,
+  "gen$persona".FECHA_NACIMIENTO,
+  "cap$maestrotitular".NUMERO_CUENTA,
+  "gen$persona".ID_PERSONA,
+  "gen$persona".NOMBRE,
+  "gen$persona".PRIMER_APELLIDO,
+  "gen$persona".SEGUNDO_APELLIDO,
+  "gen$direccion".TELEFONO1,
+  "gen$persona".ID_IDENTIFICACION,
+  "gen$persona".LUGAR_EXPEDICION,
+  "gen$persona".SEXO,
+  "gen$persona".ID_TIPO_PERSONA
+FROM
+  "gen$direccion"
+  INNER JOIN "gen$persona" ON ("gen$direccion".ID_PERSONA = "gen$persona".ID_PERSONA)
+  INNER JOIN "cap$maestrotitular" ON ("gen$persona".ID_PERSONA = "cap$maestrotitular".ID_PERSONA)
+ WHERE ("gen$persona".ID_PERSONA = :"NIT")
+  INTO :DIRECCION,:BARRIO,:MUNICIPIO,:FECHA_NACIMIENTO,:NUMERO_CUENTA,:ID_PERSONA,:NOMBRES,:APELLIDO1,:APELLIDO2,:TELEFONO,:ID_IDENTIFICACION,:LUGAR_EXPEDICION,:SEXO
+  ,:TIPO_NIT
+  do
+  SUSPEND;
+
+END

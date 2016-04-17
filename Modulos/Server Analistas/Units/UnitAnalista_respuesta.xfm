@@ -1,0 +1,72 @@
+object FrmServer_Analistas: TFrmServer_Analistas
+  Left = 257
+  Top = 142
+  Width = 357
+  Height = 155
+  VertScrollBar.Range = 95
+  HorzScrollBar.Range = 353
+  ActiveControl = Memo1
+  BorderIcons = [biSystemMenu]
+  Caption = 'Server Analistas y Ente Aprobador'
+  Color = clBackground
+  Position = poDesktopCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  TextWidth = 6
+  object Memo1: TMemo
+    Left = 0
+    Top = 0
+    Width = 353
+    Height = 95
+    Lines.Strings = (
+      'Memo1')
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 0
+  end
+  object IdTCPServer1: TIdTCPServer
+    Bindings = <>
+    DefaultPort = 4002
+    OnExecute = IdTCPServer1Execute
+    ThreadMgr = IdThreadMgrDefault1
+    Left = 56
+    Top = 32
+  end
+  object IdThreadMgrDefault1: TIdThreadMgrDefault
+    Left = 80
+    Top = 32
+  end
+  object SQLQuery1: TSQLQuery
+    MaxBlobSize = 0
+    Params = <>
+    SQL.Strings = (
+      'select * from ')
+    Left = 88
+    Top = 80
+  end
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'conexion'
+    DriverName = 'Interbase'
+    GetDriverFunc = 'getSQLDriverINTERBASE'
+    LibraryName = 'dbexpint.dll'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverName=Interbase'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'Database='
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'Password=masterkey'
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'Interbase TransIsolation=ReadCommited'
+      'User_Name=sysdba'
+      'WaitOnLocks=True')
+    VendorLib = 'GDS32.DLL'
+    Left = 56
+    Top = 88
+  end
+end

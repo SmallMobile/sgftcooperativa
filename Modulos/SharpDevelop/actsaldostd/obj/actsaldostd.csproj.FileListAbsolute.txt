@@ -1,0 +1,5 @@
+\\Winserver\Repositorio\Sistemas\Modulos\SharpDevelop\actsaldostd\obj\Debug\ResolveAssemblyReference.cache
+\\Winserver\Repositorio\Sistemas\Modulos\SharpDevelop\actsaldostd\obj\Debug\actsaldostd.exe
+\\Winserver\Repositorio\Sistemas\Modulos\SharpDevelop\actsaldostd\obj\Debug\actsaldostd.pdb
+\\Winserver\Repositorio\Sistemas\Modulos\SharpDevelop\actsaldostd\bin\Debug\actsaldostd.exe
+\\Winserver\Repositorio\Sistemas\Modulos\SharpDevelop\actsaldostd\bin\Debug\actsaldostd.pdb

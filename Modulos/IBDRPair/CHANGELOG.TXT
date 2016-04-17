@@ -1,0 +1,45 @@
+2006-06-27: Final release v1.0, no major changes but the previous release source
+had some errors.
+
+2004-07-30: FB 1.5 support (new service name, new registry location)
+Set forced writes off, changed status interval to 1000.  Improved 
+record copying by not querying to existing values when the destination
+database was created by this process.
+
+2003-08-05: Added support for Firebird and check for IB and FB servers,
+along with reporting versions and which is running.  The program will
+not continue of IB and FB are both running.
+Note: FB ISQL doesn't output the DDL for certain foreign key contraints
+properly, so if the database creation fails, that would explain it.  This
+is a known bug, and hopefully will be fixed soon.
+
+2003-07-11: Ack, found that primary key indexes after being dropped were
+being added back in without the unique flag!  Also didn't handle
+descending primary keys (not even sure if that's possible).
+
+2003-07-10: Found that the method used to break up files when doing an
+external copy didn't work on tables that were 'lopsided', ie most of the 
+data at one end of the range.  Also modified the system to use the 
+most 'deviant' primary key field for breaking up the data instead of the 
+first integer key.
+
+2003-03-21: Bonedhead me, accidentally put a : at the end of a filename
+which caused the creation of a new database to fail miserably!
+
+2003-03-13: Fixed handling of tables that do not exist in the destination
+, was crashing the program.  Now logs an error and continues.
+Release 0.1.2.1 Win32 binary and source.
+
+2003-03-03: Fixed primary key dropping when 'drop indexes' is selected.  
+Added an 'auto-repair' option that skips the table options and confirmation steps.
+Released 0.1.1.1 Win32 binary and source.
+
+2003-01-15: Initial pre-release, this code compiles and works for many
+situations.  Currently there is no handling for multi-file database 
+creation, it'll be simple to add just haven't had a chance yet.
+
+
+2003-01-20: Added more TODO's, tested against a pretty messy 5gig database.
+..14hrs with indexes left in place.  Would have been much faster with 
+indexes dropped
+

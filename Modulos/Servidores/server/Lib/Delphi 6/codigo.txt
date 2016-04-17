@@ -1,0 +1,14 @@
+uses
+  SysUtils, Types, Classes, QGraphics, QControls, QForms, QDialogs,
+  QStdCtrls, IdThreadMgr, IdThreadMgrDefault, IdBaseComponent, IdComponent,
+  IdTCPServer, sdXmlDocuments , IBCustomDataSet,
+  IBQuery, DBXpress, SqlExpr, FMTBcd, DateUtils, QExtCtrls, QDBCtrls, DB, EasyCompression;
+type
+
+ems1: TECLMemoryStream;  
+
+        Astream := TStringStream.Create('');
+        ems1 := TECLMemoryStream.Create('password', zlibFastest);
+        XmlRes.SaveToStream(ems1);
+        ems1.CompressedDataStream.SaveToStream(Astream);
+        ems1.Free;

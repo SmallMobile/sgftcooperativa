@@ -1,0 +1,16 @@
+[DBSUMATORIA]
+DBname=192.168.200.141:/var/db/fbird/database.fdb
+DBagencia=1
+DBhost=mail.crediservir.com
+DBpuerto=2500
+[DBcorreo]
+DBcontador=contador@crediservir.com
+DBuserContador=contador
+DBpaswordContador=contador
+DBcreditos=cartera@crediservir.com
+DBuserCreditos=cartera
+DBpaswordCreditos=cartera
+DBAhorros=ahorros@crediservir.com
+DBuserAhorros=ahorros
+DBpaswordAhorros=ahorros
+DBfrom=sistemas@crediservir.com

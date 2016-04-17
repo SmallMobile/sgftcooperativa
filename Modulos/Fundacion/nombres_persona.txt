@@ -1,0 +1,11 @@
+SELECT 
+  "gen$persona".NOMBRE,
+  "gen$persona".PRIMER_APELLIDO,
+  "gen$persona".SEGUNDO_APELLIDO
+FROM
+  "cap$maestrotitular"
+  INNER JOIN "gen$persona" ON ("cap$maestrotitular".ID_PERSONA = "gen$persona".ID_PERSONA)
+WHERE
+  ("cap$maestrotitular".NUMERO_CUENTA) AND 
+  ("cap$maestrotitular".ID_TIPO_CAPTACION = 4) AND 
+  ("cap$maestrotitular".NUMERO_TITULAR = 2)

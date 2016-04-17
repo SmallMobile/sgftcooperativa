@@ -1,0 +1,167 @@
+object TprTxReport
+  Values = <
+    item
+      Name = 'totValor'
+      Formula = 'cds.VALOR'
+      ResetOn = rvtReport
+      CalcOn = cvtDataSetNext
+      DataSetName = 'cds'
+    end>
+  Variables = <>
+  Left = 228
+  Top = 56
+  SystemInfo = (
+    'OS: WIN32_NT 5.1.2600 Service Pack 2'
+    ''
+    'PageSize: 4096'
+    'ActiveProcessorMask: $1000'
+    'NumberOfProcessors: 1'
+    'ProcessorType: 586'
+    ''
+    'Compiler version: Delphi6'
+    'PReport version: 1.9.7')
+  object prTxPage1: TprTxPage
+    object prTxHPageHeaderBand1: TprTxHPageHeaderBand
+      Height = 2
+      PrintOnFirstPage = True
+      object prTxMemoObj1: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'REVALORIZACION A REVERSAR')
+          end>
+        dRec.Left = 24
+        dRec.Top = 0
+        dRec.Right = 49
+        dRec.Bottom = 1
+      end
+      object prTxMemoObj2: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<yyyy/MM/dd>StartDateTime]')
+          end>
+        dRec.Left = 60
+        dRec.Top = 0
+        dRec.Right = 75
+        dRec.Bottom = 1
+      end
+      object prTxHLineObj1: TprTxHLineObj
+        dRec.Versions = <
+          item
+            Visible = True
+          end>
+        dRec.Left = 0
+        dRec.Top = 1
+        dRec.Right = 80
+        dRec.Bottom = 2
+      end
+    end
+    object prTxHDetailHeaderBand1: TprTxHDetailHeaderBand
+      Height = 2
+      DetailBand = prTxHDetailBand1
+      object prTxMemoObj3: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'CUENTA')
+            hAlign = prhCenter
+          end>
+        dRec.Left = 1
+        dRec.Top = 0
+        dRec.Right = 17
+        dRec.Bottom = 1
+      end
+      object prTxHLineObj2: TprTxHLineObj
+        dRec.Versions = <
+          item
+            Visible = True
+          end>
+        dRec.Left = 0
+        dRec.Top = 1
+        dRec.Right = 80
+        dRec.Bottom = 2
+      end
+      object prTxMemoObj4: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'VALOR')
+            hAlign = prhCenter
+          end>
+        dRec.Left = 23
+        dRec.Top = 0
+        dRec.Right = 38
+        dRec.Bottom = 1
+      end
+    end
+    object prTxHDetailBand1: TprTxHDetailBand
+      Height = 1
+      DataSetName = 'cds'
+      Bands = (
+        'prTxHDetailHeaderBand1'
+        'prTxHDetailFooterBand1')
+      object prTxMemoObj5: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              
+                '[cds.ID_TIPO_CAPTACION][:<00>cds.ID_AGENCIA]-[:<0000000>cds.NUME' +
+                'RO_CUENTA]-[cds.DIGITO_CUENTA]')
+          end>
+        dRec.Left = 1
+        dRec.Top = 0
+        dRec.Right = 17
+        dRec.Bottom = 1
+      end
+      object prTxMemoObj6: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<q>cds.VALOR]')
+            hAlign = prhRight
+          end>
+        dRec.Left = 23
+        dRec.Top = 0
+        dRec.Right = 38
+        dRec.Bottom = 1
+      end
+    end
+    object prTxHDetailFooterBand1: TprTxHDetailFooterBand
+      Height = 2
+      DetailBand = prTxHDetailBand1
+      ColCount = 0
+      ColDirection = prcdTopBottomLeftRight
+      LinkToDetail = True
+      object prTxHLineObj3: TprTxHLineObj
+        dRec.Versions = <
+          item
+            Visible = True
+          end>
+        dRec.Left = 0
+        dRec.Top = 0
+        dRec.Right = 80
+        dRec.Bottom = 1
+      end
+      object prTxMemoObj7: TprTxMemoObj
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              '[:<q>totValor]')
+            hAlign = prhRight
+          end>
+        dRec.Left = 21
+        dRec.Top = 1
+        dRec.Right = 38
+        dRec.Bottom = 2
+      end
+    end
+  end
+end

@@ -1,0 +1,5 @@
+bin\Debug\servertarjetadebito.exe
+bin\Debug\servertarjetadebito.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\servertarjetadebito.exe
+obj\Debug\servertarjetadebito.pdb

@@ -1,0 +1,7 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\pruebasDES.MainForm.resources
+obj\Debug\pruebasDES.csproj.GenerateResource.Cache
+bin\Debug\pruebasDES.exe
+bin\Debug\pruebasDES.pdb
+obj\Debug\pruebasDES.exe
+obj\Debug\pruebasDES.pdb

@@ -1,0 +1,6 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\serverTD.exe
+bin\Debug\serverTD.pdb
+obj\Debug\serverTD.exe
+obj\Debug\serverTD.pdb
+bin\Debug\FirebirdSql.Data.FirebirdClient.dll

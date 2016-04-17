@@ -1,0 +1,28 @@
+object Form1: TForm1
+  Left = 201
+  Top = 150
+  Width = 543
+  Height = 375
+  Caption = 'Form1'
+  Color = clBackground
+  PixelsPerInch = 96
+  TextHeight = 13
+  TextWidth = 6
+  object SQLConnection1: TSQLConnection
+    Left = 88
+    Top = 48
+  end
+  object SQLQuery1: TSQLQuery
+    NoMetadata = True
+    MaxBlobSize = 0
+    Params = <>
+    Left = 208
+    Top = 152
+  end
+  object IdTCPClient1: TIdTCPClient
+    Host = '192.168.200.141'
+    Port = 3052
+    Left = 176
+    Top = 48
+  end
+end

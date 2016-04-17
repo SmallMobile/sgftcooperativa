@@ -1,0 +1,10 @@
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\serverTD\obj\Debug\ResolveAssemblyReference.cache
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\serverTD\obj\Debug\serverTD.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\serverTD\bin\Debug\serverTD.exe
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\serverTD\bin\Debug\serverTD.pdb
+\\Winserver\repositorio\Sistemas\Modulos\SharpDevelop\serverTD\obj\Debug\serverTD.pdb
+C:\Fuentes\crediservir\Modulos\SharpDevelop\serverTD\bin\Debug\serverTD.exe
+C:\Fuentes\crediservir\Modulos\SharpDevelop\serverTD\bin\Debug\serverTD.pdb
+C:\Fuentes\crediservir\Modulos\SharpDevelop\serverTD\obj\Debug\ResolveAssemblyReference.cache
+C:\Fuentes\crediservir\Modulos\SharpDevelop\serverTD\obj\Debug\serverTD.exe
+C:\Fuentes\crediservir\Modulos\SharpDevelop\serverTD\obj\Debug\serverTD.pdb

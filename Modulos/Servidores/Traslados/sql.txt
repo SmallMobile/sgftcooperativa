@@ -1,0 +1,9 @@
+SQL.Add('SQL.Add('select "cap$maestro".ID_AGENCIA, "cap$maestro".ID_TIPO_CAPTACION,');');
+SQL.Add('SQL.Add('"cap$maestro".NUMERO_CUENTA, "cap$maestro".DIGITO_CUENTA,');');
+SQL.Add('SQL.Add('"cap$tipocaptacion".DESCRIPCION from "cap$maestro"');');
+SQL.Add('SQL.Add('inner join "cap$tipocaptacion" ON ("cap$maestro".ID_TIPO_CAPTACION = "cap$tipocaptacion".ID_TIPO_CAPTACION)');');
+SQL.Add('SQL.Add('inner join "cap$tiposestado" ON ("cap$maestro".ID_ESTADO = "cap$tiposestado".ID_ESTADO)');');
+SQL.Add('SQL.Add('inner join "cap$maestrotitular" ON ("cap$maestro".ID_AGENCIA = "cap$maestrotitular".ID_AGENCIA and "cap$maestro".ID_TIPO_CAPTACION = "cap$maestrotitular".ID_TIPO_CAPTACION and "cap$maestro".NUMERO_CUENTA = "cap$maestrotitular".NUMERO_CUENTA and "cap$maestro".DIGITO_CUENTA = "cap$maestrotitular".DIGITO_CUENTA)');');
+SQL.Add('SQL.Add('where');');
+SQL.Add('SQL.Add('"cap$maestrotitular".ID_IDENTIFICACION = :ID_IDENTIFICACION and "cap$maestrotitular".ID_PERSONA = :ID_PERSONA');');
+SQL.Add('SQL.Add('Order by "cap$maestro".ID_TIPO_CAPTACION,"cap$maestro".FECHA_APERTURA ASC');');

@@ -1,0 +1,49 @@
+object frmMain: TfrmMain
+  Left = 339
+  Top = 226
+  Width = 340
+  Height = 92
+  Caption = 'Administrador de Replicaci'#243'n'
+  Color = clBackground
+  Menu = MainMenu1
+  PixelsPerInch = 96
+  TextHeight = 13
+  TextWidth = 6
+  object MainMenu1: TMainMenu
+    Left = 202
+    Top = 18
+    object General1: TMenuItem
+      Caption = 'General'
+      object CerrarManager1: TMenuItem
+        Caption = 'Administrar Manager'
+        OnClick = CerrarManager1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object CerrarManager2: TMenuItem
+        Caption = 'Cerrar Manager'
+        OnClick = CerrarManager2Click
+      end
+    end
+    object Administracin1: TMenuItem
+      Caption = 'Administraci'#243'n'
+      object BasesFuente1: TMenuItem
+        Caption = 'Bases Fuente'
+        OnClick = BasesFuente1Click
+      end
+      object BasesDestino1: TMenuItem
+        Caption = 'Bases Destino'
+        OnClick = BasesDestino1Click
+      end
+      object Definiciones1: TMenuItem
+        Caption = 'Definiciones'
+        OnClick = Definiciones1Click
+      end
+      object AplicarDefiniciones1: TMenuItem
+        Caption = 'Aplicar Definiciones'
+        OnClick = AplicarDefiniciones1Click
+      end
+    end
+  end
+end

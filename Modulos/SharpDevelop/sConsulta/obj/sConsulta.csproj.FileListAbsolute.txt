@@ -1,0 +1,5 @@
+H:\crediservir\Modulos\SharpDevelop\sConsulta\bin\Debug\sConsulta.exe
+H:\crediservir\Modulos\SharpDevelop\sConsulta\bin\Debug\sConsulta.pdb
+H:\crediservir\Modulos\SharpDevelop\sConsulta\obj\Debug\ResolveAssemblyReference.cache
+H:\crediservir\Modulos\SharpDevelop\sConsulta\obj\Debug\sConsulta.exe
+H:\crediservir\Modulos\SharpDevelop\sConsulta\obj\Debug\sConsulta.pdb

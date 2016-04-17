@@ -1,0 +1,58 @@
+[DSP upload]
+File Name=rascmp30.zip
+Replace File=
+File Status=Freeware
+Full Source Included=Y
+Version=3.0
+count=16
+1=TRAS is an installable Delphi non-visual component, supplied with
+2=full source and a demo program, for accessing Dial Up Networking
+3=or Remote Access Services functions.  This is an updated version of
+4=Daniel Polistchuck's and Mike Armstrong's earlier component.
+5=
+6=It adds support for phone books including DUN password update,
+7=using existing connections, NT compatible, improved events and
+8=progress messages, on demand DLL loading to allow application use
+9=without RAS installed, connection IP addressed, performance
+10=statistics for Win95/98/NT showing data transmitted and received.
+11=
+12=A new demo program illustrates nearly all the methods and properties.
+13=
+14=By using TRAS, it is not necessary to understand any of the RAS APIs
+15=or structures. Supports Windows 95, 98 and NT 4.0.
+16=
+Note=
+Additional info=
+Category=Winsock & Internet
+Platform=
+Group=Component/Code
+Delphi 1.0x=N
+Delphi 2.0x=Y
+Delphi 3.0x=Y
+Delphi 4.0x=Y
+C++ Builder 1.0x=N
+C++ Builder 3.0x=N
+C++ Builder 4.0x=N
+
+[DSP Support]
+DSP Support=N
+
+[Uploader_1]
+Author name=Magenta Systems Ltd
+Contact=Angus Robertson
+Author E-mail=delphi@magsys.co.uk
+Author URL=http://www.magsys.co.uk/
+count=2
+1=Magenta Systems Ltd has been undertaking package software
+2=development for almost 20 years.
+Author Section=Delphi "Services"
+UpdateDSP=Y
+
+[Versions available]
+Delphi 1.0x=
+Delphi 2.0x=
+Delphi 3.0x=
+Delphi 4.0x=
+C++ Builder 1.0x=
+C++ Builder 3.0x=
+C++ Builder 4.0x=

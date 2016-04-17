@@ -1,0 +1,79 @@
+object FrmServer_Analistas: TFrmServer_Analistas
+  Left = 32
+  Top = 151
+  Width = 357
+  Height = 126
+  VertScrollBar.Range = 113
+  HorzScrollBar.Range = 321
+  ActiveControl = Button1
+  Caption = 'Server Analistas y Ente Aprobador'
+  Color = clBackground
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  TextWidth = 6
+  object Button1: TButton
+    Left = 48
+    Top = 56
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 136
+    Top = 24
+    Width = 185
+    Height = 89
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 1
+  end
+  object IdTCPServer1: TIdTCPServer
+    Bindings = <>
+    DefaultPort = 4002
+    OnExecute = IdTCPServer1Execute
+    ThreadMgr = IdThreadMgrDefault1
+    Left = 56
+    Top = 32
+  end
+  object IdThreadMgrDefault1: TIdThreadMgrDefault
+    Left = 80
+    Top = 32
+  end
+  object SQLQuery1: TSQLQuery
+    NoMetadata = True
+    MaxBlobSize = 0
+    Params = <>
+    SQL.Strings = (
+      'select * from ')
+    Left = 88
+    Top = 80
+  end
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'IBLocal'
+    DriverName = 'Interbase'
+    GetDriverFunc = 'getSQLDriverINTERBASE'
+    LibraryName = 'dbexpint.dll'
+    LoginPrompt = False
+    Params.Strings = (
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'Database=192.168.200.2:/var/db/fbird/database.fdb'
+      'DriverName=Interbase'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'Password=masterkey'
+      'RoleName='
+      'ServerCharSet=ISO8859_1'
+      'SQLDialect=3'
+      'Interbase TransIsolation=ReadCommited'
+      'User_Name=SYSDBA'
+      'WaitOnLocks=True')
+    VendorLib = 'GDS32.DLL'
+    AfterConnect = FormCreate
+    Left = 56
+    Top = 88
+  end
+end
