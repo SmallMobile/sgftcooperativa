@@ -73,3 +73,4 @@ __history/
 *.xls
 *.csv
 *.r*
+*.sql
