@@ -1,6 +1,6 @@
 object frmMain: TfrmMain
-  Left = 284
-  Top = 258
+  Left = 394
+  Top = 174
   Width = 565
   Height = 366
   Caption = 'Modulo Reportes Dian -'

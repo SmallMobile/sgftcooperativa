@@ -1,6 +1,6 @@
 object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
-  Left = 434
-  Top = 172
+  Left = 356
+  Top = 173
   Width = 811
   Height = 342
   Caption = 'Movimiento Contable Naturaleza Cr'#233'dito Formato 1019 v9'

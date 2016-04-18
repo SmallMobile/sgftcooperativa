@@ -234,18 +234,19 @@ begin
 
          vCodMunicipio := FieldByName('COD_MUNICIPIO').AsString;
          if (vCodMunicipio = '') Then vCodMunicipio := '00000';
-            try
-              if StrLen(PChar(vCodMunicipio)) = 4 then
-                 vCodMunicipio := '0' +  vCodMunicipio;
-              if (vCodMunicipio = '') then vCodMunicipio := '00000';
-              Dpto := FormatCurr('00',StrToInt(LeftStr(vCodMunicipio,2)));
-              Mn := FormatCurr('000',StrToInt(RightStr(vCodMunicipio,3)));
-            except
-            begin
-              Mn := '00';
-              Dpto := '000';
-            end;
-            end;
+         
+         try
+            if StrLen(PChar(vCodMunicipio)) = 4 then
+             vCodMunicipio := '0' +  vCodMunicipio;
+            if (vCodMunicipio = '') then vCodMunicipio := '00000';
+             Dpto := FormatCurr('00',StrToInt(LeftStr(vCodMunicipio,2)));
+             Mn := FormatCurr('000',StrToInt(RightStr(vCodMunicipio,3)));
+           except
+              begin
+                Mn := '00';
+                Dpto := '000';
+              end;
+         end;
 
 
          Persona.Departamento := Dpto;
@@ -350,7 +351,7 @@ begin
 
                 IBQuery2.Next;
               end; // fin del while
-             end; // fin del i
+             end; // fin del if
 // Saldo en Depositos e Intereses Causados
              Credito := Credito - _cSaldoCheque;
              Credito1 := Credito1 - _cSaldoCheque;
@@ -412,10 +413,10 @@ begin
 
            if (Credito >= EdMonto.Value) or (Saldo >= JvSaldo.Value) then
            begin
+                CDSInfoTIPODOCUMENTO.Value := 
 
            end; // fin del while Cds1
 
-          end; // fin de la validación de saldo
          Next; //next del query personas
          end; // fin del While de ibquery1
          Transaction.Commit;
@@ -429,12 +430,15 @@ begin
 end;
 
 procedure TfrmMovimientoCredito_F1019v9.btnAExcelClick(Sender: TObject);
+var   ExcelFile:TDataSetToExcel;
 begin
-        if sd1.Execute then
-           StringGridToXLS(Sg1,sd1.FileName);
-        if sd1.Execute then
-           StringGridToXLS(Sg2,sd1.FileName);
-
+        if Save.Execute then
+        begin
+          CDSinfo.First;
+          ExcelFile := TDataSetToExcel.Create(CDSInfo,Save.FileName);
+          ExcelFile.WriteFile;
+          ExcelFile.Free;
+        end;
 end;
 
 procedure TfrmMovimientoCredito_F1019v9.FormCreate(Sender: TObject);

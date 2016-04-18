@@ -1,6 +1,6 @@
 object frmControlCobroCartera: TfrmControlCobroCartera
-  Left = 320
-  Top = 134
+  Left = 307
+  Top = 36
   Width = 792
   Height = 566
   Caption = 'Control de Cobro'
