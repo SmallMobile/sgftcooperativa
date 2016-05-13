@@ -158,6 +158,8 @@ type
     MarcarIncapacitado1: TMenuItem;
     ReportedeTarjetassinMovimiento1: TMenuItem;
     ReporteTarjetassinMovimiento1: TMenuItem;
+    N27: TMenuItem;
+    InformedePersonas1: TMenuItem;
     procedure Configurar_ImpresoraExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

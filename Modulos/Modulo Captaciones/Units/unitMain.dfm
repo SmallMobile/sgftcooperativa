@@ -210,6 +210,12 @@ object frmMain: TfrmMain
         Caption = '&Activaci'#243'n de Imagenes'
         OnClick = ActivacindeImagenes1Click
       end
+      object N27: TMenuItem
+        Caption = '-'
+      end
+      object InformedePersonas1: TMenuItem
+        Caption = 'Informe de Personas'
+      end
     end
     object Captaciones1: TMenuItem
       Caption = 'Captaciones'

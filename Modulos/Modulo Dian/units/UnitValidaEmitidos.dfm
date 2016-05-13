@@ -2,7 +2,7 @@ object FrmValidaEmitidos: TFrmValidaEmitidos
   Left = 469
   Top = 182
   Width = 463
-  Height = 321
+  Height = 306
   Caption = 'Calcular CDATs'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
