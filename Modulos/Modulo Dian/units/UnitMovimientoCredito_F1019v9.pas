@@ -6,7 +6,7 @@ uses
   DateUtils, StrUtils, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, IBSQL, DB, DBClient, IBCustomDataSet, IBQuery, Grids, StdCtrls,
   Buttons, ExtCtrls, JvTypedEdit, JvEdit, JvSpecialProgress, XLSfile,
-  DBGrids, IBDatabase;
+  DBGrids, IBDatabase, DataSetToExcel;
 
 type
   TfrmMovimientoCredito_F1019v9 = class(TForm)
@@ -413,7 +413,7 @@ begin
 
            if (Credito >= EdMonto.Value) or (Saldo >= JvSaldo.Value) then
            begin
-                CDSInfoTIPODOCUMENTO.Value := 
+                 
 
            end; // fin del while Cds1
 
@@ -432,10 +432,10 @@ end;
 procedure TfrmMovimientoCredito_F1019v9.btnAExcelClick(Sender: TObject);
 var   ExcelFile:TDataSetToExcel;
 begin
-        if Save.Execute then
+        if SD1.Execute then
         begin
           CDSinfo.First;
-          ExcelFile := TDataSetToExcel.Create(CDSInfo,Save.FileName);
+          ExcelFile := TDataSetToExcel.Create(CDSInfo,SD1.FileName);
           ExcelFile.WriteFile;
           ExcelFile.Free;
         end;
