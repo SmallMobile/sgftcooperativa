@@ -1,7 +1,7 @@
 object frmCdatPeriodo: TfrmCdatPeriodo
-  Left = 498
-  Top = 186
-  Width = 383
+  Left = 399
+  Top = 187
+  Width = 579
   Height = 340
   Caption = 'CDATs'
   Color = clBtnFace
@@ -17,7 +17,7 @@ object frmCdatPeriodo: TfrmCdatPeriodo
   object Bar2: TJvSpecialProgress
     Left = 2
     Top = 80
-    Width = 271
+    Width = 455
     Height = 15
     BorderStyle = bsSingle
     Color = clBtnHighlight
@@ -33,11 +33,12 @@ object frmCdatPeriodo: TfrmCdatPeriodo
     Step = 1
     TextCentered = True
     TextOption = toPercent
+    Visible = False
   end
   object Bar1: TJvSpecialProgress
     Left = 2
     Top = 64
-    Width = 271
+    Width = 455
     Height = 15
     BorderStyle = bsSingle
     Color = clBtnHighlight
@@ -57,7 +58,7 @@ object frmCdatPeriodo: TfrmCdatPeriodo
   object Bar3: TJvSpecialProgress
     Left = 2
     Top = 96
-    Width = 271
+    Width = 455
     Height = 15
     BorderStyle = bsSingle
     Color = clBtnHighlight
@@ -77,20 +78,20 @@ object frmCdatPeriodo: TfrmCdatPeriodo
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 273
+    Width = 457
     Height = 63
     Caption = 'Periodo y Monto a Evaluar'
     TabOrder = 0
     object Label1: TLabel
       Left = 12
       Top = 16
-      Width = 36
+      Width = 19
       Height = 13
       Alignment = taCenter
-      Caption = 'Periodo'
+      Caption = 'A'#241'o'
     end
     object Label2: TLabel
-      Left = 113
+      Left = 313
       Top = 18
       Width = 137
       Height = 13
@@ -98,8 +99,15 @@ object frmCdatPeriodo: TfrmCdatPeriodo
       AutoSize = False
       Caption = 'Monto'
     end
+    object Label3: TLabel
+      Left = 96
+      Top = 16
+      Width = 20
+      Height = 13
+      Caption = 'Mes'
+    end
     object EdMonto: TJvCurrencyEdit
-      Left = 112
+      Left = 312
       Top = 33
       Width = 137
       Height = 21
@@ -125,9 +133,31 @@ object frmCdatPeriodo: TfrmCdatPeriodo
       HasMinValue = True
       WindowsillYear = 71
     end
+    object cmbMes: TComboBox
+      Left = 96
+      Top = 32
+      Width = 145
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 2
+      Text = 'Seleccion el Mes'
+      Items.Strings = (
+        'Enero'
+        'Febrero'
+        'Marzo'
+        'Abril'
+        'Mayo'
+        'Junio'
+        'Julio'
+        'Agosto'
+        'Septiembre'
+        'Octubre'
+        'Noviembre'
+        'Diciembre')
+    end
   end
   object Panel1: TPanel
-    Left = 276
+    Left = 460
     Top = 0
     Width = 99
     Height = 111
@@ -244,7 +274,7 @@ object frmCdatPeriodo: TfrmCdatPeriodo
       Height = 25
       Caption = 'A Excel'
       TabOrder = 2
-      OnClick = btnAExcelClick
+      Visible = False
       Glyph.Data = {
         36050000424D3605000000000000360400002800000010000000100000000100
         08000000000000010000320B0000320B00000001000000010000EFA54A00C684
@@ -290,16 +320,18 @@ object frmCdatPeriodo: TfrmCdatPeriodo
         2A2A2A2A23070A2D2D2D2D2D191A1A1A1A19191A16062D2D2D2D}
     end
   end
-  object Sg1: TStringGrid
-    Left = 2
-    Top = 111
-    Width = 371
+  object DBGridDatos: TDBGrid
+    Left = 0
+    Top = 112
+    Width = 569
     Height = 193
-    ColCount = 22
-    DefaultRowHeight = 19
-    RowCount = 1
-    FixedRows = 0
+    DataSource = DSdatos
     TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
   object IBQuery1: TIBQuery
     Database = dmGeneral.IBDatabase1
@@ -359,6 +391,14 @@ object frmCdatPeriodo: TfrmCdatPeriodo
       item
         Name = 'ididentificacion'
         DataType = ftInteger
+      end
+      item
+        Name = 'ttitulo'
+        DataType = ftInteger
+      end
+      item
+        Name = 'tmovimiento'
+        DataType = ftInteger
       end>
     IndexDefs = <>
     Params = <>
@@ -366,7 +406,7 @@ object frmCdatPeriodo: TfrmCdatPeriodo
     Left = 126
     Top = 52
     Data = {
-      720100009619E0BD01000000180000000B000000000003000000720106437565
+      960100009619E0BD01000000180000000D000000000003000000960106437565
       6E74610100490000000100055749445448020002000B0007496E696369616C08
       0004000000010007535542545950450200490006004D6F6E65790009496E7665
       7273696F6E080004000000010007535542545950450200490006004D6F6E6579
@@ -377,7 +417,8 @@ object frmCdatPeriodo: TfrmCdatPeriodo
       48020002000C0006666563686176010049000000010005574944544802000200
       0C000665737461646F0100490000000100055749445448020002003200096964
       706572736F6E610100490000000100055749445448020002000F001069646964
-      656E74696669636163696F6E04000100000000000000}
+      656E74696669636163696F6E04000100000000000774746974756C6F04000100
+      000000000B746D6F76696D69656E746F04000100000000000000}
     object Cds1Cuenta: TStringField
       FieldName = 'Cuenta'
       Size = 11
@@ -415,6 +456,12 @@ object frmCdatPeriodo: TfrmCdatPeriodo
     end
     object Cds1ididentificacion: TIntegerField
       FieldName = 'ididentificacion'
+    end
+    object Cds1ttitulo: TIntegerField
+      FieldName = 'ttitulo'
+    end
+    object Cds1tmovimiento: TIntegerField
+      FieldName = 'tmovimiento'
     end
   end
   object sd1: TSaveDialog
@@ -461,6 +508,14 @@ object frmCdatPeriodo: TfrmCdatPeriodo
         DataType = ftInteger
       end
       item
+        Name = 'TTITULO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'TMOVIMIENTO'
+        DataType = ftInteger
+      end
+      item
         Name = 'INICIAL'
         DataType = ftCurrency
       end
@@ -470,6 +525,10 @@ object frmCdatPeriodo: TfrmCdatPeriodo
       end
       item
         Name = 'INTERES'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'CAUSADO'
         DataType = ftCurrency
       end
       item
@@ -495,48 +554,78 @@ object frmCdatPeriodo: TfrmCdatPeriodo
     Left = 288
     Top = 120
     Data = {
-      350100009619E0BD01000000180000000A0000000000030000003501064E554D
+      7D0100009619E0BD01000000180000000D0000000000030000007D01064E554D
       45524F0100490000000100055749445448020002001E00094944504552534F4E
       410100490000000100055749445448020002000F001049444944454E54494649
-      434143494F4E040001000000000007494E494349414C08000400000001000753
-      5542545950450200490006004D6F6E65790009494E56455253494F4E08000400
-      0000010007535542545950450200490006004D6F6E65790007494E5445524553
-      080004000000010007535542545950450200490006004D6F6E6579000553414C
-      444F080004000000010007535542545950450200490006004D6F6E6579000646
-      4543484141040006000000000006464543484156040006000000000006455354
-      41444F0100490000000100055749445448020002000F000000}
+      434143494F4E04000100000000000754544954554C4F04000100000000000B54
+      4D4F56494D49454E544F040001000000000007494E494349414C080004000000
+      010007535542545950450200490006004D6F6E65790009494E56455253494F4E
+      080004000000010007535542545950450200490006004D6F6E65790007494E54
+      45524553080004000000010007535542545950450200490006004D6F6E657900
+      074341555341444F080004000000010007535542545950450200490006004D6F
+      6E6579000553414C444F08000400000001000753554254595045020049000600
+      4D6F6E6579000646454348414104000600000000000646454348415604000600
+      000000000645535441444F0100490000000100055749445448020002000F0000
+      00}
     object CDDATOSNUMERO: TStringField
+      DisplayWidth = 12
       FieldName = 'NUMERO'
       Size = 30
     end
     object CDDATOSIDPERSONA: TStringField
+      DisplayWidth = 18
       FieldName = 'IDPERSONA'
       Size = 15
     end
     object CDDATOSIDIDENTIFICACION: TIntegerField
+      DisplayWidth = 19
       FieldName = 'IDIDENTIFICACION'
     end
+    object CDDATOSTTITULO: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'TTITULO'
+    end
+    object CDDATOSTMOVIMIENTO: TIntegerField
+      DisplayWidth = 15
+      FieldName = 'TMOVIMIENTO'
+    end
     object CDDATOSINICIAL: TCurrencyField
+      DisplayWidth = 12
       FieldName = 'INICIAL'
     end
     object CDDATOSINVERSION: TCurrencyField
+      DisplayWidth = 12
       FieldName = 'INVERSION'
     end
     object CDDATOSINTERES: TCurrencyField
+      DisplayWidth = 12
       FieldName = 'INTERES'
     end
+    object CDDATOSCAUSADO: TCurrencyField
+      DisplayWidth = 12
+      FieldName = 'CAUSADO'
+    end
     object CDDATOSSALDO: TCurrencyField
+      DisplayWidth = 12
       FieldName = 'SALDO'
     end
     object CDDATOSFECHAA: TDateField
+      DisplayWidth = 12
       FieldName = 'FECHAA'
     end
     object CDDATOSFECHAV: TDateField
+      DisplayWidth = 12
       FieldName = 'FECHAV'
     end
     object CDDATOSESTADO: TStringField
+      DisplayWidth = 18
       FieldName = 'ESTADO'
       Size = 15
     end
+  end
+  object DSdatos: TDataSource
+    DataSet = CDDATOS
+    Left = 256
+    Top = 128
   end
 end

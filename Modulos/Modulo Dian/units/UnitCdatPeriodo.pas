@@ -5,7 +5,8 @@ interface
 uses
   DateUtils, StrUtils, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, IBSQL, DB, DBClient, IBCustomDataSet, IBQuery, Grids, StdCtrls,
-  Buttons, ExtCtrls, JvTypedEdit, JvEdit, JvSpecialProgress, XLSfile,JclDateTime;
+  Buttons, ExtCtrls, JvTypedEdit, JvEdit, JvSpecialProgress, XLSfile,JclDateTime,
+  DBGrids;
 
 type
   TfrmCdatPeriodo = class(TForm)
@@ -20,7 +21,6 @@ type
     btnProcesar: TBitBtn;
     btnCerrar: TBitBtn;
     btnAExcel: TBitBtn;
-    Sg1: TStringGrid;
     IBQuery1: TIBQuery;
     Cds1: TClientDataSet;
     sd1: TSaveDialog;
@@ -50,9 +50,17 @@ type
     CDDATOSFECHAV: TDateField;
     CDDATOSESTADO: TStringField;
     CDDATOSNUMERO: TStringField;
+    Label3: TLabel;
+    cmbMes: TComboBox;
+    CDDATOSCAUSADO: TCurrencyField;
+    DBGridDatos: TDBGrid;
+    DSdatos: TDataSource;
+    CDDATOSTTITULO: TIntegerField;
+    CDDATOSTMOVIMIENTO: TIntegerField;
+    Cds1ttitulo: TIntegerField;
+    Cds1tmovimiento: TIntegerField;
     procedure btnProcesarClick(Sender: TObject);
     procedure btnCerrarClick(Sender: TObject);
-    procedure btnAExcelClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -77,13 +85,15 @@ var
   Nm:string;
   Dr:string;
   Mn:string;
-  Total:Integer;
+  FechaCorte, FechaInicial :TDateTime;
+  Total, Mes:Integer;
   Fila:Integer;
   Saldo,Credito,Interes, Causados:Currency;
   Saldo1,Credito1,Interes1, Causados1:Currency;
   Cuenta:string;
   valor_inicial, CausadoAnt, Inversion1 :Currency;
   Dpto :string;
+  vFechaVencimiento: TDate;
   vFechaSaldado :string;
   vContador :Integer;
   vEstado :string;
@@ -93,46 +103,34 @@ var
   _dFechaVencimiento :TDate;
 begin
 //ShowMessage('Inicial:' + DateToStr(_dFechaInicial) + ' Final:' + DateToStr(_dFechaCorteAhorros));
-        Fila := -1;
-        Application.ProcessMessages;
-        Sg1.RowCount := 1;
-        Sg1.ColWidths[0]  := 30;
-        Sg1.ColWidths[1]  := 10;
-        Sg1.ColWidths[2]  := 20;
-        Sg1.ColWidths[3]  := 20;
-        Sg1.ColWidths[4]  := 140;
-        Sg1.ColWidths[5]  := 10;
-        Sg1.ColWidths[6]  := 10;
-        Sg1.ColWidths[7]  := 100;
-        Sg1.ColWidths[8]  := 100;
-        Sg1.colwidths[9]  := 100;
-        Sg1.ColWidths[10] := 200; // Saldo Inicial
-        Sg1.ColWidths[11] := 200; // Intereses
-        Sg1.ColWidths[12] := 200; // Inversiones
-        Sg1.ColWidths[13] := 200; // Saldo Final
-        Sg1.ColWidths[14] := 140;
-        Sg1.ColWidths[15] := 400;
-        Sg1.ColWidths[16] := 50;
-        Sg1.ColWidths[17] := 80;// fecha apertura
-        Sg1.ColWidths[18] := 80; //fecha de saldado
-        Sg1.ColWidths[19] := 80; // Estado
-        Sg1.ColWidths[20] := 80; // contador de numero de cdat
-        Sg1.ColWidths[21] := 300; // municipio
+        btnProcesar.Enabled := False;
+
+        Mes := cmbMes.ItemIndex + 1;
+        TryEncodeDate(EdPeriodo.Value, Mes, 1, FechaInicial);
+
+        TryEncodeDate(EdPeriodo.Value, Mes, DaysInAMonth(EdPeriodo.Value, Mes), FechaCorte);
+
+
 
         with IBQuery1 do
         begin
          if Transaction.InTransaction then
             Transaction.Commit;
          Transaction.StartTransaction;
+         IBSQL1.SQL.Clear;
+         IBSQL2.SQL.Add('DELETE FROM "dian$cdat" WHERE PERIODO = :PERIODO');
+         IBSQL2.ParamByName('PERIODO').AsInteger := Mes;
+         IBSQL2.ExecQuery;
          Close;
          SQL.Clear;
-         SQL.Add('select');
+         SQL.Add('select distinct');
          SQL.Add('count(*) as TOTAL');
          SQL.Add('from');
-         SQL.Add('"gen$persona"');
-         SQL.Add('left join "gen$direccion" on ("gen$persona".ID_IDENTIFICACION = "gen$direccion".ID_IDENTIFICACION and');
-         SQL.Add('"gen$persona".ID_PERSONA = "gen$direccion".ID_PERSONA and "gen$direccion".ID_DIRECCION = 1 ');
-         SQL.Add('and "gen$direccion".ID_DIRECCION = 1)');
+         SQL.Add('"cap$maestrotitular" mt');
+         SQL.Add('inner join "cap$maestro" m ON m.ID_AGENCIA = mt.ID_AGENCIA and m.ID_TIPO_CAPTACION = mt.ID_TIPO_CAPTACION and m.NUMERO_CUENTA = mt.NUMERO_CUENTA and m.DIGITO_CUENTA = mt.DIGITO_CUENTA');
+         SQL.Add('where mt.ID_TIPO_CAPTACION IN (5,6)');
+         SQL.Add('and m.FECHA_APERTURA <= :FECHA_CORTE');
+         ParamByName('FECHA_CORTE').AsDate := FechaCorte;
          try
            Open;
            Total := FieldByName('TOTAL').AsInteger;
@@ -145,19 +143,15 @@ begin
          Bar3.Maximum := Total;
 
          SQL.Clear;
-         SQL.Add('select');
-         SQL.Add('"gen$persona".ID_IDENTIFICACION,');
-         SQL.Add('"gen$persona".ID_PERSONA,');
-         SQL.Add('"gen$persona".PRIMER_APELLIDO, "gen$persona".SEGUNDO_APELLIDO,"gen$persona".NOMBRE,');
-         SQL.Add('"gen$direccion".DIRECCION || '' '' || "gen$direccion".BARRIO AS DIRECCION,');
-         SQL.Add('"gen$direccion".MUNICIPIO,"gen$direccion".COD_MUNICIPIO');
+         SQL.Add('select distinct');
+         SQL.Add('mt.ID_IDENTIFICACION,');
+         SQL.Add('mt.ID_PERSONA');
          SQL.Add('from');
-         SQL.Add('"gen$persona"');
-         SQL.Add('left join "gen$direccion" on ("gen$persona".ID_IDENTIFICACION = "gen$direccion".ID_IDENTIFICACION and');
-         SQL.Add('"gen$persona".ID_PERSONA = "gen$direccion".ID_PERSONA');
-         SQL.Add('and "gen$direccion".ID_DIRECCION = 1)');
-         //SQL.Add('where "gen$persona".ID_PERSONA = :ID');
-         //ParamByName('ID').AsString := '1975076';
+         SQL.Add('"cap$maestrotitular" mt');
+         SQL.Add('inner join "cap$maestro" m ON m.ID_AGENCIA = mt.ID_AGENCIA and m.ID_TIPO_CAPTACION = mt.ID_TIPO_CAPTACION and m.NUMERO_CUENTA = mt.NUMERO_CUENTA and m.DIGITO_CUENTA = mt.DIGITO_CUENTA');
+         SQL.Add('where mt.ID_TIPO_CAPTACION IN (5,6)');
+         SQL.Add('and m.FECHA_APERTURA <= :FECHA_CORTE');
+         ParamByName('FECHA_CORTE').AsDate := FechaCorte;
          try
            Open;
          except
@@ -168,8 +162,8 @@ begin
          while not Eof do begin
            Bar3.Position := RecNo;
            Application.ProcessMessages;
-           vCodMunicipio := FieldByName('COD_MUNICIPIO').AsString;
-           if (vCodMunicipio = '') Then vCodMunicipio := '00000';
+           //vCodMunicipio := FieldByName('COD_MUNICIPIO').AsString;
+           //if (vCodMunicipio = '') Then vCodMunicipio := '00000';
            IBSQL1.Close;
            IBSQL1.SQL.Clear; //seleccionar numero de cuenta de los cdats
            IBSQL1.SQL.Add('select');
@@ -178,7 +172,7 @@ begin
            IBSQL1.SQL.Add('"cap$maestro".NUMERO_CUENTA,');
            IBSQL1.SQL.Add('"cap$maestro".ID_ESTADO,');
            IBSQL1.SQL.Add('"cap$maestro".DIGITO_CUENTA,');
-           IBSQL1.SQL.Add('"cap$maestro".VALOR_INICIAL,FECHA_VENCIMIENTO_PRORROGA,');
+           IBSQL1.SQL.Add('"cap$maestro".VALOR_INICIAL,FECHA_VENCIMIENTO, FECHA_PRORROGA, FECHA_VENCIMIENTO_PRORROGA,');
            IBSQL1.SQL.Add('"cap$maestro".FECHA_APERTURA,"cap$maestro".FECHA_ULTIMO_PAGO,"cap$maestro".FECHA_SALDADA');
            IBSQL1.SQL.Add('from');
            IBSQL1.SQL.Add('"cap$maestrotitular"');
@@ -191,9 +185,11 @@ begin
            IBSQL1.SQL.Add('"cap$maestrotitular".ID_IDENTIFICACION = :ID_IDENTIFICACION and');
            IBSQL1.SQL.Add('"cap$maestrotitular".ID_PERSONA = :ID_PERSONA and');
            IBSQL1.SQL.Add('"cap$maestrotitular".ID_TIPO_CAPTACION IN (5,6) and');
-           IBSQL1.SQL.Add('"cap$maestro".ID_ESTADO NOT IN (5,7,11,15)');
+           IBSQL1.SQL.Add('"cap$maestro".ID_ESTADO NOT IN (7,11) and');
+           IBSQL1.SQL.Add('"cap$maestro".FECHA_APERTURA <= :FECHA_CORTE');
            IBSQL1.ParamByName('ID_IDENTIFICACION').AsInteger := FieldByName('ID_IDENTIFICACION').AsInteger;
            IBSQL1.ParamByName('ID_PERSONA').AsString := FieldByName('ID_PERSONA').AsString;
+           IBSQL1.ParamByName('FECHA_CORTE').AsDate := FechaCorte;
            try
             IBSQL1.Open;
             IBSQL1.Last;
@@ -220,46 +216,71 @@ begin
              Inversion1 := 0;
              CausadoAnt := 0;
              Saldo   := 0;
-             if (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime = 0) and (IBSQL1.FieldByName('ID_ESTADO').AsInteger = 2) then
+             if (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime = 0) then
              begin
-                vFechaSaldado := DateToStr(IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime);
-                _dFechaVencimiento := IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime;
-             end
-             else if IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime = 0 then
-             begin
-                _dFechaVencimiento := StrToDate('1899/12/31');
+               if ( IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime = 0) then
+               begin
                 vFechaSaldado := '';
+                _dFechaVencimiento := IBSQL1.FieldByName('FECHA_VENCIMIENTO').AsDateTime;
+                vFechaVencimiento:= IBSQL1.FieldByName('FECHA_VENCIMIENTO').AsDateTime;
+               end
+               else
+               begin
+                vFechaSaldado := '';
+                _dFechaVencimiento := IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime;
+                vFechaVencimiento := IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime;
+               end;
              end
              else
              begin
-                vFechaSaldado := datetostr(IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime);
                 _dFechaVencimiento := IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime;
-             end;
-             Bar1.Position := IBSQL1.RecNo;
-             Application.ProcessMessages;
-             case IBSQL1.FieldByName('ID_ESTADO').AsInteger of
-               1: vEstado := 'ACTIVO';
-               2: vEstado := 'SALDADO';
-               3: vEstado := 'INACTIVO';
-               4: vEstado := 'EMBARGADO';
-               6: vEstado := 'PRORROGADO';
-               9: vEstado := 'CANCELADO';
-               11:vEstado := 'ANULADO';
-               12:vEstado := 'FALLECIDO';
-               15:vEstado := 'TRASLADADA';
+                vFechaVencimiento := IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime;
+                vFechaSaldado := DateToStr(IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime);
              end;
 
+
+
+             Bar1.Position := IBSQL1.RecNo;
+             Application.ProcessMessages;
+             if (_dFechaVencimiento = 0) or (_dFechaVencimiento > FechaCorte) then
+             begin
+                 if ( IBSQL1.FieldByName('FECHA_VENCIMIENTO').AsDateTime < FechaCorte) then
+                 begin
+                     vEstado := 'PRORROGADO';
+                 end
+                 else
+                 begin
+                     vEstado := 'ACTIVO';
+                 end;
+             end
+             else
+             if (_dFechaVencimiento <= FechaCorte) then
+             begin
+                 vEstado := 'SALDADO';
+             end
+             else
+             begin
+              case IBSQL1.FieldByName('ID_ESTADO').AsInteger of
+                1:  vEstado := 'ACTIVO';
+                2:  vEstado := 'SALDADO';
+                3:  vEstado := 'INACTIVO';
+                4:  vEstado := 'EMBARGADO';
+                6:  vEstado := 'PRORROGADO';
+                9:  vEstado := 'CANCELADO';
+                11: vEstado := 'ANULADO';
+                12: vEstado := 'FALLECIDO';
+                15: vEstado := 'TRASLADADA';
+              end;
+             end;
+             _dFechaApertura := IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime;             
              if IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger = 6 then
              begin
-//               if IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger = 23411 then
-//                  ShowMessage('Pausa');
                // verificar saldo inicial y saldo final a 31 dic
                Saldo1 := IBSQL1.FieldByName('VALOR_INICIAL').AsCurrency;
                if IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime >= _dFechaInicial then
                    valor_inicial := valor_inicial + IBSQL1.FieldByName('VALOR_INICIAL').AsCurrency;
-               if IBSQL1.FieldByName('ID_ESTADO').AsInteger in [1,6] then
+               if (vEstado = 'ACTIVO') or (vEstado = 'PRORROGADO') then
                    Saldo := IBSQL1.FieldByName('VALOR_INICIAL').AsCurrency;
-               _dFechaApertura := IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime;
 
                IBQuery2.Close;
                IBQuery2.SQL.Clear;
@@ -275,8 +296,8 @@ begin
                IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger;
                IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
                IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
-               IBQuery2.ParamByName('FECHA1').AsDate := _dFechaInicial;
-               IBQuery2.ParamByName('FECHA2').AsDate := _dFechaCorteAhorros;
+               IBQuery2.ParamByName('FECHA1').AsDate := FechaInicial;
+               IBQuery2.ParamByName('FECHA2').AsDate := FechaCorte;
                try
                  IBQuery2.Open;
                  if IBQuery2.RecordCount > 0 then
@@ -309,7 +330,7 @@ begin
                IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
                IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
                IBQuery2.ParamByName('ANO').AsInteger := EdPeriodo.Value-1;
-               IBQuery2.ParamByName('MES').AsInteger := MonthOfDate(_dFechaCorteAhorros);
+               IBQuery2.ParamByName('MES').AsInteger := 12;
                try
                 IBQuery2.Open;
                 if IBQuery2.RecordCount > 0 then
@@ -323,7 +344,7 @@ begin
                // Intereses Causados Año Reporte
                IBQuery2.Close;
                IBQuery2.SQL.Clear;
-               IBQuery2.SQL.Add('select CAUSACION_TOTAL from "cap$causacioncdat"');
+               IBQuery2.SQL.Add('select CAUSACION_MENSUAL from "cap$causacioncdat"');
                IBQuery2.SQL.Add('where');
                IBQuery2.SQL.Add('ID_AGENCIA = :ID_AGENCIA and');
                IBQuery2.SQL.Add('ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and');
@@ -335,12 +356,12 @@ begin
                IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
                IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
                IBQuery2.ParamByName('ANO').AsInteger := EdPeriodo.Value;
-               IBQuery2.ParamByName('MES').AsInteger := 12;
+               IBQuery2.ParamByName('MES').AsInteger := MonthOf(FechaCorte);
                try
                 IBQuery2.Open;
                 if IBQuery2.RecordCount > 0 then
                 begin
-                  Causados1 := IBQuery2.FieldByName('CAUSACION_TOTAL').AsCurrency;
+                  Causados1 := IBQuery2.FieldByName('CAUSACION_MENSUAL').AsCurrency;
                 end;
                except
                  IBQuery2.Transaction.Rollback;
@@ -363,7 +384,7 @@ begin
                                                         Format('%.7d',[IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger])+
                                                         IBSQL1.FieldByName('DIGITO_CUENTA').AsString;
 
-                   if IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime < EncodeDate(EdPeriodo.Value,01,01) then
+                   if IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime < FechaInicial then
                    begin
                       Saldo1 := Saldo1;//+CausadoAnt;
                       Inversion1 := 0;
@@ -375,15 +396,36 @@ begin
                    end;
                    Cds1.FieldByName('Inicial').AsCurrency := Saldo1;
                    Cds1.FieldByName('Inversion').AsCurrency := Inversion1;
-                   Cds1.FieldByName('Interes').AsCurrency := Interes1+Causados1;
-                   if IBSQL1.FieldByName('ID_ESTADO').AsInteger in [2,7,9,11] then
-                                 Cds1.FieldByName('Saldo').AsCurrency := 0
+                   Cds1.FieldByName('Interes').AsCurrency := Interes1;
+                   if (vEstado = 'ACTIVO') or (vEstado = 'PRORROGADO')  then
+                     Cds1.FieldByName('Saldo').AsCurrency := Inversion1 + Saldo1
                    else
-                     Cds1.FieldByName('Saldo').AsCurrency := Inversion1;//Saldo1+Causados1+Inversion1;
+                     Cds1.FieldByName('Saldo').AsCurrency := 0;
                    Cds1.FieldByName('Causados').AsCurrency := Causados1;
                    Cds1.FieldByName('fechaa').AsString := DateToStr(IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime);
-                   Cds1.FieldByName('fechav').AsString := vFechaSaldado;
+                   Cds1.FieldByName('fechav').AsString := DateToStr(vFechaVencimiento);
                    Cds1.FieldByName('estado').AsString := vEstado;
+                   Cds1.FieldByName('ttitulo').AsInteger := 3;
+                   if (_dFechaApertura >= FechaInicial) and (_dFechaApertura <= FechaCorte) Then
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 1;
+                   end
+                   else
+                   if (_dFechaVencimiento >= FechaInicial) and (_dFechaVencimiento <= FechaCorte) Then
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 3;
+                   end
+                   else
+                   if (IBSQL1.FieldByName('FECHA_PRORROGA').AsDateTime >= FechaInicial) and (IBSQL1.FieldByName('FECHA_PRORROGA').AsDateTime <= FechaCorte) then
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 2;
+                   end
+                   else
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 4;
+                   end;
+
+
                    Cds1.Post;
                    Cds1.Close;
                  end;
@@ -392,26 +434,48 @@ begin
              end
              else
              begin   // Caso Contractual
-               if _dFechaApertura > _dFechaInicial then //validacion para fecha apertura de Contractuales
+               if (_dFechaApertura <= FechaCorte) then //validacion para fecha apertura de Contractuales
                begin
+                 Saldo1   := 0;
+                 Credito1 := 0;
+                 Interes1 := 0;
+                 Causados1 := 0;
+                 Inversion1 := 0;
+                 CausadoAnt := 0;
+                 Saldo   := 0;
+             if (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime = 0) then
+             begin
+               if ( IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime = 0) then
+               begin
+                vFechaSaldado := DateToStr(IBSQL1.FieldByName('FECHA_VENCIMIENTO').AsDateTime);
+                _dFechaVencimiento := IBSQL1.FieldByName('FECHA_VENCIMIENTO').AsDateTime;
+               end
+               else
+               begin
+                vFechaSaldado := DateToStr(IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime);
+                _dFechaVencimiento := IBSQL1.FieldByName('FECHA_VENCIMIENTO_PRORROGA').AsDateTime;
+               end;
+             end
+             else
+             begin
+                _dFechaVencimiento := IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime;
+                vFechaSaldado := DateToStr(IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime);
+             end;
+
                  IBQuery2.Close;
                  IBQuery2.SQL.Clear;
-                 IBQuery2.SQL.Add('select SALDO_INICIAL from "cap$maestrosaldoinicial"');
-                 IBQuery2.SQL.Add('where');
-                 IBQuery2.SQL.Add('ID_AGENCIA = :ID_AGENCIA and');
-                 IBQuery2.SQL.Add('ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and');
-                 IBQuery2.SQL.Add('NUMERO_CUENTA = :NUMERO_CUENTA and');
-                 IBQuery2.SQL.Add('DIGITO_CUENTA = :DIGITO_CUENTA and');
-                 IBQuery2.SQL.Add('ANO = :ANO');
+                 IBQuery2.SQL.Add('SELECT SALDO_ACTUAL from SALDO_ACTUAL(:ID_AGENCIA, :ID_TIPO_CAPTACION, :NUMERO_CUENTA, :DIGITO_CUENTA, :ANO, :FECHA1, :FECHA2)');
                  IBQuery2.ParamByName('ID_AGENCIA').AsInteger := IBSQL1.FieldByName('ID_AGENCIA').AsInteger;
                  IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger;
                  IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
                  IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
                  IBQuery2.ParamByName('ANO').AsInteger := EdPeriodo.Value;
+                 IBQuery2.ParamByName('FECHA1').AsDate := EncodeDate(EdPeriodo.Value, 01, 01);
+                 IBQuery2.ParamByName('FECHA2').AsDate := FechaInicial;
                  try
                    IBQuery2.Open;
                    if IBQuery2.RecordCount > 0 then
-                     Saldo1 := IBQuery2.FieldByName('SALDO_INICIAL').AsCurrency;
+                     Saldo1 := IBQuery2.FieldByName('SALDO_ACTUAL').AsCurrency;
                  except
                    IBQuery2.Transaction.Rollback;
                    raise;
@@ -430,8 +494,8 @@ begin
                 IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger;
                 IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
                 IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
-                IBQuery2.ParamByName('FECHA1').AsDate := EncodeDate(EdPeriodo.Value,01,01);
-                IBQuery2.ParamByName('FECHA2').AsDate := EncodeDate(EdPeriodo.Value,12,31);
+                IBQuery2.ParamByName('FECHA1').AsDate := FechaInicial;
+                IBQuery2.ParamByName('FECHA2').AsDate := FechaCorte;
                 try
                   IBQuery2.Open;
                   Inversion1 := 0;
@@ -448,7 +512,7 @@ begin
                 // Intereses Causados Año Reporte
                 IBQuery2.Close;
                 IBQuery2.SQL.Clear;
-                IBQuery2.SQL.Add('select CAUSACION_ACUMULADA from "cap$causacioncon"');
+                IBQuery2.SQL.Add('select CAUSACION_MENSUAL from "cap$causacioncon"');
                 IBQuery2.SQL.Add('where');
                 IBQuery2.SQL.Add('ID_AGENCIA = :ID_AGENCIA and');
                 IBQuery2.SQL.Add('ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and');
@@ -460,12 +524,12 @@ begin
                 IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
                 IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
                 IBQuery2.ParamByName('ANO').AsInteger := EdPeriodo.Value;
-                IBQuery2.ParamByName('MES').AsInteger := 12;
+                IBQuery2.ParamByName('MES').AsInteger := Mes;
                 try
                  IBQuery2.Open;
                  if IBQuery2.RecordCount > 0 then
                  begin
-                   Causados1 := IBQuery2.FieldByName('CAUSACION_ACUMULADA').AsCurrency;
+                   Causados1 := IBQuery2.FieldByName('CAUSACION_MENSUAL').AsCurrency;
                    Interes1 := 0;
                  end;
                 except
@@ -482,18 +546,40 @@ begin
 
                 Cds1.FieldByName('Inicial').AsCurrency := Saldo1;
                 Cds1.FieldByName('Inversion').AsCurrency := Inversion1;
-                Cds1.FieldByName('Interes').AsCurrency := Interes1+Causados1;
-
-                if IBSQL1.FieldByName('ID_ESTADO').AsInteger in [2,7,9,11] then
+                Cds1.FieldByName('Interes').AsCurrency := Interes1;
+                if (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime = 0) or (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime > FechaCorte) then
+                begin
+                 vEstado := 'ACTIVO';
+                end
+                else
+                begin
+                 if (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime < FechaCorte) then vEstado := 'SALDADO';
+                end;
+                if vEstado = 'SALDADO' then
                   Cds1.FieldByName('Saldo').AsCurrency := 0
                 else
-                  Cds1.FieldByName('Saldo').AsCurrency := inversion1;//Saldo1+Causados1+Inversion1;
+                  Cds1.FieldByName('Saldo').AsCurrency := inversion1;
 
                 Cds1.FieldByName('Causados').AsCurrency := Causados1;
                 Cds1.FieldByName('fechaa').AsString := DateToStr(IBSQL1.FieldByName('FECHA_APERTURA').AsDateTime);
                 Cds1.FieldByName('fechav').AsString := vFechaSaldado;
                 Cds1.FieldByName('estado').AsString := vEstado;
-                Cds1.Post;
+                Cds1.FieldByName('ttitulo').AsInteger := 7;
+                   if (_dFechaApertura >= FechaInicial) and (_dFechaApertura <= FechaCorte) Then
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 1;
+                   end
+                   else
+                   if (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime >= FechaInicial) and (IBSQL1.FieldByName('FECHA_SALDADA').AsDateTime <= FechaCorte) Then
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 3;
+                   end
+                   else
+                   begin
+                       Cds1.FieldByName('tmovimiento').AsInteger := 4;
+                   end;
+                if (Saldo1 = 0 ) and (Inversion1 = 0) and (Interes1 = 0) and (Causados1 = 0) then Cds1.Cancel
+                else Cds1.Post;
                 Cds1.Close;
 
               end;
@@ -502,8 +588,6 @@ begin
              IBSQL1.Next; // next del query captaciones
            end; // fin del while del IBSQL1
 // Validar Saldo
-           if  valor_inicial >= EdMonto.Value then
-           begin
              Cds1.Open;
              while not Cds1.Eof do
              begin
@@ -514,6 +598,7 @@ begin
                CDDATOS.FieldValues['INICIAL'] := Cds1.FieldByName('inicial').AsCurrency;
                CDDATOS.FieldValues['INVERSION'] := Cds1.FieldByName('inversion').AsCurrency;
                CDDATOS.FieldValues['INTERES'] := Cds1.FieldByName('interes').AsCurrency;
+               CDDATOS.FieldValues['CAUSADO'] := Cds1.FieldByName('causados').AsCurrency;
                CDDATOS.FieldValues['SALDO'] := Cds1.FieldByName('saldo').AsCurrency;
                try
                  CDDATOS.FieldValues['FECHAA'] := StrToDate(Cds1.FieldByName('fechaa').AsString);
@@ -526,10 +611,11 @@ begin
                  CDDATOS.FieldValues['FECHAV'] := Null;
                end;
                CDDATOS.FieldValues['ESTADO'] := Cds1.FieldByName('estado').AsString;
+               CDDATOS.FieldValues['TTITULO'] := Cds1.FieldByName('ttitulo').AsInteger;
+               CDDATOS.FieldValues['TMOVIMIENTO'] := Cds1.FieldByName('tmovimiento').AsInteger;
                CDDATOS.Post;
                Cds1.Next;
              end;
-          end; // fin de la validación de saldo
          Next; //next del query personas
          end; // fin del While de ibquery1
          Transaction.Commit;
@@ -543,12 +629,14 @@ begin
           Transaction.StartTransaction;
           SQL.Clear;
           SQL.Add('INSERT INTO');
-          SQL.Add('"dian$cdat"(CUENTA,IDPERSONA,IDIDENTIFICACION,INICIAL,INVERSION,INTERES,SALDO,FECHA,FECHAV,ESTADO)');
+          SQL.Add('"dian$cdat"(CUENTA,IDPERSONA,IDIDENTIFICACION,INICIAL,INVERSION,INTERES,SALDO,FECHA,FECHAV,ESTADO,PERIODO, CAUSADO, TTITULO, TMOVIMIENTO)');
           SQL.Add('VALUES(');
-          SQL.Add(':CUENTA,:IDPERSONA,:IDIDENTIFICACION,:INICIAL,:INVERSION,:INTERES,:SALDO,:FECHA,:FECHAV,:ESTADO)');
+          SQL.Add(':CUENTA,:IDPERSONA,:IDIDENTIFICACION,:INICIAL,:INVERSION,:INTERES,:SALDO,:FECHA,:FECHAV,:ESTADO, :PERIODO, :CAUSADO, :TTITULO, :TMOVIMIENTO)');
           CDDATOS.First;
           while not CDDATOS.Eof do
           begin
+           if (CDDATOSFECHAV.Value > FechaInicial) then
+           begin
             ParamByName('CUENTA').AsString := CDDATOS.FieldByName('NUMERO').AsString;
             ParamByName('IDPERSONA').AsString := CDDATOS.FieldByName('IDPERSONA').AsString;
             ParamByName('IDIDENTIFICACION').AsInteger := CDDATOS.FieldByName('IDIDENTIFICACION').AsInteger;
@@ -567,23 +655,22 @@ begin
               ParamByName('FECHAV').Clear;
             end;
             ParamByName('ESTADO').AsString := CDDATOS.FieldByName('ESTADO').AsString;
+            ParamByName('PERIODO').AsInteger := Mes;
+            ParamByName('CAUSADO').AsCurrency := CDDATOS.FieldByName('CAUSADO').AsCurrency;
+            ParamByName('TTITULO').AsInteger := CDDATOS.FieldByName('TTITULO').AsInteger;
+            ParamByName('TMOVIMIENTO').AsInteger := CDDATOS.FieldByName('TMOVIMIENTO').AsInteger;
             ExecSQL;
-            CDDATOS.Next;
+           end;
+           CDDATOS.Next;
           end;
           Transaction.Commit;
         end;
-
+        ShowMessage('Proceso del periodo ' + cmbMes.Text + ' Finalizado!!!');
 end;
 
 procedure TfrmCdatPeriodo.btnCerrarClick(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TfrmCdatPeriodo.btnAExcelClick(Sender: TObject);
-begin
-        if sd1.Execute then
-           StringGridToXLS(Sg1,sd1.FileName);
 end;
 
 procedure TfrmCdatPeriodo.FormCreate(Sender: TObject);
@@ -592,3 +679,4 @@ begin
 end;
 
 end.
+>>>>>>> branch 'master' of https://github.com/chandero/sgftcooperativa.git

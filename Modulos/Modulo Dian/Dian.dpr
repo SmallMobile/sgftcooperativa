@@ -43,6 +43,5 @@ begin
   Application.Initialize;
   Application.CreateForm(TdmGeneral, dmGeneral);
   Application.CreateForm(TfrmMain, frmMain);
-  Application.CreateForm(TfrmMovimientoTercero, frmMovimientoTercero);
   Application.Run;
 end.

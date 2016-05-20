@@ -20,7 +20,7 @@ type
     Panel1: TPanel;
     btnProcesar: TBitBtn;
     btnCerrar: TBitBtn;
-    btnAExcel: TBitBtn;
+    btnAExcelPrimero: TBitBtn;
     IBQuery1: TIBQuery;
     sd1: TSaveDialog;
     IBSQL2: TIBSQL;
@@ -31,16 +31,9 @@ type
     Label3: TLabel;
     JvSaldo: TJvCurrencyEdit;
     IBGMF: TIBQuery;
-    Edit1: TEdit;
-    CdsDatosCuenta: TClientDataSet;
-    CdsDatosCuentaDEBITO: TCurrencyField;
-    CdsDatosCuentaCREDITO: TCurrencyField;
-    CdsDatosCuentaSALDO: TCurrencyField;
-    CdsDatosCuentaFECHA: TDateField;
     CDSInfo: TClientDataSet;
     CDSInfoTIPODOCUMENTO: TIntegerField;
     CDSInfoDOCUMENTO: TStringField;
-    CDSInfoDV: TIntegerField;
     CDSInfoPRIMER_APELLIDO: TStringField;
     CDSInfoSEGUNDO_APELLIDO: TStringField;
     CDSInfoNOMBRE: TStringField;
@@ -65,14 +58,75 @@ type
     CDSInfoPROMEDIODEBITO: TCurrencyField;
     Data: TDBGrid;
     DSData: TDataSource;
-    CDSSaldoInicialMes: TClientDataSet;
-    CDSSaldoInicialMesMES: TIntegerField;
-    CDSSaldoInicialMesSALDOINICIAL: TCurrencyField;
     Transaction: TIBTransaction;
+    Label4: TLabel;
+    cmbMes: TComboBox;
+    CDSsaldosdia: TClientDataSet;
+    CDSInfoCUENTA: TStringField;
+    CDSInfoTIPOCUENTA: TIntegerField;
+    CDSInfoGMF: TIntegerField;
+    CDSsaldosdiaDIA: TIntegerField;
+    CDSsaldosdiaSALDOANTERIOR: TCurrencyField;
+    CDSsaldosdiaDEBITO: TCurrencyField;
+    CDSsaldosdiaCREDITO: TCurrencyField;
+    CDSsaldosdiaSALDODIA: TCurrencyField;
+    CDSpersona: TClientDataSet;
+    CDSpersonaID_PERSONA: TStringField;
+    CDSpersonaCREDITO: TCurrencyField;
+    CDSpersonaSALDO: TCurrencyField;
+    CDSsaldosdiaTIPO: TIntegerField;
+    CDStitulares: TClientDataSet;
+    CDStitularesCUENTA: TStringField;
+    CDStitularesCONCEPTO: TIntegerField;
+    CDStitularesTIPODOCUMENTO: TIntegerField;
+    CDStitularesNUMERODOCUMENTO: TStringField;
+    CDStitularesPRIMER_APELLIDO: TStringField;
+    CDStitularesSEGUNDO_APELLIDO: TStringField;
+    CDStitularesNOMBRE: TStringField;
+    CDStitularesSEGUNDO_NOMBRE: TStringField;
+    CDStitularesRAZON_SOCIAL: TStringField;
+    CDSfinal: TClientDataSet;
+    CDSfinalTIPODOCUMENTO: TIntegerField;
+    CDSfinalDOCUMENTO: TStringField;
+    CDSfinalPRIMER_APELLIDO: TStringField;
+    CDSfinalSEGUNDO_APELLIDO: TStringField;
+    CDSfinalNOMBRE: TStringField;
+    CDSfinalSEGUNDO_NOMBRE: TStringField;
+    CDSfinalRAZONSOCIAL: TStringField;
+    CDSfinalDIRECCION: TStringField;
+    CDSfinalMUNICIPIO: TIntegerField;
+    CDSfinalDEPARTAMENTO: TIntegerField;
+    CDSfinalPAIS: TIntegerField;
+    CDSfinalTIPOCUENTA: TIntegerField;
+    CDSfinalCUENTA: TStringField;
+    CDSfinalGMF: TIntegerField;
+    CDSfinalSALDOFINAL: TCurrencyField;
+    CDSfinalPROMEDIO: TCurrencyField;
+    CDSfinalMEDIANA: TCurrencyField;
+    CDSfinalMAXIMO: TCurrencyField;
+    CDSfinalMINIMO: TCurrencyField;
+    CDSfinalVALORCREDITO: TCurrencyField;
+    CDSfinalNUMEROCREDITO: TIntegerField;
+    CDSfinalPROMEDIOCREDITO: TCurrencyField;
+    CDSfinalMEDIANACREDITO: TCurrencyField;
+    CDSfinalVALORDEBITO: TCurrencyField;
+    CDSfinalNUMERODEBITO: TCurrencyField;
+    CDSfinalPROMEDIODEBITO: TCurrencyField;
+    CDSInfoID_AGENCIA: TIntegerField;
+    CDSInfoID_TIPO_CAPTACION: TIntegerField;
+    CDSInfoNUMERO_CUENTA: TIntegerField;
+    CDSInfoDIGITO_CUENTA: TIntegerField;
+    btnAExcelSegundo: TBitBtn;
+    CDSInfoDV: TStringField;
+    CDSfinalDV: TStringField;
+    CDStitularesDV: TStringField;
+    btnAExcelHoja: TBitBtn;
     procedure btnProcesarClick(Sender: TObject);
     procedure btnCerrarClick(Sender: TObject);
-    procedure btnAExcelClick(Sender: TObject);
+    procedure btnAExcelPrimeroClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnAExcelSegundoClick(Sender: TObject);
+    procedure btnAExcelHojaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,47 +167,50 @@ var
   Dr:string;
   Dpto :string;
   Mn:string;
-  Total:Integer;
-  Fila,jFila:Integer;
-  Saldo,Credito,Interes:Currency;
-  Saldo1,Credito1,Interes1:Currency;
+  Dias,Mes,Total:Integer;
   Cuenta:string;
   iAgencia,iTipo,iCuenta,iDigito:Integer;
   vCodMunicipio :string;
   _sNombre :string;
   _cSaldoCheque :Currency;
   Persona: TPersona;
-
+  FechaCorte, FechaInicial: TDateTime;
+  FechaDia: TDateTime;
+  SaldoInicial: Currency;
+  SaldoFinal, Promedio, Mediana, Maximo, Minimo, ValorCredito, PromedioCredito, MedianaCredito, ValorDebito, PromedioDebito: Currency;
+  NumeroCredito, NumeroDebito, Salto: Integer;
+  asociado: String;
 begin
-        Fila := -1;
-        jFila := -1;
         Application.ProcessMessages;
 
         Persona := TPersona.Create;
 
+        Mes := cmbMes.ItemIndex + 1;
+        Dias := DaysInAMonth(EdPeriodo.Value, Mes);
+        TryEncodeDate(EdPeriodo.Value, Mes, 1, FechaInicial);
 
+        TryEncodeDate(EdPeriodo.Value, Mes, DaysInAMonth(EdPeriodo.Value, Mes), FechaCorte);
+
+        CDSinfo.Open;
 
         with IBQuery1 do
         begin
+         if Transaction.Intransaction then Transaction.Commit;
          Transaction.StartTransaction;
          SQL.Clear;
-         SQL.Add('select distinct');
-         SQL.Add('"gen$persona".ID_IDENTIFICACION,');
-         SQL.Add('"gen$persona".ID_PERSONA,');
-         SQL.Add('"gen$persona".PRIMER_APELLIDO, "gen$persona".SEGUNDO_APELLIDO, "gen$persona".NOMBRE,');
-         SQL.Add('"gen$direccion".DIRECCION || '' '' || "gen$direccion".BARRIO AS DIRECCION,');
-         SQL.Add('"gen$direccion".MUNICIPIO AS MUNICIPIO,"gen$direccion".COD_MUNICIPIO');
+         SQL.Add('select mt.*, m.*, me.*');
          SQL.Add('from');
-         SQL.Add('"gen$persona"');
-         SQL.Add('left join "gen$direccion" on ("gen$persona".ID_IDENTIFICACION = "gen$direccion".ID_IDENTIFICACION and');
-         SQL.Add('"gen$persona".ID_PERSONA = "gen$direccion".ID_PERSONA and "gen$direccion".ID_DIRECCION = 1 ');
-         SQL.Add('and "gen$direccion".ID_DIRECCION = 1) ');
+         SQL.Add('"cap$maestrotitular" mt ');
+         SQL.Add('inner join "cap$maestro" m ON m.ID_AGENCIA = mt.ID_AGENCIA and m.ID_TIPO_CAPTACION = mt.ID_TIPO_CAPTACION and m.NUMERO_CUENTA = mt.NUMERO_CUENTA and m.DIGITO_CUENTA = mt.DIGITO_CUENTA');
+         SQL.Add('left join "cap$maestroexcentas" me ON m.ID_AGENCIA = me.ID_AGENCIA and m.ID_TIPO_CAPTACION = me.ID_TIPO_CAPTACION and m.NUMERO_CUENTA = me.NUMERO_CUENTA and m.DIGITO_CUENTA = me.DIGITO_CUENTA');
+         SQL.Add('where mt.ID_TIPO_CAPTACION IN (2,4) and m.FECHA_APERTURA <= :FECHA_CORTE and mt.NUMERO_TITULAR = 1');
+         ParamByName('FECHA_CORTE').AsDate := FechaCorte;
          try
            Open;
            Last;
            First;
-           Bar3.Minimum := 0;
-           Bar3.Maximum := Recordcount;
+           Bar1.Minimum := 0;
+           Bar1.Maximum := Recordcount;
          except
            Transaction.Rollback;
            raise;
@@ -162,8 +219,24 @@ begin
 
 
          while not Eof do begin
-           Bar3.Position := RecNo;
+           Bar1.Position := RecNo;
            Application.ProcessMessages;
+
+           SaldoInicial := 0;
+           SaldoFinal := 0;
+           Promedio := 0;
+           Mediana := 0;
+           Maximo := 0;
+           Minimo := 0;
+           ValorCredito := 0;
+           PromedioCredito := 0;
+           MedianaCredito := 0;
+           ValorDebito := 0;
+           PromedioDebito:=0;
+           NumeroCredito := 0;
+           NumeroDebito := 0;
+
+           CDSinfo.Insert;
 
            Persona.TipoDocumento := '';
            Persona.NumeroDocumento := '';
@@ -176,10 +249,18 @@ begin
            Persona.Direccion := '';
            Persona.Departamento := '';
            Persona.Municipio := '';
-           Persona.Pais := '';
-
+           Persona.Pais := '169';
+//Busco Persona
+         IBQuery2.Close;
+         IBQuery2.SQL.Clear;
+         IBQuery2.SQL.Add('SELECT p.*, d.* FROM "gen$persona" p');
+         IBQuery2.SQL.Add('left join "gen$direccion" d on d.ID_IDENTIFICACION = p.ID_IDENTIFICACION and d.ID_PERSONA = p.ID_PERSONA');
+         IBQuery2.SQL.Add('WHERE p.ID_IDENTIFICACION = :ID_IDENTIFICACION and p.ID_PERSONA = :ID_PERSONA');
+         IBQuery2.ParamByName('ID_IDENTIFICACION').asInteger := FieldByName('ID_IDENTIFICACION').AsInteger;
+         IBQuery2.ParamByName('ID_PERSONA').AsString := FieldByName('ID_PERSONA').AsString;
+         IBQuery2.Open;
 //Primera Parte, Datos del Asociado
-         case FieldByName('ID_IDENTIFICACION').AsInteger of
+         case IBQuery2.FieldByName('ID_IDENTIFICACION').AsInteger of
              1: Tp := '11';
              2: Tp := '12';
              3: Tp := '13';
@@ -189,14 +270,14 @@ begin
          end;
 
          Persona.TipoDocumento := Tp;
-         if FieldByName('ID_IDENTIFICACION').AsInteger = 4 then
+         if IBQuery2.FieldByName('ID_IDENTIFICACION').AsInteger = 4 then
          begin
-            Id := LeftStr(FieldByName('ID_PERSONA').AsString,Length(FieldByName('ID_PERSONA').AsString)-1);
-            Dg := RightStr(FieldByName('ID_PERSONA').AsString,1);
+            Id := LeftStr(IBQuery2.FieldByName('ID_PERSONA').AsString,Length(IBQuery2.FieldByName('ID_PERSONA').AsString)-1);
+            Dg := RightStr(IBQuery2.FieldByName('ID_PERSONA').AsString,1);
          end
          else
          begin
-            Id := FieldByName('ID_PERSONA').AsString;
+            Id := IBQuery2.FieldByName('ID_PERSONA').AsString;
             Dg := '';
          end;
 
@@ -205,9 +286,9 @@ begin
 
          if Tp <> '31' then
          begin
-            Persona.PrimerApellido := FieldByName('PRIMER_APELLIDO').AsString;
-            Persona.SegundoApellido := FieldByName('SEGUNDO_APELLIDO').AsString;
-            _sNombre := Trim(FieldByName('NOMBRE').AsString);
+            Persona.PrimerApellido := IBQuery2.FieldByName('PRIMER_APELLIDO').AsString;
+            Persona.SegundoApellido := IBQuery2.FieldByName('SEGUNDO_APELLIDO').AsString;
+            _sNombre := Trim(IBQuery2.FieldByName('NOMBRE').AsString);
             Persona.PrimerNombre := _sNombre;
             if Pos(' ', _sNombre) > 0 then
             begin
@@ -224,15 +305,15 @@ begin
          end;
 
          if Tp = '31' then
-                Persona.RazonSocial := Trim(FieldByName('PRIMER_APELLIDO').AsString + ' ' + FieldByName('SEGUNDO_APELLIDO').AsString + ' ' + FieldByName('NOMBRE').AsString)
+                Persona.RazonSocial := Trim(IBQuery2.FieldByName('PRIMER_APELLIDO').AsString + ' ' + IBQuery2.FieldByName('SEGUNDO_APELLIDO').AsString + ' ' + IBQuery2.FieldByName('NOMBRE').AsString)
          else
                 Persona.RazonSocial := '';
 
 
-         Dr := Trim(FieldByName('DIRECCION').AsString);
+         Dr := Trim(IBQuery2.FieldByName('DIRECCION').AsString);
          Persona.Direccion := Dr;
 
-         vCodMunicipio := FieldByName('COD_MUNICIPIO').AsString;
+         vCodMunicipio := IBQuery2.FieldByName('COD_MUNICIPIO').AsString;
          if (vCodMunicipio = '') Then vCodMunicipio := '00000';
          
          try
@@ -254,174 +335,355 @@ begin
 
 // Fin Primera Parte, Datos del Asociado
 
-// Segunda Parte, Leer Datos de Cuentas y Calcular Promedios
-           IBSQL1.Close;
-           IBSQL1.SQL.Clear;
-           IBSQL1.SQL.Add('select');
-           IBSQL1.SQL.Add('"cap$maestro".ID_AGENCIA,');
-           IBSQL1.SQL.Add('"cap$maestro".ID_TIPO_CAPTACION,');
-           IBSQL1.SQL.Add('"cap$maestro".NUMERO_CUENTA,');
-           IBSQL1.SQL.Add('"cap$maestro".DIGITO_CUENTA');
-           IBSQL1.SQL.Add('from');
-           IBSQL1.SQL.Add('"cap$maestrotitular"');
-           IBSQL1.SQL.Add('inner join');
-           IBSQL1.SQL.Add('"cap$maestro" on ("cap$maestrotitular".ID_AGENCIA = "cap$maestro".ID_AGENCIA and');
-           IBSQL1.SQL.Add('"cap$maestrotitular".ID_TIPO_CAPTACION = "cap$maestro".ID_TIPO_CAPTACION and');
-           IBSQL1.SQL.Add('"cap$maestrotitular".NUMERO_CUENTA = "cap$maestro".NUMERO_CUENTA and');
-           IBSQL1.SQL.Add('"cap$maestrotitular".DIGITO_CUENTA = "cap$maestro".DIGITO_CUENTA)');
-           IBSQL1.SQL.Add('where');
-           IBSQL1.SQL.Add('"cap$maestrotitular".ID_IDENTIFICACION = :ID_IDENTIFICACION and');
-           IBSQL1.SQL.Add('"cap$maestrotitular".ID_PERSONA = :ID_PERSONA and');
-           IBSQL1.SQL.Add('"cap$maestrotitular".ID_TIPO_CAPTACION IN (2,4) and');
-           IBSQL1.SQL.Add('"cap$maestro".ID_ESTADO <> 15');
-           IBSQL1.SQL.Add('and');
-           IBSQL1.SQL.Add('"cap$maestrotitular".NUMERO_TITULAR = 1 ');
-           IBSQL1.SQL.Add('order by');
-           IBSQL1.SQL.Add('"cap$maestro".ID_AGENCIA,');
-           IBSQL1.SQL.Add('"cap$maestro".ID_TIPO_CAPTACION,');
-           IBSQL1.SQL.Add('"cap$maestro".NUMERO_CUENTA,');
-           IBSQL1.SQL.Add('"cap$maestro".DIGITO_CUENTA');
-           IBSQL1.ParamByName('ID_IDENTIFICACION').AsInteger := FieldByName('ID_IDENTIFICACION').AsInteger;
-           IBSQL1.ParamByName('ID_PERSONA').AsString := FieldByName('ID_PERSONA').AsString;
-           try
-            IBSQL1.Open;
-            IBSQL1.Last;
-            IBSQL1.First;
-           except
-            Transaction.Rollback;
-            raise;
-           end;
-           Bar1.Maximum := IBSQL1.RecordCount;
-           Bar1.Position := 0;
+              // Evaluo Saldo Inicial
+              IBQuery2.Close;
+              if (Mes = 1) then
+              begin
+               IBQuery2.SQL.Clear;
+               IBQuery2.SQL.Add('SELECT SALDO_INICIAL AS SALDO_ACTUAL FROM "cap$maestrosaldoinicial" s');
+               IBQuery2.SQL.Add('WHERE s.ID_AGENCIA = :ID_AGENCIA and s.ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and s.NUMERO_CUENTA = :NUMERO_CUENTA and s.DIGITO_CUENTA = :DIGITO_CUENTA and s.ANO = :ANHO');
+               IBQuery2.ParamByName('ID_AGENCIA').AsInteger := FieldByName('ID_AGENCIA').AsInteger;
+               IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := FieldByName('ID_TIPO_CAPTACION').AsInteger;
+               IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := FieldByName('NUMERO_CUENTA').AsInteger;
+               IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := FieldByName('DIGITO_CUENTA').AsInteger;
+               IBQuery2.ParamByName('ANHO').AsInteger := EdPeriodo.Value;
+              end
+              else
+              begin
+               IBQuery2.SQL.Clear;
+               IBQuery2.SQL.Add('SELECT SALDO_ACTUAL FROM SALDO_ACTUAL(:ID_AGENCIA,:ID_TIPO_CAPTACION,:NUMERO_CUENTA,:DIGITO_CUENTA, :ANHO, :FECHA_INICIAL, :FECHA_FINAL');
+               IBQuery2.ParamByName('ID_AGENCIA').AsInteger := FieldByName('ID_AGENCIA').AsInteger;
+               IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := FieldByName('ID_TIPO_CAPTACION').AsInteger;
+               IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := FieldByName('NUMERO_CUENTA').AsInteger;
+               IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := FieldByName('DIGITO_CUENTA').AsInteger;
+               IBQuery2.ParamByName('ANHO').AsInteger := EdPeriodo.Value;
+               IBQuery2.ParamByName('FECHA_INICIAL').AsDateTime := EncodeDate(EdPeriodo.Value, 01, 01);
+               IBQuery2.ParamByName('FECHA_FINAL').AsDateTime := EncodeDate(EdPeriodo.Value, Mes - 1, DaysInAMonth(EdPeriodo.Value, Mes - 1));
+              end;
 
-           while not IBSQL1.Eof do
-           begin
+              IBQuery2.Open;
 
-             Bar1.Position := IBSQL1.RecNo;
-             Application.ProcessMessages;
-             if IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger < 6 then
-             begin
+              SaldoInicial := IBQuery2.FieldByName('SALDO_ACTUAL').AsCurrency;
+
               IBQuery2.Close;
               IBQuery2.SQL.Clear;
-              IBQuery2.SQL.Add('select * from "cap$extracto"');
-              IBQuery2.SQL.Add('where');
-              IBQuery2.SQL.Add('ID_AGENCIA = :ID_AGENCIA and');
-              IBQuery2.SQL.Add('ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and');
-              IBQuery2.SQL.Add('NUMERO_CUENTA = :NUMERO_CUENTA and');
-              IBQuery2.SQL.Add('DIGITO_CUENTA = :DIGITO_CUENTA and');
-              IBQuery2.SQL.Add('(FECHA_MOVIMIENTO BETWEEN :FECHA1 and :FECHA2) and');
-              IBQuery2.SQL.Add('VALOR_DEBITO <> 0');
-              IBQuery2.ParamByName('ID_AGENCIA').AsInteger := IBSQL1.fieldbyname('ID_AGENCIA').AsInteger;
-              IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger;
-              IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := IBSQL1.FieldByName('NUMERO_CUENTA').AsInteger;
-              IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := IBSQL1.FieldByName('DIGITO_CUENTA').AsInteger;
-              IBQuery2.ParamByName('FECHA1').AsDate := _dFechaInicial;
-              IBQuery2.ParamByName('FECHA2').AsDate := _dFechaCorteAhorros;
-              try
-                IBQuery2.Open;
-                IBQuery2.Last;
-                IBQuery2.First;
-              except
-                IBQuery2.Transaction.Rollback;
-                raise;
+              IBQuery2.SQL.Add('SELECT * FROM "cap$extracto" s');
+              IBQuery2.SQL.Add('WHERE s.ID_AGENCIA = :ID_AGENCIA and s.ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and s.NUMERO_CUENTA = :NUMERO_CUENTA and s.DIGITO_CUENTA = :DIGITO_CUENTA');
+              IBQuery2.SQL.Add('and s.FECHA_MOVIMIENTO BETWEEN :FECHA_INICIAL and :FECHA_FINAL');
+              IBQuery2.ParamByName('ID_AGENCIA').AsInteger := FieldByName('ID_AGENCIA').AsInteger;
+              IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := FieldByName('ID_TIPO_CAPTACION').AsInteger;
+              IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := FieldByName('NUMERO_CUENTA').AsInteger;
+              IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := FieldByName('DIGITO_CUENTA').AsInteger;
+              IBQuery2.ParamByName('FECHA_INICIAL').AsDateTime := FechaInicial;
+              IBQuery2.ParamByName('FECHA_FINAL').AsDateTime := FechaCorte;
+              IBQuery2.Open;
+
+              CDSsaldosdia.Open;
+              CDSsaldosdia.EmptyDataSet;
+              FechaDia := FechaInicial;
+              while FechaDia <= FechaCorte do
+              begin
+                 Application.ProcessMessages;
+                 CDSsaldosdia.Insert;
+                 CDSsaldosdiaDIA.Value := DayOf(FechaDia);
+                 CDSsaldosdiaSALDOANTERIOR.Value := 0;
+                 CDSsaldosdiaDEBITO.Value := 0;
+                 CDSsaldosdiaCREDITO.Value := 0;
+                 CDSsaldosdiaSALDODIA.Value := 0;
+                 CDSsaldosdia.Post;
+                 FechaDia := IncDay(FechaDia);
               end;
-              Bar2.Maximum := IBQuery2.RecordCount;
+
               while not IBQuery2.Eof do
               begin
-                Bar2.Position := IBQuery2.RecNo;
-                Application.ProcessMessages;
-                //Validacion para reportes antiguos, en el caso de los desembolsos
+                 Application.ProcessMessages;
+                 CDSsaldosdia.Filter := '';
+                 CDSsaldosdia.Filtered := False;
+                 CDSsaldosdia.Filter := 'DIA = ' + IntToStr(DayOf(IBQuery2.FieldByName('FECHA_MOVIMIENTO').AsDateTime));
+                 CDSsaldosdia.Filtered := True;
+                 CDSsaldosdia.Edit;
+                 CDSsaldosdiaDEBITO.Value := CDSsaldosdiaDEBITO.Value + IBQuery2.FieldByName('VALOR_DEBITO').AsCurrency;
+                 CDSsaldosdiaCREDITO.Value := CDSsaldosdiaCREDITO.Value + IBQuery2.FieldByName('VALOR_CREDITO').AsCurrency;
+                 CDSsaldosdiaTIPO.Value := IBQuery2.FieldByName('ID_TIPO_MOVIMIENTO').AsInteger;
+                 CDSsaldosdia.Post;
+                 IBQuery2.Next;
+              end;
+                  CDSsaldosdia.Filter := '';
+                  CDSsaldosdia.Filtered := False;
+              // Calcular Saldos
+              CDSsaldosdia.First;
+              while not CDSsaldosdia.Eof do
+              begin
+                  CDSsaldosdia.Edit;
+                  CDSsaldosdiaSALDOANTERIOR.Value := SaldoInicial;
+                  CDSsaldosdiaSALDODIA.Value := SaldoInicial + CDSsaldosdiaDEBITO.Value - CDSsaldosdiaCREDITO.Value;
+                  Saldoinicial := CDSsaldosdiaSALDODIA.Value;
+                  CDSsaldosdia.Post;
+                  CDSsaldosdia.Next;
+              end;
 
-                if ( ((IBQuery2.FieldByName('ID_TIPO_MOVIMIENTO').AsInteger = 6) or (IBQuery2.FieldByName('ID_TIPO_MOVIMIENTO').AsInteger = 1) ) and
-                     (Pos('CARTE',IBQuery2.FieldByName('DOCUMENTO_MOVIMIENTO').AsString) <> 0) or
-                     (Pos('CONSIGNACION POR DESEMBOLSO',IBQuery2.FieldByName('DESCRIPCION_MOVIMIENTO').AsString)<>0) ) then
-                begin
-                   IBQuery2.Next;
-                   Continue;
-                end;
-                if IBQuery2.FieldByName('ID_TIPO_MOVIMIENTO').AsInteger <> 23 then // REVERSIONES DE TARJETA DEBITO
-                begin
-                  Credito1 := Credito1 + IBQuery2.FieldByName('VALOR_DEBITO').AsCurrency;
-                  Credito := Credito + IBQuery2.FieldByName('VALOR_DEBITO').AsCurrency;
-                end;
-                if IBQuery2.FieldByName('ID_TIPO_MOVIMIENTO').AsInteger = 31 then // DEVOLUCION DE CHEQUES
-                begin
-                   _cSaldoCheque := _cSaldoCheque + IBQuery2.FieldByName('VALOR_CREDITO').AsCurrency;
-                end;
+              // Evaluar valores
+              CDSsaldosdia.Last;
 
-                IBQuery2.Next;
-              end; // fin del while
-             end; // fin del if
-// Saldo en Depositos e Intereses Causados
-             Credito := Credito - _cSaldoCheque;
-             Credito1 := Credito1 - _cSaldoCheque;
-             case IBSQL1.FieldByName('ID_TIPO_CAPTACION').AsInteger of
-             2,
-             4,
-             5: begin
-                 IBSQL2.Close;
-                 IBSQL2.SQL.Clear;
-                 IBSQL2.SQL.Add('select SALDO_ACTUAL from SALDO_ACTUAL_MES_NOTD(:AGENCIA,:TIPO,:NUMERO,:DIGITO,:ANO,:FECHA1,:FECHA2)');
-                 IBSQL2.ParamByName('AGENCIA').AsInteger := IBSQL1.fieldbyname('ID_AGENCIA').AsInteger;
-                 IBSQL2.ParamByName('TIPO').AsInteger := IBSQL1.fieldbyname('ID_TIPO_CAPTACION').AsInteger;
-                 IBSQL2.ParamByName('NUMERO').AsInteger := IBSQL1.fieldbyname('NUMERO_CUENTA').AsInteger;
-                 IBSQL2.ParamByName('DIGITO').AsInteger := IBSQL1.fieldbyname('DIGITO_CUENTA').AsInteger;
-                 IBSQL2.ParamByName('ANO').AsString := IntToStr(EdPeriodo.Value);
-                 IBSQL2.ParamByName('FECHA1').AsDate := _dFechaInicial;
-                 IBSQL2.ParamByName('FECHA2').AsDate := _dFechaCorteAhorros;
-                 try
-                  IBSQL2.ExecQuery;
-                  Saldo1 := Saldo1 + IBSQL2.FieldByName('SALDO_ACTUAL').AsCurrency;
-                  Saldo := Saldo + IBSQL2.FieldByName('SALDO_ACTUAL').AsCurrency;
-                 except
-                  Transaction.Rollback;
-                  raise;
-                 end;
-                end; // fin del begin
-             6: begin
-                 IBSQL2.Close;
-                 IBSQL2.SQL.Clear;
-                 IBSQL2.SQL.Add('select');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".VALOR_INICIAL, "cap$causacioncdat".VALOR');
-                 IBSQL2.SQL.Add('from');
-                 IBSQL2.SQL.Add('"cap$causacioncdat"');
-                 IBSQL2.SQL.Add('where');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".ID_AGENCIA = :ID_AGENCIA and');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".NUMERO_CUENTA = :NUMERO_CUENTA and');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".DIGITO_CUENTA = :DIGITO_CUENTA and');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".ANO = :ANO and');
-                 IBSQL2.SQL.Add('"cap$causacioncdat".MES = :MES');
-                 IBSQL2.ParamByName('ANO').AsInteger := EdPeriodo.Value;
-                 IBSQL2.ParamByName('MES').AsInteger := MonthOf(_dFechaCorteAhorros);
-                 try
-                  IBSQL2.ExecQuery;
-                  Saldo1 := Saldo1 + IBSQL2.FieldByName('VALOR_INICIAL').AsCurrency;
-                  Interes1 := Interes1 + IBSQL2.FieldByName('VALOR').AsCurrency;
-                  Saldo := Saldo + IBSQL2.FieldByName('VALOR_INICIAL').AsCurrency;
-                  Interes := Interes + IBSQL2.FieldByName('VALOR').AsCurrency;
-                 except
-                  Transaction.Rollback;
-                  raise;
-                 end;
-                end; // fin del begin 6
-             end; // fin del case
+              SaldoFinal := CDSsaldosdiaSALDODIA.Value;
 
-            IBSQL1.Next; // next del query captaciones
-           end; // fin del while del IBSQL1
+              CDSsaldosdia.First;
+              while not CDSsaldosdia.Eof do
+              begin
+                  Promedio := Promedio + CDSsaldosdiaSALDODIA.Value;
+                  CDSSaldosdia.Next;
+              end;
+
+              Promedio := Promedio / CDSsaldosdia.RecordCount;
+
+              CDSsaldosdia.IndexName := 'cdssaldosdia_idx_saldodia';
+              CDSsaldosdia.First;
+              if (CDSsaldosdia.RecordCount mod 2 = 0) then
+                Salto := (CDSsaldosdia.RecordCount + 2) div 2
+              else
+                Salto := (CDSsaldosdia.RecordCount + 1) div 2;
+              CDSsaldosdia.MoveBy(Salto);
+
+              Mediana := CDSsaldosdiaSALDODIA.Value;
+
+              CDSsaldosdia.First;
+              Minimo := CDSsaldosdiaSALDODIA.Value;
+              CDSsaldosdia.Last;
+              Maximo := CDSsaldosdiaSALDODIA.Value;
+
+              CDSsaldosdia.IndexName := 'cdssaldosdia_idx_dia';
+              CDSsaldosdia.Filter := 'CREDITO <> 0 and TIPO <> 23 and TIPO <> 31';
+              CDSsaldosdia.Filtered := True;
+              while not cdssaldosdia.Eof do
+              begin
+                  ValorCredito := ValorCredito + CDSsaldosdiaCREDITO.Value;
+                  NumeroCredito := NumeroCredito + 1;
+                  CDSsaldosdia.Next;
+              end;
+
+              if (NumeroCredito <> 0) then
+                      PromedioCredito := ValorCredito / NumeroCredito
+              else
+                      PromedioCredito := 0;
+
+              CDSsaldosdia.First;
+              CDSsaldosdia.MoveBy(CDSsaldosdia.RecordCount div 2);
+              MedianaCredito := CDSsaldosdiaCREDITO.Value;
+
+
+              CDSsaldosdia.Filtered := False;
+              CDSsaldosdia.Filter := 'DEBITO <> 0 and TIPO <> 23 and TIPO <> 31';
+              CDSsaldosdia.Filtered := True;
+
+              while not cdssaldosdia.Eof do
+              begin
+                  ValorDebito := ValorDebito + CDSsaldosdiaDEBITO.Value;
+                  NumeroDebito := NumeroDebito + 1;
+                  CDSsaldosdia.Next;
+              end;
+
+              if (NumeroDebito <> 0) then
+                      PromedioDebito := ValorDebito / NumeroDebito
+              else
+                      PromedioDebito := 0;
+
+              Bar2.Maximum := IBQuery2.RecordCount;
 // Validar Saldo
+              CDSinfo.Insert;
+              CDSInfoTIPODOCUMENTO.Value := StrToInt(Persona.TipoDocumento);
+              CDSInfoDOCUMENTO.Value := Persona.NumeroDocumento;
+              CDSInfoDV.Value := Persona.DigitoVerificacion;
+              CDSInfoPRIMER_APELLIDO.Value := Persona.PrimerApellido;
+              CDSInfoSEGUNDO_APELLIDO.Value := Persona.SegundoApellido;
+              CDSInfoNOMBRE.Value := Persona.PrimerNombre;
+              CDSInfoSEGUNDO_NOMBRE.Value := Persona.SegundoNombre;
+              CDSInfoRAZONSOCIAL.Value := Persona.RazonSocial;
+              CDSInfoPERIODO.Value := Mes;
+              CDSInfoDIRECCION.Value := Persona.Direccion;
+              CDSInfoMUNICIPIO.Value := StrtoInt(Persona.Municipio);
+              CDSInfoDEPARTAMENTO.Value := StrToInt(Persona.Departamento);
+              CDSInfoPAIS.Value := StrToInt(Persona.Pais);
+              CDSInfoTIPOCUENTA.Value := 1;
+              CDSInfoCUENTA.Value := SysUtils.Format('%.*d', [2, FieldByName('ID_TIPO_CAPTACION').AsInteger])+SysUtils.Format('%.*d', [6, FieldByName('NUMERO_CUENTA').AsInteger]);
+              if (FieldByName('GMF').AsInteger = 1) then
+                      CDSInfoGMF.Value := 9
+              else
+                      CDSInfoGMF.Value := 1;
+              CDSInfoSALDOFINAL.Value := SaldoFinal;
+              CDSInfoPROMEDIO.Value := Promedio;
+              CDSInfoMEDIANA.Value := Mediana;
+              CDSInfoMAXIMO.Value := Maximo;
+              CDSInfoMINIMO.Value := Minimo;
+              CDSInfoVALORCREDITO.Value := ValorCredito;
+              CDSInfoNUMEROCREDITO.Value := NumeroCredito;
+              CDSInfoPROMEDIOCREDITO.Value := PromedioCredito;
+              CDSInfoMEDIANACREDITO.Value := MedianaCredito;
+              CDSInfoDEBITO.Value := ValorDebito;
+              CDSInfoNUMERODEBITO.Value := NumeroDebito;
+              CDSInfoPROMEDIODEBITO.Value := PromedioDebito;
+              CDSInfoID_AGENCIA.Value := FieldByName('ID_AGENCIA').AsInteger;
+              CDSInfoID_TIPO_CAPTACION.Value := FieldByName('ID_TIPO_CAPTACION').AsInteger;
+              CDSInfoNUMERO_CUENTA.Value := FieldByName('NUMERO_CUENTA').AsInteger;
+              CDSInfoDIGITO_CUENTA.Value := FieldByName('DIGITO_CUENTA').AsInteger;
+              CDSInfo.Post;
 
-           if (Credito >= EdMonto.Value) or (Saldo >= JvSaldo.Value) then
-           begin
-                //CDSInfoTIPODOCUMENTO.Value := 
+              CDSpersona.Filtered := False;
+              CDSpersona.Filter := 'ID_PERSONA = ' + QuotedStr(Persona.NumeroDocumento);
+              CDSpersona.Filtered := True;
 
-           end; // fin del while Cds1
+              if (CDSpersona.RecordCount > 0) then
+              begin
+                  CDSpersona.Edit;
+                  CDSpersonaCREDITO.Value := CDSpersonaCREDITO.Value + ValorCredito;
+                  CDSpersonaSALDO.Value := CDSpersonaSALDO.Value + SaldoFinal;
+                  CDSpersona.Post;
+              end
+              else
+              begin
+                 CDSpersona.Insert;
+                 CDSpersonaID_PERSONA.Value := Persona.NumeroDocumento;
+                 CDSpersonaCREDITO.Value := ValorCredito;
+                 CDSpersonaSALDO.Value := SaldoFinal;
+                 CDSpersona.Post;
+              end;
 
-         Next; //next del query personas
+          Next; //next del query personas
          end; // fin del While de ibquery1
-         Transaction.Commit;
+
         end; // Fin del With IBQuery1
 
+        // Sacar personas excentas del reporte
+
+        IBQuery2.Close;
+        IBQuery2.SQL.Clear;
+        IBQuery2.SQL.Add('SELECT p.ID_IDENTIFICACION, p.ID_PERSONA, p.PRIMER_APELLIDO, p.SEGUNDO_APELLIDO, p.NOMBRE, mt.TIPO_TITULAR FROM "cap$maestrotitular" mt');
+        IBQuery2.SQL.Add('INNER JOIN "gen$persona" p ON p.ID_IDENTIFICACION = mt.ID_IDENTIFICACION and p.ID_PERSONA = mt.ID_PERSONA');
+        IBQuery2.SQL.Add('WHERE mt.ID_AGENCIA = :ID_AGENCIA and mt.ID_TIPO_CAPTACION = :ID_TIPO_CAPTACION and mt.NUMERO_CUENTA = :NUMERO_CUENTA and mt.DIGITO_CUENTA = :DIGITO_CUENTA and mt.NUMERO_TITULAR > 1');
+
+
+
+        CDSinfo.First;
+        CDSinfo.Filtered := False;
+        CDSfinal.Open;
+        CDSfinal.EmptyDataSet;
+        CDStitulares.Open;
+        CDStitulares.EmptyDataSet;
+        while not CDSinfo.Eof do
+        begin
+                CDSpersona.Filter :=  'ID_PERSONA = ' + QuotedStr(CDSInfoDOCUMENTO.Value);
+                CDSpersona.Filtered := True;
+                if (CDSpersona.RecordCount > 0) then
+                begin
+                    if (CDSpersonaCREDITO.Value >= EdMonto.Value) or ( CDSpersonaSALDO.Value >= JvSaldo.Value) then
+                    begin
+                      CDSfinal.Insert;
+                      CDSfinalTIPODOCUMENTO.Value := CDSInfoTIPODOCUMENTO.Value;
+                      CDSfinalDOCUMENTO.Value := CDSInfoDOCUMENTO.Value;
+                      CDSfinalDV.Value := CDSInfoDV.Value;
+                      CDSfinalPRIMER_APELLIDO.Value := CDSInfoPRIMER_APELLIDO.Value;
+                      CDSfinalSEGUNDO_APELLIDO.Value := CDSInfoSEGUNDO_APELLIDO.Value;
+                      CDSfinalNOMBRE.Value := CDSInfoNOMBRE.Value;
+                      CDSfinalSEGUNDO_NOMBRE.Value := CDSInfoSEGUNDO_NOMBRE.Value;
+                      CDSfinalRAZONSOCIAL.Value := CDSInfoRAZONSOCIAL.Value;
+                      CDSfinalRAZONSOCIAL.Value := CDSInfoDIRECCION.Value;
+                      CDSfinalMUNICIPIO.Value := CDSInfoMUNICIPIO.Value;
+                      CDSfinalDEPARTAMENTO.Value := CDSInfoDEPARTAMENTO.Value;
+                      CDSfinalPAIS.Value := CDSInfoPAIS.Value;
+                      CDSfinalTIPOCUENTA.Value := CDSInfoTIPOCUENTA.Value;
+                      CDSfinalCUENTA.Value := CDSInfoCUENTA.Value;
+                      CDSfinalGMF.Value := CDSInfoGMF.Value;
+                      CDSfinalSALDOFINAL.Value := CDSInfoSALDOFINAL.Value;
+                      CDSfinalPROMEDIO.Value := CDSInfoPROMEDIO.Value;
+                      CDSfinalMEDIANA.Value := CDSInfoMEDIANA.Value;
+                      CDSfinalMAXIMO.Value := CDSInfoMAXIMO.Value;
+                      CDSfinalMINIMO.Value := CDSInfoMINIMO.Value;
+                      CDSfinalVALORCREDITO.Value := CDSInfoVALORCREDITO.Value;
+                      CDSfinalNUMEROCREDITO.Value := CDSInfoNUMEROCREDITO.Value;
+                      CDSfinalPROMEDIOCREDITO.Value := CDSInfoPROMEDIOCREDITO.Value;
+                      CDSfinalMEDIANACREDITO.Value :=  CDSInfoMEDIANACREDITO.Value;
+                      CDSfinalVALORDEBITO.Value := CDSInfoDEBITO.Value;
+                      CDSfinalNUMERODEBITO.Value := CDSInfoNUMERODEBITO.Value;
+                      CDSfinalPROMEDIODEBITO.Value := CDSInfoPROMEDIODEBITO.Value;
+                      CDSfinal.Post;
+
+                      // Buscar segundos titulares
+                      IBQuery2.Close;
+                      IBQuery2.ParamByName('ID_AGENCIA').AsInteger := CDSInfoID_AGENCIA.Value;
+                      IBQuery2.ParamByName('ID_TIPO_CAPTACION').AsInteger := CDSInfoID_TIPO_CAPTACION.Value;
+                      IBQuery2.ParamByName('NUMERO_CUENTA').AsInteger := CDSInfoNUMERO_CUENTA.Value;
+                      IBQuery2.ParamByName('DIGITO_CUENTA').AsInteger := CDSInfoDIGITO_CUENTA.Value;
+                      IBQuery2.Open;
+                      while not IBQuery2.Eof do
+                      begin
+                          CDStitulares.Insert;
+                          CDStitularesCUENTA.Value := CDSInfoCUENTA.Value;
+                          if (IBQuery2.FieldByName('TIPO_TITULAR').AsInteger = 1) then
+                                  CDStitularesCONCEPTO.Value := 1
+                          else
+                                  CDStitularesCONCEPTO.Value := 2;
+                         case IBQuery2.FieldByName('ID_IDENTIFICACION').AsInteger of
+                             1: Tp := '11';
+                             2: Tp := '12';
+                             3: Tp := '13';
+                             4: Tp := '31';
+                             6: Tp := '22';
+                             9: Tp := '11';//NUI son registrados como Registros Civiles
+                         end;
+                         CDStitularesTIPODOCUMENTO.Value := StrToInt(Tp);
+                         if IBQuery2.FieldByName('ID_IDENTIFICACION').AsInteger = 4 then
+                         begin
+                            Id := LeftStr(IBQuery2.FieldByName('ID_PERSONA').AsString,Length(IBQuery2.FieldByName('ID_PERSONA').AsString)-1);
+                            Dg := RightStr(IBQuery2.FieldByName('ID_PERSONA').AsString,1);
+                         end
+                         else
+                         begin
+                            Id := IBQuery2.FieldByName('ID_PERSONA').AsString;
+                            Dg := '';
+                         end;
+                         CDStitularesNUMERODOCUMENTO.Value := Id;
+                         CDStitularesDV.Value := Dg;
+                         if Tp <> '31' then
+                         begin
+                            Persona.PrimerApellido := IBQuery2.FieldByName('PRIMER_APELLIDO').AsString;
+                            Persona.SegundoApellido := IBQuery2.FieldByName('SEGUNDO_APELLIDO').AsString;
+                            _sNombre := Trim(IBQuery2.FieldByName('NOMBRE').AsString);
+                            Persona.PrimerNombre := _sNombre;
+                            if Pos(' ', _sNombre) > 0 then
+                            begin
+                              Persona.PrimerNombre := LeftStr(_sNombre,Pos(' ', _sNombre)-1);
+                              Persona.SegundoNombre := RightStr(_sNombre,Length(_sNombre) - Pos(' ', _sNombre));
+                            end;
+                         end
+                         else
+                         begin
+                                Persona.PrimerApellido := '';
+                                Persona.SegundoApellido := '';
+                                Persona.PrimerNombre := '';
+                                Persona.SegundoNombre := '';
+                         end;
+
+                         if Tp = '31' then
+                                Persona.RazonSocial := Trim(IBQuery2.FieldByName('PRIMER_APELLIDO').AsString + ' ' + IBQuery2.FieldByName('SEGUNDO_APELLIDO').AsString + ' ' + IBQuery2.FieldByName('NOMBRE').AsString)
+                         else
+                                Persona.RazonSocial := '';
+                         end;
+
+                         CDStitularesPRIMER_APELLIDO.Value := Persona.PrimerApellido;
+                         CDStitularesSEGUNDO_APELLIDO.Value := Persona.SegundoApellido;
+                         CDStitularesNOMBRE.Value := Persona.PrimerNombre;
+                         CDStitularesSEGUNDO_NOMBRE.Value := Persona.SegundoNombre;
+                         CDStitularesRAZON_SOCIAL.Value := Persona.RazonSocial;
+                         CDStitulares.Post;
+
+                    end;
+                end;
+                CDSinfo.Next;
+        end;
+        Transaction.Commit;        
+        ShowMessage('Proceso Finalizado con Exito!!');
+        btnAExcelPrimero.Enabled := True;
+        btnAExcelSegundo.Enabled := True;
+        btnAExcelHoja.Enabled := True;
 end;
 
 procedure TfrmMovimientoCredito_F1019v9.btnCerrarClick(Sender: TObject);
@@ -429,13 +691,14 @@ begin
   Close;
 end;
 
-procedure TfrmMovimientoCredito_F1019v9.btnAExcelClick(Sender: TObject);
+procedure TfrmMovimientoCredito_F1019v9.btnAExcelPrimeroClick(Sender: TObject);
 var   ExcelFile:TDataSetToExcel;
 begin
         if SD1.Execute then
         begin
-          CDSinfo.First;
-          ExcelFile := TDataSetToExcel.Create(CDSInfo,SD1.FileName);
+          CDSfinal.Filtered := False;
+          CDSfinal.First;
+          ExcelFile := TDataSetToExcel.Create(CDSfinal,SD1.FileName);
           ExcelFile.WriteFile;
           ExcelFile.Free;
         end;
@@ -446,4 +709,33 @@ begin
              EdPeriodo.Value := YearOf(fFechaActual) -1 ;
 end;
 
+procedure TfrmMovimientoCredito_F1019v9.btnAExcelSegundoClick(
+  Sender: TObject);
+var   ExcelFile:TDataSetToExcel;
+begin
+        if SD1.Execute then
+        begin
+          CDStitulares.Filtered := False;
+          CDStitulares.First;
+          ExcelFile := TDataSetToExcel.Create(CDStitulares,SD1.FileName);
+          ExcelFile.WriteFile;
+          ExcelFile.Free;
+        end;
+end;
+
+procedure TfrmMovimientoCredito_F1019v9.btnAExcelHojaClick(
+  Sender: TObject);
+var   ExcelFile:TDataSetToExcel;
+begin
+        if SD1.Execute then
+        begin
+          CDSinfo.Filtered := False;
+          CDSinfo.First;
+          ExcelFile := TDataSetToExcel.Create(CDSinfo,SD1.FileName);
+          ExcelFile.WriteFile;
+          ExcelFile.Free;
+        end;
+end;
+
 end.
+

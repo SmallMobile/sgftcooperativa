@@ -1,7 +1,7 @@
 unit UnitValidaEmitidos;
 
 interface
-
+                                                                                                           
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, DateUtils,
   Dialogs, StdCtrls, DB, IBCustomDataSet, IBQuery, DBClient, Grids, DBGrids, strUtils,DataSetToExcel,
@@ -55,18 +55,26 @@ type
     save: TSaveDialog;
     Button3: TButton;
     Edit1: TEdit;
-    fecha: TDateTimePicker;
     IBq1: TIBQuery;
     btnTotalAExcel: TButton;
     IBConTotal: TIBQuery;
     Label1: TLabel;
     Label2: TLabel;
     EdMonto: TJvCurrencyEdit;
+    Label4: TLabel;
+    cmbMes: TComboBox;
+    Label3: TLabel;
+    EdPeriodo: TJvYearEdit;
+    CDDATOSCAUSADO: TCurrencyField;
+    cdCdatPAIS: TIntegerField;
+    cdCdatTTITULO: TIntegerField;
+    cdCdatTMOVIMIENTO: TIntegerField;
+    cdCdatCAUSADO: TCurrencyField;
     procedure btnProcesarClick(Sender: TObject);
     procedure btnGeneraExcelClick(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure btnTotalAExcelClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure cmbMesChange(Sender: TObject);
   private
   function ValidaCdat(_iIdentificacion:Integer;_sIdPersona,_sCuenta:string):Boolean;
     { Private declarations }
@@ -76,7 +84,8 @@ type
 
 var
   FrmValidaEmitidos: TFrmValidaEmitidos;
-
+  FechaCorte : TDateTime;
+  Mes : Integer;
 implementation
 
 uses unitMain, unitGlobales;
@@ -99,101 +108,38 @@ begin
         IBSelect.ExecSQL;
         IBSelect.Transaction.Commit;
         IBSelect.Transaction.StartTransaction;
-        IBSelect.Close;
-        IBSelect.SQL.Clear;
-        IBSelect.SQL.Add('select sum(INVERSION+INICIAL) AS VALOR,IDPERSONA,FECHAV,IDIDENTIFICACION FROM "dian$cdat" WHERE ESTADO = :ESTADO GROUP BY IDPERSONA,FECHAV,IDIDENTIFICACION');
-        IBSelect.ParamByName('ESTADO').AsString := 'SALDADO';
-        IBSelect.Open;
-        while not IBSelect.Eof do
-        begin
-          CdFechas.Append;
-          CdFechas.FieldValues['VALOR'] := IBSelect.FieldByName('VALOR').AsCurrency;
-          CdFechas.FieldValues['IDPERSONA'] := IBSelect.FieldByName('IDPERSONA').AsString;
-          CdFechas.FieldValues['FECHAV'] := IBSelect.FieldByName('FECHAV').AsDateTime;
-          CdFechas.FieldValues['IDIDENTIFICACION'] := IBSelect.FieldByName('IDIDENTIFICACION').AsInteger;
-          CdFechas.Post;
-          IBSelect.Next;
-        end;
         //Validar Información de Cdats por persona
         IBSelect.SQL.Clear;
         IBSelect.Close;
-        IBSelect.SQL.Add('select DISTINCT IDPERSONA,IDIDENTIFICACION from "dian$cdat"');
-        //IBSelect.SQL.Add('where IDPERSONA = ' + QuotedStr('12686420'));
+        IBSelect.SQL.Add('select * from "dian$cdat"');
+        IBSelect.SQL.Add('where PERIODO = :PERIODO');
+        IBSelect.ParamByName('PERIODO').AsInteger := cmbMes.ItemIndex + 1;
         IBSelect.Open;
         while not IBSelect.Eof do
         begin
-          IBConsulta.Close;
-          IBConsulta.ParamByName('IDPERSONA').AsString := IBSelect.FieldByName('IDPERSONA').AsString;
-          IBConsulta.ParamByName('IDIDENTIFICACION').AsInteger := IBSelect.FieldByName('IDIDENTIFICACION').AsInteger;
-          IBConsulta.Open;
-          while not IBConsulta.Eof do
-          begin
-            if LeftStr(IBConsulta.FieldByName('CUENTA').AsString,1) = '6' then
-            begin
-              _cFechaFinal := IBConsulta.FieldByName('FECHA').AsDateTime + 3;
-              CdFechas.Filtered := False;
-              CdFechas.Filter := 'IDIDENTIFICACION = ' + IBSelect.FieldByName('IDIDENTIFICACION').AsString + ' AND ' +
-                                 'IDPERSONA = ' + QuotedStr(IBSelect.FieldByName('IDPERSONA').AsString)+ ' AND ' +
-                                 'FECHAV >= ' + QuotedStr(DateToStr(IBConsulta.FieldByName('FECHA').AsDateTime -1)) + ' AND FECHAV <= ' + QuotedStr(DateToStr(IBConsulta.FieldByName('FECHA').AsDateTime));
-                                 //'FECHAV = ' + QuotedStr(IBConsulta.FieldByName('FECHA').AsString);
-              CdFechas.Filtered := True;
-              _cInversionAnt := CdFechas.FieldByName('VALOR').AsCurrency;
-              if _cInversionAnt > 0 then
-              begin
-                _cInversion := IBConsulta.FieldByName('INVERSION').AsCurrency - _cInversionAnt;
-                if _cInversion < 0 then
-                begin
-                   _cInversionRes  := _cInversion * -1;
-                   _cInversion := 0;
-                end
-                else
-                  _cInversionRes := 0;
-                CdFechas.Filtered := False;
-                CdFechas.Filter := 'IDIDENTIFICACION = ' + IBSelect.FieldByName('IDIDENTIFICACION').AsString + ' AND ' +
-                               'IDPERSONA = ' + QuotedStr(IBSelect.FieldByName('IDPERSONA').AsString)+ ' AND ' +
-                               'FECHAV >= ' + QuotedStr(DateToStr(IBConsulta.FieldByName('FECHA').AsDateTime -1)) + ' AND FECHAV <= ' + QuotedStr(DateToStr(IBConsulta.FieldByName('FECHA').AsDateTime));                               
-                               //'FECHAV = ' + QuotedStr(IBConsulta.FieldByName('FECHA').AsString);
-                CdFechas.Filtered := True;
-                CdFechas.Edit;
-                CdFechas.FieldValues['VALOR'] := _cInversionRes;
-                CdFechas.Post;
-              end
-              else
-                _cInversion := IBConsulta.FieldByName('INVERSION').AsCurrency;
-            end
-            else
-              _cInversion := IBConsulta.FieldByName('INVERSION').AsCurrency;
-            // Validación cdats con saldo 0 y prorrogados
-            if (IBConsulta.FieldByName('ESTADO').AsString = 'PRORROGADO') and (IBConsulta.FieldByName('SALDO').AsCurrency <= 0) then
-            begin
-              IBConsulta.Next;
-            end
-            else
-            begin
               IBInserta.Close;
-              IBInserta.ParamByName('CUENTA').AsString := IBConsulta.FieldByName('CUENTA').AsString;
-              IBInserta.ParamByName('IDPERSONA').AsString := IBConsulta.FieldByName('IDPERSONA').AsString;
-              IBInserta.ParamByName('IDIDENTIFICACION').AsInteger := IBConsulta.FieldByName('IDIDENTIFICACION').AsInteger;
-              IBInserta.ParamByName('INICIAL').AsCurrency := IBConsulta.FieldByName('INICIAL').AsCurrency;
-              IBInserta.ParamByName('INVERSION').AsCurrency := _cInversion;
-              IBInserta.ParamByName('INTERES').AsCurrency := IBConsulta.FieldByName('INTERES').AsCurrency;
-              IBInserta.ParamByName('SALDO').AsCurrency := IBConsulta.FieldByName('SALDO').AsCurrency;
+              IBInserta.ParamByName('CUENTA').AsString := IBSelect.FieldByName('CUENTA').AsString;
+              IBInserta.ParamByName('IDPERSONA').AsString := IBSelect.FieldByName('IDPERSONA').AsString;
+              IBInserta.ParamByName('IDIDENTIFICACION').AsInteger := IBSelect.FieldByName('IDIDENTIFICACION').AsInteger;
+              IBInserta.ParamByName('INICIAL').AsCurrency := IBSelect.FieldByName('INICIAL').AsCurrency;
+              IBInserta.ParamByName('INVERSION').AsCurrency := IBSelect.FieldByName('INVERSION').AsCurrency;;
+              IBInserta.ParamByName('INTERES').AsCurrency := IBSelect.FieldByName('INTERES').AsCurrency;
+              IBInserta.ParamByName('CAUSADO').AsCurrency := IBSelect.FieldByName('CAUSADO').AsCurrency;
+              IBInserta.ParamByName('SALDO').AsCurrency := IBSelect.FieldByName('SALDO').AsCurrency;
               try
-                IBInserta.ParamByName('FECHA').AsDateTime := IBConsulta.FieldByName('FECHA').AsDateTime;
+                IBInserta.ParamByName('FECHA').AsDateTime := IBSelect.FieldByName('FECHA').AsDateTime;
               except
                 IBInserta.ParamByName('FECHA').Clear;
               end;
               try
-                IBInserta.ParamByName('FECHAV').AsDateTime := IBConsulta.FieldByName('FECHAV').AsDateTime;
+                IBInserta.ParamByName('FECHAV').AsDateTime := IBSelect.FieldByName('FECHAV').AsDateTime;
               except
                 IBInserta.ParamByName('FECHAV').Clear;
               end;
-              IBInserta.ParamByName('ESTADO').AsString := IBConsulta.FieldByName('ESTADO').AsString;
+              IBInserta.ParamByName('ESTADO').AsString := IBSelect.FieldByName('ESTADO').AsString;
+              IBInserta.ParamByName('TTITULO').AsString := IBSelect.FieldByName('TTITULO').AsString;
+              IBInserta.ParamByName('TMOVIMIENTO').AsString := IBSelect.FieldByName('TMOVIMIENTO').AsString;              
               IBInserta.ExecSQL;
-              IBConsulta.Next;
-            end;
-            //Fin Validación cdats Prorrogados y con saldo 0
-          end;
           IBSelect.Next;
         end;
         IBInserta.Transaction.Commit;
@@ -210,12 +156,14 @@ begin
           SQL.Clear;
           SQL.Add('INSERT INTO "dian$nocdat"');
           SQL.Add('select IDPERSONA, IDIDENTIFICACION,sum(inversion) from "dian$cdatreal" GROUP BY IDPERSONA,IDIDENTIFICACION');
-          SQL.Add('having sum(inversion) < :MONTO');
+          SQL.Add('having sum(inversion) <= :MONTO');
           ParamByName('MONTO').AsCurrency := EdMonto.Value;
           ExecSQL;
           Transaction.Commit;
         end;
         CdFechas.Filtered := False;
+        btnProcesar.Enabled := false;
+        btnGeneraExcel.Click;
 end;
 
 procedure TFrmValidaEmitidos.btnGeneraExcelClick(Sender: TObject);
@@ -240,17 +188,20 @@ begin
           SQL.Add('"dian$cdatreal".IDIDENTIFICACION,');
           SQL.Add('"dian$cdatreal".INICIAL,');
           SQL.Add('"dian$cdatreal".INVERSION,');
+          SQL.Add('"dian$cdatreal".CAUSADO,');
           SQL.Add('"dian$cdatreal".INTERES,');
           SQL.Add('"dian$cdatreal".SALDO,');
           SQL.Add('"dian$cdatreal".FECHA,');
           SQL.Add('"dian$cdatreal".FECHAV,');
           SQL.Add('"dian$cdatreal".ESTADO,');
+          SQL.Add('"dian$cdatreal".TTITULO,');
+          SQL.Add('"dian$cdatreal".TMOVIMIENTO,');
           SQL.Add('"gen$persona".NOMBRE,');
           SQL.Add('"gen$persona".PRIMER_APELLIDO,');
           SQL.Add('"gen$persona".SEGUNDO_APELLIDO');
           SQL.Add('FROM');
           SQL.Add('"dian$cdatreal"');
-          SQL.Add('INNER JOIN "gen$persona" ON ("dian$cdatreal".IDPERSONA = "gen$persona".ID_PERSONA)');
+          SQL.Add('LEFT JOIN "gen$persona" ON ("dian$cdatreal".IDPERSONA = "gen$persona".ID_PERSONA)');
           SQL.Add('AND ("dian$cdatreal".IDIDENTIFICACION = "gen$persona".ID_IDENTIFICACION)');
           Open;
           while not Eof do
@@ -310,9 +261,11 @@ begin
                  //**
                  cdCdat.FieldValues['DPTO'] := _sDpto;
                  cdCdat.FieldValues['MNCP'] := _sMcp;
+                 cdCdat.FieldValues['PAIS'] := 57;
                  cdCdat.FieldValues['VALORINICIAL'] := FieldByName('INICIAL').AsCurrency;
                  cdCdat.FieldValues['INVERSION'] := FieldByName('INVERSION').AsCurrency;
                  cdCdat.FieldValues['INTERES'] := FieldByName('INTERES').AsCurrency;
+                 cdCdat.FieldValues['CAUSADO'] := FieldByName('CAUSADO').AsCurrency;
                  if LeftStr(FieldByName('CUENTA').AsString,1) = '6' then
                      cdCdat.FieldValues['SALDO'] := FieldByName('SALDO').AsCurrency
                  else
@@ -333,6 +286,8 @@ begin
                         cdCdat.FieldValues['ESTADO'] := FieldByName('ESTADO').AsString;
                         cdCdat.FieldValues['CIUDAD'] := IBCon.FieldByName('MUNICIPIO').AsString;
                  }
+                 cdCdat.FieldByName('TTITULO').AsInteger := FieldByName('TTITULO').AsInteger;
+                 cdCdat.FieldByName('TMOVIMIENTO').asInteger := FieldByName('TMOVIMIENTO').AsInteger;
                  cdCdat.Post;
             end;
          Next;
@@ -353,7 +308,11 @@ function TFrmValidaEmitidos.ValidaCdat(_iIdentificacion: Integer;
   _sIdPersona,_sCuenta: string): Boolean;
 var
         _dFechav :TDate;
+        Mes : Integer;
 begin
+
+        Result := True;
+{
         Result := False;
         with IB do
         begin
@@ -364,6 +323,7 @@ begin
           if RecordCount <= 0 then
              Result := True;
         end;
+
         if Result = True then
         begin
           with IBq1 do
@@ -380,7 +340,7 @@ begin
             SQL.Add('  "dian$cdatreal".CUENTA = :CUENTA');
             ParamByName('CUENTA').AsString := _sCuenta;
             Open;
-            if (FieldByName('ESTADO').AsString = 'SALDADO') and (FieldByName('FECHA').AsDateTime <= fecha.DateTime)   then
+            if (FieldByName('ESTADO').AsString = 'SALDADO') and (FieldByName('FECHA').AsDateTime <= FechaCorte)   then
             begin
               _dFechav := FieldByName('FECHAV').AsDateTime;
               Close;
@@ -405,7 +365,7 @@ begin
 
         end;
         
-
+}
 end;
 
 procedure TFrmValidaEmitidos.Button3Click(Sender: TObject);
@@ -413,7 +373,7 @@ begin
               CdFechas.Filtered := False;
               CdFechas.Filter := 'IDIDENTIFICACION = ' + '3' + ' AND ' +
                                  'IDPERSONA = ' + QuotedStr(Edit1.Text)+ ' AND ' +
-                                 'FECHAV >= ' + QuotedStr(DateToStr(fecha.DateTime -2)) + ' AND FECHAV <= ' + QuotedStr(DateToStr(fecha.DateTime));
+                                 'FECHAV >= ' + QuotedStr(DateToStr(FechaCorte - 2)) + ' AND FECHAV <= ' + QuotedStr(DateToStr(FechaCorte));
               CdFechas.Filtered := True;
               //ShowMessage(CdFechas.FieldByName('VALOR').AsString);
 
@@ -497,11 +457,12 @@ begin
                  IBConTotal.Open;
                  cdCdat.FieldValues['DIRECCION'] := IBConTotal.FieldByName('DIRECCION').AsString;
                  _sDpto := IBConTotal.FieldByName('DPTO').AsString;
-                 _sMcp := IBConTotal.FieldByName('MCP').AsString;
+                 _sMcp := IBConTotal.FieldByName('COD_MUNICIPIO').AsString;
 
                  //**
                  cdCdat.FieldValues['DPTO'] := _sDpto;
                  cdCdat.FieldValues['MNCP'] := _sMcp;
+                 cdCdat.FieldValues['PAIS'] := 57;
                  cdCdat.FieldValues['VALORINICIAL'] := FieldByName('INICIAL').AsCurrency;
                  cdCdat.FieldValues['INVERSION'] := FieldByName('INVERSION').AsCurrency;
                  cdCdat.FieldValues['INTERES'] := FieldByName('INTERES').AsCurrency;
@@ -543,9 +504,12 @@ begin
 
 end;
 
-procedure TFrmValidaEmitidos.FormCreate(Sender: TObject);
+procedure TFrmValidaEmitidos.cmbMesChange(Sender: TObject);
 begin
-        fecha.Date := EncodeDate(YearOf(fFechaActual) - 1, 12 , 31);
+        Mes := cmbMes.ItemIndex + 1;
+        TryEncodeDate(EdPeriodo.Value, Mes, DaysInAMonth(EdPeriodo.Value, Mes), FechaCorte);
+        btnProcesar.Enabled := True;
 end;
 
 end.
+

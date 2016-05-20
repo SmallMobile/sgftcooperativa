@@ -27,9 +27,9 @@ type
     DSTipoCaptacion: TDataSource;
     IBQuery5: TIBQuery;
     IBSQL1: TIBSQL;
-    ReporteCap: TprTxReport;
     ReporteCon: TprTxReport;
     ReporteCer: TprTxReport;
+    ReporteCap: TprTxReport;
     procedure ReporteCapUnknownVariable(Sender: TObject;
       const VarName: String; var Value: TprVarValue;
       var IsProcessed: Boolean);
@@ -82,7 +82,7 @@ begin
           with IBSQL1 do begin
             Close;
             SQL.Clear;
-            SQL.Add('select SALDO_ACTUAL from SALDO_ACTUAL_TD(:AG,:TP,:CTA,:DGT,:ANO,:FECHA1,:FECHA2)');
+            SQL.Add('select SALDO_ACTUAL from SALDO_ACTUAL(:AG,:TP,:CTA,:DGT,:ANO,:FECHA1,:FECHA2)');
             ParamByName('AG').AsInteger := Ag;
             ParamByName('TP').AsInteger := Tipo;
             ParamByName('CTA').AsInteger := Cuenta;
@@ -223,7 +223,7 @@ begin
                   SQL.Add('"cap$maestro".FECHA_VENCIMIENTO,');
                   SQL.Add('"cap$maestro".FECHA_PRORROGA,');
                   SQL.Add('"cap$maestro".FECHA_VENCIMIENTO_PRORROGA,');
-                  SQL.Add('(:FECHACORTE - "gen$persona".FECHA_NACIMIENTO)/365 AS EDAD, ');
+                  SQL.Add('(CAST(:FECHACORTE AS DATE)- "gen$persona".FECHA_NACIMIENTO)/365 AS EDAD, ');
                   SQL.Add('"cap$tiposestado".SE_SUMA');
                   SQL.Add(' FROM');
                   SQL.Add('"cap$maestro"');

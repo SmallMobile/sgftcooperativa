@@ -33,6 +33,7 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
     Step = 1
     TextCentered = True
     TextOption = toPercent
+    Visible = False
   end
   object Bar2: TJvSpecialProgress
     Left = 2
@@ -53,6 +54,7 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
     Step = 1
     TextCentered = True
     TextOption = toPercent
+    Visible = False
   end
   object Bar1: TJvSpecialProgress
     Left = 2
@@ -84,13 +86,13 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
     object Label1: TLabel
       Left = 12
       Top = 16
-      Width = 36
+      Width = 19
       Height = 13
       Alignment = taCenter
-      Caption = 'Periodo'
+      Caption = 'A'#241'o'
     end
     object Label2: TLabel
-      Left = 52
+      Left = 220
       Top = 18
       Width = 117
       Height = 13
@@ -99,7 +101,7 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
       Caption = 'Movimiento Cr >='
     end
     object Label3: TLabel
-      Left = 176
+      Left = 344
       Top = 18
       Width = 89
       Height = 13
@@ -107,8 +109,15 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
       AutoSize = False
       Caption = 'Saldo >='
     end
+    object Label4: TLabel
+      Left = 64
+      Top = 16
+      Width = 20
+      Height = 13
+      Caption = 'Mes'
+    end
     object EdMonto: TJvCurrencyEdit
-      Left = 51
+      Left = 219
       Top = 33
       Width = 118
       Height = 21
@@ -135,7 +144,7 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
       WindowsillYear = 71
     end
     object JvSaldo: TJvCurrencyEdit
-      Left = 175
+      Left = 343
       Top = 33
       Width = 87
       Height = 21
@@ -145,6 +154,81 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
       Value = 1000000
       HasMaxValue = False
       HasMinValue = False
+    end
+    object cmbMes: TComboBox
+      Left = 64
+      Top = 32
+      Width = 145
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 3
+      Text = 'Seleccion el Mes'
+      Items.Strings = (
+        'Enero'
+        'Febrero'
+        'Marzo'
+        'Abril'
+        'Mayo'
+        'Junio'
+        'Julio'
+        'Agosto'
+        'Septiembre'
+        'Octubre'
+        'Noviembre'
+        'Diciembre')
+    end
+    object btnAExcelHoja: TBitBtn
+      Left = 524
+      Top = 30
+      Width = 91
+      Height = 25
+      Caption = 'Hoja Trabajo'
+      Enabled = False
+      TabOrder = 4
+      OnClick = btnAExcelHojaClick
+      Glyph.Data = {
+        36050000424D3605000000000000360400002800000010000000100000000100
+        08000000000000010000320B0000320B00000001000000010000EFA54A00C684
+        6B00BD8C7300CE947300EFB57300FFC67300BD847B00C6947B00B5848400B58C
+        8400CE9C8400EFCE94009C9C9C00C6A59C00EFCE9C00F7D69C00C6ADA500F7D6
+        A500CEB5AD00D6B5AD00C6BDAD00F7D6AD00D6BDB500DEBDB500DEC6B500E7C6
+        B500EFCEB500F7D6B500F7DEB500EFCEBD00F7DEBD00527BC600E7DEC600F7DE
+        C600F7E7C600E7CECE00E7D6CE00F7E7D600FFEFD600DEDEDE00FFEFE700FFF7
+        E700FFF7EF00FFF7F700FFFFF700FF00FF0039A5FF0000F7FF0094FFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF002D2D08080808
+        0808080808080808082D2D2D0D261F1F1C15110E0B0B0B0F082D2D2D0D262F1F
+        1F0C0C0C0C0C0C0E082D2D2D10282E2F1F1F1F150E0E0B0E082D2D2D1029252E
+        302F1F1F150E0E0B082D2D2D121F1F1F1F302F1F1F0C0C0E082D2D2D132E302F
+        2F2F2F2F1F1F1111082D2D2D16312E302F1F1F22211E1B15082D2D2D1631272E
+        302F1F1F0C0C0C1C082D2D2D1731312E302F2F1F1F21211B082D2D2D18313131
+        2E302F2F1F1F2014082D2D2D1931270C0C2E302F2F1F1F09082D2D2D19313131
+        3131312C23020400012D2D2D1D31313131313131240705032D2D2D2D192B2A2A
+        2A2A2A2A23070A2D2D2D2D2D191A1A1A1A19191A16062D2D2D2D}
     end
   end
   object Panel1: TPanel
@@ -208,7 +292,7 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
     end
     object btnCerrar: TBitBtn
       Left = 4
-      Top = 64
+      Top = 83
       Width = 93
       Height = 25
       Caption = '&Cerrar'
@@ -258,14 +342,68 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
         3625013C3D3D3D3B031A1A1A03032E33392C013C3D3D3D3B031A1A1A1A1A0306
         1B1C010303030303031A1A1A1A1A1A1A0303011A1A1A1A1A1A1A}
     end
-    object btnAExcel: TBitBtn
+    object btnAExcelPrimero: TBitBtn
       Left = 4
       Top = 32
       Width = 91
       Height = 25
-      Caption = 'A Excel'
+      Caption = 'Excel 1019'
+      Enabled = False
       TabOrder = 2
-      OnClick = btnAExcelClick
+      OnClick = btnAExcelPrimeroClick
+      Glyph.Data = {
+        36050000424D3605000000000000360400002800000010000000100000000100
+        08000000000000010000320B0000320B00000001000000010000EFA54A00C684
+        6B00BD8C7300CE947300EFB57300FFC67300BD847B00C6947B00B5848400B58C
+        8400CE9C8400EFCE94009C9C9C00C6A59C00EFCE9C00F7D69C00C6ADA500F7D6
+        A500CEB5AD00D6B5AD00C6BDAD00F7D6AD00D6BDB500DEBDB500DEC6B500E7C6
+        B500EFCEB500F7D6B500F7DEB500EFCEBD00F7DEBD00527BC600E7DEC600F7DE
+        C600F7E7C600E7CECE00E7D6CE00F7E7D600FFEFD600DEDEDE00FFEFE700FFF7
+        E700FFF7EF00FFF7F700FFFFF700FF00FF0039A5FF0000F7FF0094FFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF002D2D08080808
+        0808080808080808082D2D2D0D261F1F1C15110E0B0B0B0F082D2D2D0D262F1F
+        1F0C0C0C0C0C0C0E082D2D2D10282E2F1F1F1F150E0E0B0E082D2D2D1029252E
+        302F1F1F150E0E0B082D2D2D121F1F1F1F302F1F1F0C0C0E082D2D2D132E302F
+        2F2F2F2F1F1F1111082D2D2D16312E302F1F1F22211E1B15082D2D2D1631272E
+        302F1F1F0C0C0C1C082D2D2D1731312E302F2F1F1F21211B082D2D2D18313131
+        2E302F2F1F1F2014082D2D2D1931270C0C2E302F2F1F1F09082D2D2D19313131
+        3131312C23020400012D2D2D1D31313131313131240705032D2D2D2D192B2A2A
+        2A2A2A2A23070A2D2D2D2D2D191A1A1A1A19191A16062D2D2D2D}
+    end
+    object btnAExcelSegundo: TBitBtn
+      Left = 4
+      Top = 57
+      Width = 91
+      Height = 25
+      Caption = 'Excel 1019D'
+      Enabled = False
+      TabOrder = 3
+      OnClick = btnAExcelSegundoClick
       Glyph.Data = {
         36050000424D3605000000000000360400002800000010000000100000000100
         08000000000000010000320B0000320B00000001000000010000EFA54A00C684
@@ -311,21 +449,13 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
         2A2A2A2A23070A2D2D2D2D2D191A1A1A1A19191A16062D2D2D2D}
     end
   end
-  object Edit1: TEdit
-    Left = 288
-    Top = 24
-    Width = 121
-    Height = 21
-    TabOrder = 2
-    Text = 'Edit1'
-  end
   object Data: TDBGrid
     Left = 3
-    Top = 112
+    Top = 120
     Width = 718
-    Height = 193
+    Height = 185
     DataSource = DSData
-    TabOrder = 3
+    TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -384,83 +514,184 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
         ParamType = ptUnknown
       end>
   end
-  object CdsDatosCuenta: TClientDataSet
+  object CDSInfo: TClientDataSet
     Active = True
     Aggregates = <>
     FieldDefs = <
       item
-        Name = 'FECHA'
-        DataType = ftDate
+        Name = 'PERIODO'
+        DataType = ftInteger
       end
       item
-        Name = 'DEBITO'
+        Name = 'TIPODOCUMENTO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'DOCUMENTO'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'DV'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'PRIMER_APELLIDO'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'SEGUNDO_APELLIDO'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'SEGUNDO_NOMBRE'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'RAZONSOCIAL'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'DIRECCION'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'DEPARTAMENTO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'PAIS'
+        DataType = ftInteger
+      end
+      item
+        Name = 'TIPOCUENTA'
+        DataType = ftInteger
+      end
+      item
+        Name = 'CUENTA'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'GMF'
+        DataType = ftInteger
+      end
+      item
+        Name = 'SALDOFINAL'
         DataType = ftCurrency
       end
       item
-        Name = 'CREDITO'
+        Name = 'PROMEDIO'
         DataType = ftCurrency
       end
       item
-        Name = 'SALDO'
+        Name = 'MEDIANA'
         DataType = ftCurrency
+      end
+      item
+        Name = 'MAXIMO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'MINIMO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'VALORCREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'NUMEROCREDITO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'PROMEDIOCREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'MEDIANACREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'VALORDEBITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'NUMERODEBITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'PROMEDIODEBITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'ID_AGENCIA'
+        DataType = ftInteger
+      end
+      item
+        Name = 'ID_TIPO_CAPTACION'
+        DataType = ftInteger
+      end
+      item
+        Name = 'NUMERO_CUENTA'
+        DataType = ftInteger
+      end
+      item
+        Name = 'DIGITO_CUENTA'
+        DataType = ftInteger
       end>
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 769
+    Left = 763
     Top = 71
     Data = {
-      910000009619E0BD010000001800000004000000000003000000910005464543
-      484104000600000000000644454249544F080004000000010007535542545950
-      450200490006004D6F6E657900074352454449544F0800040000000100075355
-      42545950450200490006004D6F6E6579000553414C444F080004000000010007
-      535542545950450200490006004D6F6E6579000000}
-    object CdsDatosCuentaFECHA: TDateField
-      FieldName = 'FECHA'
-    end
-    object CdsDatosCuentaDEBITO: TCurrencyField
-      FieldName = 'DEBITO'
-    end
-    object CdsDatosCuentaCREDITO: TCurrencyField
-      FieldName = 'CREDITO'
-    end
-    object CdsDatosCuentaSALDO: TCurrencyField
-      FieldName = 'SALDO'
-    end
-  end
-  object CDSInfo: TClientDataSet
-    Active = True
-    Aggregates = <>
-    Params = <>
-    Left = 771
-    Top = 111
-    Data = {
-      2A0300009619E0BD0100000018000000190000000000030000002A0307504552
+      C90300009619E0BD010000001800000020000000000003000000C90307504552
       494F444F04000100000000000D5449504F444F43554D454E544F040001000000
       000009444F43554D454E544F0100490000000100055749445448020002000F00
-      02445604000100000000000F5052494D45525F4150454C4C49444F0100490000
-      00010005574944544802000200140010534547554E444F5F4150454C4C49444F
-      0100490000000100055749445448020002001400064E4F4D4252450100490000
-      0001000557494454480200020014000E534547554E444F5F4E4F4D4252450100
-      4900000001000557494454480200020014000B52415A4F4E534F4349414C0100
-      49000000010005574944544802000200140009444952454343494F4E01004900
-      000001000557494454480200020014000C444550415254414D454E544F040001
-      0000000000094D554E49434950494F0400010000000000045041495304000100
-      000000000A53414C444F46494E414C0800040000000100075355425459504502
-      00490006004D6F6E6579000850524F4D4544494F080004000000010007535542
-      545950450200490006004D6F6E657900074D454449414E410800040000000100
-      07535542545950450200490006004D6F6E657900064D4158494D4F0800040000
-      00010007535542545950450200490006004D6F6E657900064D494E494D4F0800
-      04000000010007535542545950450200490006004D6F6E6579000C56414C4F52
-      4352454449544F080004000000010007535542545950450200490006004D6F6E
-      6579000D4E554D45524F4352454449544F04000100000000000F50524F4D4544
-      494F4352454449544F080004000000010007535542545950450200490006004D
-      6F6E6579000E4D454449414E414352454449544F080004000000010007535542
-      545950450200490006004D6F6E6579000B56414C4F5244454249544F08000400
-      0000010007535542545950450200490006004D6F6E6579000C4E554D45524F44
-      454249544F080004000000010007535542545950450200490006004D6F6E6579
-      000E50524F4D4544494F44454249544F08000400000001000753554254595045
-      0200490006004D6F6E6579000000}
+      02445601004900000001000557494454480200020014000F5052494D45525F41
+      50454C4C49444F01004900000001000557494454480200020014001053454755
+      4E444F5F4150454C4C49444F0100490000000100055749445448020002001400
+      064E4F4D42524501004900000001000557494454480200020014000E53454755
+      4E444F5F4E4F4D42524501004900000001000557494454480200020014000B52
+      415A4F4E534F4349414C01004900000001000557494454480200020014000944
+      4952454343494F4E0100490000000100055749445448020002001400094D554E
+      49434950494F04000100000000000C444550415254414D454E544F0400010000
+      000000045041495304000100000000000A5449504F4355454E54410400010000
+      000000064355454E544101004900000001000557494454480200020014000347
+      4D4604000100000000000A53414C444F46494E414C0800040000000100075355
+      42545950450200490006004D6F6E6579000850524F4D4544494F080004000000
+      010007535542545950450200490006004D6F6E657900074D454449414E410800
+      04000000010007535542545950450200490006004D6F6E657900064D4158494D
+      4F080004000000010007535542545950450200490006004D6F6E657900064D49
+      4E494D4F080004000000010007535542545950450200490006004D6F6E657900
+      0C56414C4F524352454449544F08000400000001000753554254595045020049
+      0006004D6F6E6579000D4E554D45524F4352454449544F04000100000000000F
+      50524F4D4544494F4352454449544F0800040000000100075355425459504502
+      00490006004D6F6E6579000E4D454449414E414352454449544F080004000000
+      010007535542545950450200490006004D6F6E6579000B56414C4F5244454249
+      544F080004000000010007535542545950450200490006004D6F6E6579000C4E
+      554D45524F44454249544F080004000000010007535542545950450200490006
+      004D6F6E6579000E50524F4D4544494F44454249544F08000400000001000753
+      5542545950450200490006004D6F6E6579000A49445F4147454E434941040001
+      00000000001149445F5449504F5F434150544143494F4E04000100000000000D
+      4E554D45524F5F4355454E544104000100000000000D44494749544F5F435545
+      4E544104000100000000000000}
     object CDSInfoPERIODO: TIntegerField
       FieldName = 'PERIODO'
     end
@@ -471,7 +702,7 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
       FieldName = 'DOCUMENTO'
       Size = 15
     end
-    object CDSInfoDV: TIntegerField
+    object CDSInfoDV: TStringField
       FieldName = 'DV'
     end
     object CDSInfoPRIMER_APELLIDO: TStringField
@@ -492,14 +723,23 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
     object CDSInfoDIRECCION: TStringField
       FieldName = 'DIRECCION'
     end
-    object CDSInfoDEPARTAMENTO: TIntegerField
-      FieldName = 'DEPARTAMENTO'
-    end
     object CDSInfoMUNICIPIO: TIntegerField
       FieldName = 'MUNICIPIO'
     end
+    object CDSInfoDEPARTAMENTO: TIntegerField
+      FieldName = 'DEPARTAMENTO'
+    end
     object CDSInfoPAIS: TIntegerField
       FieldName = 'PAIS'
+    end
+    object CDSInfoTIPOCUENTA: TIntegerField
+      FieldName = 'TIPOCUENTA'
+    end
+    object CDSInfoCUENTA: TStringField
+      FieldName = 'CUENTA'
+    end
+    object CDSInfoGMF: TIntegerField
+      FieldName = 'GMF'
     end
     object CDSInfoSALDOFINAL: TCurrencyField
       FieldName = 'SALDOFINAL'
@@ -537,31 +777,460 @@ object frmMovimientoCredito_F1019v9: TfrmMovimientoCredito_F1019v9
     object CDSInfoPROMEDIODEBITO: TCurrencyField
       FieldName = 'PROMEDIODEBITO'
     end
+    object CDSInfoID_AGENCIA: TIntegerField
+      FieldName = 'ID_AGENCIA'
+    end
+    object CDSInfoID_TIPO_CAPTACION: TIntegerField
+      FieldName = 'ID_TIPO_CAPTACION'
+    end
+    object CDSInfoNUMERO_CUENTA: TIntegerField
+      FieldName = 'NUMERO_CUENTA'
+    end
+    object CDSInfoDIGITO_CUENTA: TIntegerField
+      FieldName = 'DIGITO_CUENTA'
+    end
   end
   object DSData: TDataSource
     DataSet = CDSInfo
     Left = 732
     Top = 180
   end
-  object CDSSaldoInicialMes: TClientDataSet
-    Active = True
-    Aggregates = <>
-    Params = <>
-    Left = 731
-    Top = 71
-    Data = {
-      4F0000009619E0BD0100000018000000020000000000030000004F00034D4553
-      04000100000000000C53414C444F494E494349414C0800040000000100075355
-      42545950450200490006004D6F6E6579000000}
-    object CDSSaldoInicialMesMES: TIntegerField
-      FieldName = 'MES'
-    end
-    object CDSSaldoInicialMesSALDOINICIAL: TCurrencyField
-      FieldName = 'SALDOINICIAL'
-    end
-  end
   object Transaction: TIBTransaction
     Left = 736
     Top = 112
+  end
+  object CDSsaldosdia: TClientDataSet
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'DIA'
+        DataType = ftInteger
+      end
+      item
+        Name = 'SALDOANTERIOR'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'DEBITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'CREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'SALDODIA'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'TIPO'
+        DataType = ftInteger
+      end>
+    IndexDefs = <
+      item
+        Name = 'cdssaldosdia_idx_dia'
+        Fields = 'DIA'
+      end
+      item
+        Name = 'cdssaldosdia_idx_saldodia'
+        Fields = 'SALDODIA'
+      end>
+    IndexName = 'cdssaldosdia_idx_dia'
+    Params = <>
+    StoreDefs = True
+    Left = 768
+    Top = 168
+    Data = {
+      C90000009619E0BD010000001800000006000000000003000000C90003444941
+      04000100000000000D53414C444F414E544552494F5208000400000001000753
+      5542545950450200490006004D6F6E6579000644454249544F08000400000001
+      0007535542545950450200490006004D6F6E657900074352454449544F080004
+      000000010007535542545950450200490006004D6F6E6579000853414C444F44
+      4941080004000000010007535542545950450200490006004D6F6E6579000454
+      49504F04000100000000000000}
+    object CDSsaldosdiaDIA: TIntegerField
+      FieldName = 'DIA'
+    end
+    object CDSsaldosdiaSALDOANTERIOR: TCurrencyField
+      FieldName = 'SALDOANTERIOR'
+    end
+    object CDSsaldosdiaDEBITO: TCurrencyField
+      FieldName = 'DEBITO'
+    end
+    object CDSsaldosdiaCREDITO: TCurrencyField
+      FieldName = 'CREDITO'
+    end
+    object CDSsaldosdiaSALDODIA: TCurrencyField
+      FieldName = 'SALDODIA'
+    end
+    object CDSsaldosdiaTIPO: TIntegerField
+      FieldName = 'TIPO'
+    end
+  end
+  object CDSpersona: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 728
+    Top = 72
+    Data = {
+      7F0000009619E0BD0100000018000000030000000000030000007F000A49445F
+      504552534F4E4101004900000001000557494454480200020014000743524544
+      49544F080004000000010007535542545950450200490006004D6F6E65790005
+      53414C444F080004000000010007535542545950450200490006004D6F6E6579
+      000000}
+    object CDSpersonaID_PERSONA: TStringField
+      FieldName = 'ID_PERSONA'
+    end
+    object CDSpersonaCREDITO: TCurrencyField
+      FieldName = 'CREDITO'
+    end
+    object CDSpersonaSALDO: TCurrencyField
+      FieldName = 'SALDO'
+    end
+  end
+  object CDStitulares: TClientDataSet
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'CUENTA'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'CONCEPTO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'TIPODOCUMENTO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'NUMERODOCUMENTO'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'DV'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'PRIMER_APELLIDO'
+        DataType = ftString
+        Size = 80
+      end
+      item
+        Name = 'SEGUNDO_APELLIDO'
+        DataType = ftString
+        Size = 80
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = ftString
+        Size = 100
+      end
+      item
+        Name = 'SEGUNDO_NOMBRE'
+        DataType = ftString
+        Size = 80
+      end
+      item
+        Name = 'RAZON_SOCIAL'
+        DataType = ftString
+        Size = 200
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 768
+    Top = 208
+    Data = {
+      3F0100009619E0BD01000000180000000A0000000000030000003F0106435545
+      4E5441010049000000010005574944544802000200140008434F4E434550544F
+      04000100000000000D5449504F444F43554D454E544F04000100000000000F4E
+      554D45524F444F43554D454E544F010049000000010005574944544802000200
+      140002445601004900000001000557494454480200020014000F5052494D4552
+      5F4150454C4C49444F0100490000000100055749445448020002005000105345
+      47554E444F5F4150454C4C49444F010049000000010005574944544802000200
+      5000064E4F4D42524501004900000001000557494454480200020064000E5345
+      47554E444F5F4E4F4D4252450100490000000100055749445448020002005000
+      0C52415A4F4E5F534F4349414C010049000000010005574944544802000200C8
+      000000}
+    object CDStitularesCUENTA: TStringField
+      FieldName = 'CUENTA'
+    end
+    object CDStitularesCONCEPTO: TIntegerField
+      FieldName = 'CONCEPTO'
+    end
+    object CDStitularesTIPODOCUMENTO: TIntegerField
+      FieldName = 'TIPODOCUMENTO'
+    end
+    object CDStitularesNUMERODOCUMENTO: TStringField
+      FieldName = 'NUMERODOCUMENTO'
+    end
+    object CDStitularesDV: TStringField
+      FieldName = 'DV'
+    end
+    object CDStitularesPRIMER_APELLIDO: TStringField
+      FieldName = 'PRIMER_APELLIDO'
+      Size = 80
+    end
+    object CDStitularesSEGUNDO_APELLIDO: TStringField
+      FieldName = 'SEGUNDO_APELLIDO'
+      Size = 80
+    end
+    object CDStitularesNOMBRE: TStringField
+      FieldName = 'NOMBRE'
+      Size = 100
+    end
+    object CDStitularesSEGUNDO_NOMBRE: TStringField
+      FieldName = 'SEGUNDO_NOMBRE'
+      Size = 80
+    end
+    object CDStitularesRAZON_SOCIAL: TStringField
+      FieldName = 'RAZON_SOCIAL'
+      Size = 200
+    end
+  end
+  object CDSfinal: TClientDataSet
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'TIPODOCUMENTO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'DOCUMENTO'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'DV'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'PRIMER_APELLIDO'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'SEGUNDO_APELLIDO'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'NOMBRE'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'SEGUNDO_NOMBRE'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'RAZONSOCIAL'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'DIRECCION'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'MUNICIPIO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'DEPARTAMENTO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'PAIS'
+        DataType = ftInteger
+      end
+      item
+        Name = 'TIPOCUENTA'
+        DataType = ftInteger
+      end
+      item
+        Name = 'CUENTA'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'GMF'
+        DataType = ftInteger
+      end
+      item
+        Name = 'SALDOFINAL'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'PROMEDIO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'MEDIANA'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'MAXIMO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'MINIMO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'VALORCREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'NUMEROCREDITO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'PROMEDIOCREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'MEDIANACREDITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'VALORDEBITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'NUMERODEBITO'
+        DataType = ftCurrency
+      end
+      item
+        Name = 'PROMEDIODEBITO'
+        DataType = ftCurrency
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 763
+    Top = 111
+    Data = {
+      600300009619E0BD01000000180000001B00000000000300000060030D544950
+      4F444F43554D454E544F040001000000000009444F43554D454E544F01004900
+      00000100055749445448020002000F0002445601004900000001000557494454
+      480200020014000F5052494D45525F4150454C4C49444F010049000000010005
+      574944544802000200140010534547554E444F5F4150454C4C49444F01004900
+      00000100055749445448020002001400064E4F4D425245010049000000010005
+      57494454480200020014000E534547554E444F5F4E4F4D425245010049000000
+      01000557494454480200020014000B52415A4F4E534F4349414C010049000000
+      010005574944544802000200140009444952454343494F4E0100490000000100
+      055749445448020002001400094D554E49434950494F04000100000000000C44
+      4550415254414D454E544F040001000000000004504149530400010000000000
+      0A5449504F4355454E54410400010000000000064355454E5441010049000000
+      010005574944544802000200140003474D4604000100000000000A53414C444F
+      46494E414C080004000000010007535542545950450200490006004D6F6E6579
+      000850524F4D4544494F08000400000001000753554254595045020049000600
+      4D6F6E657900074D454449414E41080004000000010007535542545950450200
+      490006004D6F6E657900064D4158494D4F080004000000010007535542545950
+      450200490006004D6F6E657900064D494E494D4F080004000000010007535542
+      545950450200490006004D6F6E6579000C56414C4F524352454449544F080004
+      000000010007535542545950450200490006004D6F6E6579000D4E554D45524F
+      4352454449544F04000100000000000F50524F4D4544494F4352454449544F08
+      0004000000010007535542545950450200490006004D6F6E6579000E4D454449
+      414E414352454449544F08000400000001000753554254595045020049000600
+      4D6F6E6579000B56414C4F5244454249544F0800040000000100075355425459
+      50450200490006004D6F6E6579000C4E554D45524F44454249544F0800040000
+      00010007535542545950450200490006004D6F6E6579000E50524F4D4544494F
+      44454249544F080004000000010007535542545950450200490006004D6F6E65
+      79000000}
+    object CDSfinalTIPODOCUMENTO: TIntegerField
+      FieldName = 'TIPODOCUMENTO'
+    end
+    object CDSfinalDOCUMENTO: TStringField
+      FieldName = 'DOCUMENTO'
+      Size = 15
+    end
+    object CDSfinalDV: TStringField
+      FieldName = 'DV'
+    end
+    object CDSfinalPRIMER_APELLIDO: TStringField
+      FieldName = 'PRIMER_APELLIDO'
+    end
+    object CDSfinalSEGUNDO_APELLIDO: TStringField
+      FieldName = 'SEGUNDO_APELLIDO'
+    end
+    object CDSfinalNOMBRE: TStringField
+      FieldName = 'NOMBRE'
+    end
+    object CDSfinalSEGUNDO_NOMBRE: TStringField
+      FieldName = 'SEGUNDO_NOMBRE'
+    end
+    object CDSfinalRAZONSOCIAL: TStringField
+      FieldName = 'RAZONSOCIAL'
+    end
+    object CDSfinalDIRECCION: TStringField
+      FieldName = 'DIRECCION'
+    end
+    object CDSfinalMUNICIPIO: TIntegerField
+      FieldName = 'MUNICIPIO'
+    end
+    object CDSfinalDEPARTAMENTO: TIntegerField
+      FieldName = 'DEPARTAMENTO'
+    end
+    object CDSfinalPAIS: TIntegerField
+      FieldName = 'PAIS'
+    end
+    object CDSfinalTIPOCUENTA: TIntegerField
+      FieldName = 'TIPOCUENTA'
+    end
+    object CDSfinalCUENTA: TStringField
+      FieldName = 'CUENTA'
+    end
+    object CDSfinalGMF: TIntegerField
+      FieldName = 'GMF'
+    end
+    object CDSfinalSALDOFINAL: TCurrencyField
+      FieldName = 'SALDOFINAL'
+    end
+    object CDSfinalPROMEDIO: TCurrencyField
+      FieldName = 'PROMEDIO'
+    end
+    object CDSfinalMEDIANA: TCurrencyField
+      FieldName = 'MEDIANA'
+    end
+    object CDSfinalMAXIMO: TCurrencyField
+      FieldName = 'MAXIMO'
+    end
+    object CDSfinalMINIMO: TCurrencyField
+      FieldName = 'MINIMO'
+    end
+    object CDSfinalVALORCREDITO: TCurrencyField
+      FieldName = 'VALORCREDITO'
+    end
+    object CDSfinalNUMEROCREDITO: TIntegerField
+      FieldName = 'NUMEROCREDITO'
+    end
+    object CDSfinalPROMEDIOCREDITO: TCurrencyField
+      FieldName = 'PROMEDIOCREDITO'
+    end
+    object CDSfinalMEDIANACREDITO: TCurrencyField
+      FieldName = 'MEDIANACREDITO'
+    end
+    object CDSfinalVALORDEBITO: TCurrencyField
+      FieldName = 'VALORDEBITO'
+    end
+    object CDSfinalNUMERODEBITO: TCurrencyField
+      FieldName = 'NUMERODEBITO'
+    end
+    object CDSfinalPROMEDIODEBITO: TCurrencyField
+      FieldName = 'PROMEDIODEBITO'
+    end
   end
 end

@@ -143,10 +143,8 @@ begin
          SQL.Add('from');
          SQL.Add('"gen$persona"');
          SQL.Add('left join "gen$direccion" on ("gen$persona".ID_IDENTIFICACION = "gen$direccion".ID_IDENTIFICACION and');
-         SQL.Add('"gen$persona".ID_PERSONA = "gen$direccion".ID_PERSONA and "gen$direccion".ID_DIRECCION = 1 ');
+         SQL.Add('"gen$persona".ID_PERSONA = "gen$direccion".ID_PERSONA ');
          SQL.Add('and "gen$direccion".ID_DIRECCION = 1) ');
-         //SQL.Add('where "gen$persona".ID_PERSONA = :id');
-         //ParamByName('id').AsString := '5035698';
          try
            Open;
            Last;
@@ -161,8 +159,8 @@ begin
          while not Eof do begin
            Bar3.Position := RecNo;
            Application.ProcessMessages;
-           vCodMunicipio := FieldByName('COD_MUNICIPIO').AsString;
-           if (vCodMunicipio = '') Then vCodMunicipio := '00000';
+           //vCodMunicipio := FieldByName('COD_MUNICIPIO').AsString;
+           //if (vCodMunicipio = '') Then vCodMunicipio := '00000';
            IBSQL1.Close;
            IBSQL1.SQL.Clear;
            IBSQL1.SQL.Add('select');

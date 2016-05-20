@@ -37,7 +37,7 @@ object TprTxReport
   Left = 280
   Top = 26
   SystemInfo = (
-    'OS: WIN32_NT 5.1.2600 Service Pack 1'
+    'OS: WIN32_NT 5.1.2600 Service Pack 3'
     ''
     'PageSize: 4096'
     'ActiveProcessorMask: $1000'
@@ -360,7 +360,7 @@ object TprTxReport
           end>
         dRec.Left = 30
         dRec.Top = 0
-        dRec.Right = 79
+        dRec.Right = 71
         dRec.Bottom = 1
         Visible = False
       end
@@ -405,6 +405,28 @@ object TprTxReport
         dRec.Left = 96
         dRec.Top = 0
         dRec.Right = 131
+        dRec.Bottom = 1
+        Visible = False
+      end
+      object prTxMemoObj18: TprTxMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'EDAD')
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            hAlign = prhLeft
+            vAlign = prvTop
+            DefaultFont = False
+            WordWrap = False
+          end>
+        dRec.Left = 72
+        dRec.Top = 0
+        dRec.Right = 79
         dRec.Bottom = 1
         Visible = False
       end
@@ -463,7 +485,7 @@ object TprTxReport
           end>
         dRec.Left = 30
         dRec.Top = 0
-        dRec.Right = 79
+        dRec.Right = 71
         dRec.Bottom = 1
         Visible = False
       end
@@ -530,6 +552,28 @@ object TprTxReport
         dRec.Left = 15
         dRec.Top = 0
         dRec.Right = 29
+        dRec.Bottom = 1
+        Visible = False
+      end
+      object prTxMemoObj20: TprTxMemoObj
+        dRec.DefVersion = 0
+        dRec.Versions = <
+          item
+            Visible = True
+            Memo.Strings = (
+              'IBQuery5.EDAD')
+            DeleteEmptyLinesAtEnd = False
+            DeleteEmptyLines = False
+            CanResizeX = False
+            CanResizeY = False
+            hAlign = prhLeft
+            vAlign = prvTop
+            DefaultFont = False
+            WordWrap = False
+          end>
+        dRec.Left = 72
+        dRec.Top = 0
+        dRec.Right = 79
         dRec.Bottom = 1
         Visible = False
       end
